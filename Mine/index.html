@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<head>
+	<title>Sweep the mine!</title>
+	<link rel='stylesheet' type='text/css' href='mine.css'>
+</head>
+<body>
+<form onsubmit="event.preventDefault();ifValid(width.value,height.value,mines.value)">
+		<label for="width">width:</label>
+		<input type="number" name="width">
+		<label for="height">height:</label>
+		<input type="number" name="height">
+		<label for="mines">mines:</label>
+		<input type="number" name="mines">
+		<input type="submit" value="Play!">
+</form>
+<div class="gamecontainer">
+	<p class="message">Ctrl to see the area. Alt to use flag.</p>
+	<p class="timehead">Time:<span id="timer"></span></p>
+	<p class="minehead">Mines:<span id="miner"></span></p>
+<div id='marker' class="marker">USE<br>FLAG</div>
+<div class="init" onclick="init()">RE<br>START!</div>
+<div id='field' class="field"></div>
+</div>
+<script defer src="mine.js">
+</script>
+</body>

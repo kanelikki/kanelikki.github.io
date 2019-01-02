@@ -1,0 +1,130 @@
+html,body{
+	height:100%;
+}
+body{
+	margin:0;padding:0;
+	text-align:center;
+	font-family:sans-serif;
+}
+.field{
+	background-color:#726f8a;
+	padding:5px;
+	clear:left;
+	overflow:hidden;
+}
+.field div{
+	margin:1px;
+	font-size:30px;
+	float:left;
+	background-color:#dabce0;
+}
+.field div:not(.around){
+	width:43px;height:43px;
+	position:relative;
+}
+.field, .field div{
+	user-select:none;
+}
+.field div:not(.closed){
+	background-color:#f3e8d2;
+}
+.gamecontainer{
+	display:inline-block;
+}
+.marker{
+	background-color:#5f5fde;
+	color:#fff;
+}
+.markmode{
+	background-color:#d60f36;
+}
+.field div,.marker,.init{
+	cursor:pointer;
+}
+.marker:hover{
+	background-color:#be9cda;
+}
+.field .marked{
+	background-color:#ce58a5;
+}
+.field .bomb{
+	background-color:#d23232;
+	font-size:45px;
+	color:#ffd0f2;
+	text-shadow:#ffd204 0 0 10px;
+}
+.field .bomb:not(.closed){
+	background-color:#000;
+}
+.timehead,.minehead{
+	font-size:1.5em;
+	margin-left:1em;
+	width:calc(50% - 1em);
+	float:left;
+}
+.init{
+	background-color:#ffdd00;
+	color:#353535;
+}
+.init,.marker{
+	width:50%;
+	float:left;
+	font-size:15px;
+	padding:0.5em 0;
+	border:3px solid #5e7273;
+	box-sizing:border-box;
+}
+.init:hover{
+	background-color:#ffffcf;
+}
+.field div .around{
+	position:absolute;
+	width:300%;
+	height:300%;
+	left:-100%;
+	top:-100%;
+	border:2px solid #c00;
+	box-sizing:border-box;
+	background-color:transparent;
+	z-index:1;
+	pointer-events:none;
+}
+.message{
+	margin:1em 0 0 0;
+}
+form{
+	background-color:#655775;
+	padding:0.8em 0;
+	color:#fff;
+}
+label{
+	margin:0 0.3em 0 2.2em;
+	margin-left:2.2em;
+}
+form input[type=number]{
+	width:2.5em;
+	padding:0.2em 0.5em;
+}
+form input,label{
+	font-size:120%;
+}
+form input[type=submit]{
+	background-color:#d4e5f3;
+	border:none;
+	padding:0.25em 0.5em;
+	margin-left:0.9em;
+}
+form input[type=submit]:hover{
+	cursor:pointer;
+	background-color:#fbdddd;
+}
+.success{
+	background:#d7e1fd;
+}
+.fail{
+	background:#ffd9d9;
+}
+.neutral{
+	background:#dededf;
+}
+
