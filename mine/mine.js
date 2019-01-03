@@ -1,15 +1,15 @@
 var arr;
 var sizex=15;
 var sizey=15;
-var mines=10;
+var mines=50;
 const FIELD_MIN=10;
 const FIELD_MAX=50;
 const MINE_MIN=10;
 const MINE_MAX=200;
-function ifValid(x=15,y=15,m=10){
+function ifValid(x=15,y=15,m=50){
 if(isNaN(x)||isNaN(y)||isNaN(m)||(x*y)*0.8<=m||x<FIELD_MIN||y<FIELD_MIN||m<MINE_MIN||x>FIELD_MAX||y>FIELD_MAX||m>MINE_MAX){
 	alert("Invalid value was found. Using Default Value");
-	x=15;y=15;m=10;
+	x=15;y=15;m=50;
 }
 	sizex=x;sizey=y;mines=m;
 	init();
@@ -97,12 +97,12 @@ var mark=function(e,x,y,elem){
 	if(!elem.classList.contains('marked')){
 		elem.addEventListener('click',switching);
 		elem.removeEventListener('click',mark);
-		miner.innerHTML=--minesum;
+		miner.innerText=--minesum;
 	}
 	else{
 		elem.addEventListener('click',switching);
 		elem.removeEventListener('click',mark);
-		miner.innerHTML=++minesum;
+		miner.innerText=++minesum;
 	}
 	elem.classList.toggle('marked');
 }
@@ -110,7 +110,7 @@ var init=function(){
 field.style.width=sizex*45+'px';
 field.style.height=sizey*45+'px';
 gameend=false;
-miner.innerHTML=mines;
+miner.innerText=mines;
 minesum=mines;
 field.innerHTML="";
 document.body.classList.value="neutral";
@@ -219,7 +219,8 @@ function gameEnd(status){
 	var msgBox=document.querySelector(".message");
 	if(status===0){
 		alert('Congrats! You Won!');
-		msgBox.innerText="You are the best."
+		msgBox.innerText="You are the best.";
+		miner.innerText=0;
 		for(i=0;i<mindex.length;i++){
 			let bomb=document.getElementById('p'+mindex[i][0]+'x'+mindex[i][1]);
 			bomb.classList.add('marked');
@@ -229,6 +230,7 @@ function gameEnd(status){
 	else{
 		alert('GAME OVER');
 		msgBox.innerText="Oops X( Try Again?"
+		miner.innerText="X";
 		for(i=0;i<mindex.length;i++){
 			let bomb=document.getElementById('p'+mindex[i][0]+'x'+mindex[i][1]);
 			bomb.classList.add('bomb');
