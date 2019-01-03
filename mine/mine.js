@@ -16,7 +16,7 @@ if(isNaN(x)||isNaN(y)||isNaN(m)||(x*y)*0.8<=m||x<FIELD_MIN||y<FIELD_MIN||m<MINE_
 }
 var field=document.querySelector('#field');
 var tiles=field.getElementsByClassName('closed');//this is live...
-var mindex=[];//where was the mine.
+var mindex;//where was the mine.
 var marking=false;//if marking mode?
 var count=null;
 var box=false;
@@ -60,8 +60,8 @@ var clicking=function(e,x,y,elem){
 	}
 	if(arr[x][y]===0){
 		let sum=0;
-		for(i=0;i<3;i++){
-			for(j=0;j<3;j++){
+		for(let i=0;i<3;i++){
+			for(let j=0;j<3;j++){
 				let xpos=x-1+i;
 				let ypos=y-1+j;
 				if(xpos<sizey && xpos>=0 && ypos<sizex && ypos>=0)
@@ -114,29 +114,29 @@ miner.innerText=mines;
 minesum=mines;
 field.innerHTML="";
 document.body.classList.value="neutral";
-mindex=[];
+mindex=new Array(mines);
 var newarray=function(xsize,ysize){
-	var ar=new Array;
-	var ar2=[];
-	for(i=0;i<xsize;i++){
-		for(j=0;j<ysize;j++){
+	var ar=new Array(xsize);
+	var ar2=new Array(ysize);
+	for(let i=0;i<xsize;i++){
+		for(let j=0;j<ysize;j++){
 			ar2[j]=0;
 		}
-		ar.push(ar2);
-		ar2=[];
+		ar[i]=ar2;
+		console.log(ar[i]);
+		ar2=new Array(ysize);
 	}
-	
 	return ar;
 }
 arr=newarray(sizey,sizex);
-for(i=0;i<mines;i++){
+for(let i=0;i<mines;i++){
 	let minep=minepos();
-	mindex.push(minep);
+	mindex[i]=minep;
 	arr[minep[0]][minep[1]]=1;
 }
 var frag=document.createDocumentFragment();
-for(i=0;i<sizey;i++){
-	for(j=0;j<sizex;j++){
+for(let i=0;i<sizey;i++){
+	for(let j=0;j<sizex;j++){
 		let elem=document.createElement('div');
 		elem.dataset.x=i;
 		elem.dataset.y=j;
@@ -212,7 +212,7 @@ function clicked(target){
 function gameEnd(status){
 	gameend=true;
 	clearInterval(count);
-	for(i=0;i<tiles.length;i++){
+	for(let i=0;i<tiles.length;i++){
 		tiles[i].removeEventListener('click',switching);
 		tiles[i].removeEventListener('mousemove',around);
 	 }
@@ -221,7 +221,7 @@ function gameEnd(status){
 		alert('Congrats! You Won!');
 		msgBox.innerText="You are the best.";
 		miner.innerText=0;
-		for(i=0;i<mindex.length;i++){
+		for(let i=0;i<mindex.length;i++){
 			let bomb=document.getElementById('p'+mindex[i][0]+'x'+mindex[i][1]);
 			bomb.classList.add('marked');
 		}
@@ -231,7 +231,7 @@ function gameEnd(status){
 		alert('GAME OVER');
 		msgBox.innerText="Oops X( Try Again?"
 		miner.innerText="X";
-		for(i=0;i<mindex.length;i++){
+		for(let i=0;i<mindex.length;i++){
 			let bomb=document.getElementById('p'+mindex[i][0]+'x'+mindex[i][1]);
 			bomb.classList.add('bomb');
 			bomb.innerText='*';
