@@ -123,7 +123,6 @@ var newarray=function(xsize,ysize){
 			ar2[j]=0;
 		}
 		ar[i]=ar2;
-		console.log(ar[i]);
 		ar2=new Array(ysize);
 	}
 	return ar;
