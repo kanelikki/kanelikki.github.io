@@ -94,14 +94,10 @@ var clicking=function(e,x,y,elem){
 var mark=function(e,x,y,elem){
 	x=Number(x);//Dataset is string
 	y=Number(y);
-	if(!elem.classList.contains('marked')){
-		elem.addEventListener('click',switching);
-		elem.removeEventListener('click',mark);
+	if(!elem.classList.contains('marked')){		
 		miner.innerText=--minesum;
 	}
 	else{
-		elem.addEventListener('click',switching);
-		elem.removeEventListener('click',mark);
 		miner.innerText=++minesum;
 	}
 	elem.classList.toggle('marked');
