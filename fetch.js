@@ -11,9 +11,8 @@ function setMenu(menu){
 	var frag=document.createDocumentFragment();
 	for(let m in menu){
 		let txt=menu[m];
-		txt=txt[0].toUpperCase()+txt.slice(1);
 		let a=document.createElement("a");
-		a.innerText=txt;
+		a.innerText=txt[0].toUpperCase()+txt.slice(1);
 		a.href='./'+txt;
 		frag.append(a);
 	}
