@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Memory Game with cards</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="styles/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/animate.min.css">
+  <link rel="stylesheet" href="styles/app.css">
+</head>
+
+<body>
+<div class="about" onclick="showInfo()">?</div>
+
+  <div class="container" id="game-content">
+    <h1 id="title" class="text-primary">Memory game</h1>
+    <div class="row">
+		<div id="muter" class="oi oi-volume-high text-left"></div>
+		<div class="col-sm text-primary text-right">Level: <span id="level"></span></div>
+	</div>
+    <div class="row">
+      <div class="col-sm text-primary">
+	      Playtime: <span id="play-time">0</span>
+      </div>
+      <div class="col-sm text-primary text-right">
+	      Turns: <span id="turn-count">0</span>
+      </div>
+    </div>
+    <div class="row" id="progress">
+      <div class="col-sm text-success">
+        <div class="progress">
+          <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    </div>
+	<div id="game-field"></div>
+  <table id="RankList" class="rank">
+  </table>
+  </div>
+
+  <div id="highScoreModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Game Over</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+				<div>
+						<div class="modal-rows modal-row0">Now: </div>
+						<div class="modal-rows modal-row1"><span id="player-score-now"></span></div>
+						<div class="modal-rows modal-row2"><span id="player-date-now" class="player-date"></span></div>
+				</div>
+				<div>
+						<div class="modal-rows modal-row0">1st: </div>
+						<div class="modal-rows modal-row1"><span id="player-score-1"></span></div>
+						<div class="modal-rows modal-row2"><span id="player-date-1" class="player-date"></span></div>
+				</div>
+				<div>
+						<div class="modal-rows modal-row0">2nd: </div>
+						<div class="modal-rows modal-row1"><span id="player-score-2"></span></div>
+						<div class="modal-rows modal-row2"><span id="player-date-2" class="player-date"></span></div>
+				</div>
+				<div>
+						<div class="modal-rows modal-row0">3rd: </div>
+						<div class="modal-rows modal-row1"><span id="player-score-3"></span></div>
+						<div class="modal-rows modal-row2"><span id="player-date-3" class="player-date"></span></div>
+				</div>
+				<!--<div>
+						<div class="modal-rows modal-row0" style="width:10.5em;">Average: </div>
+						<div class="modal-rows modal-row1"><span id="player-score-a"></span> s</div>
+				</div>-->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" data-replay="Replay">Replay</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <!--SAVED AUTOMATICALLY-->
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" role="dialog" id="about">
+		  <div class="modal-dialog" role="document" style="max-width:800px;">
+		<div class="modal-content">
+		  <div class="modal-header">
+		  <h5 class="modal-info">About</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeWindow(this)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+		  </div>
+			  <div class="modal-body"></div>
+			</div>
+		  </div>
+  </div>
+
+    <!-- Optional(?) JavaScript -->
+    <!-- If Async, Problem with appending to DOM... -->
+    <script defer src="src/icons.js"></script>
+    <script defer src="src/app.js"></script>
+	<script>
+(()=>{fetch('info.txt').then(function(response){ return response.text(); }).then(info=>document.querySelector("#about .modal-body").innerHTML=info);})();
+	function showInfo(){
+		let aboutBlock=document.getElementById("about");
+		aboutBlock.style.display="block";
+	}
+	function closeWindow(element){
+		var elem=element;
+		while(!elem.classList.contains("modal")){
+			elem=elem.parentElement;
+		}
+		elem.style.display="none";
+	}
+	</script>
+	<!--You said NO LIBRARAY? PURE JS? So it means no bootstrap.js? So I MADE IT!-->
+  </body>
+</html>

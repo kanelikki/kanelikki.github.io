@@ -1,0 +1,16 @@
+Original source code by Matti Welin<br>
+Edited by github @rnielikki<br>
+Added feature:<br>
+<ul>
+<li>Score calculated and saved to LocalStorage + Ranking System table</li>
+<li>Sounds and sound on/off (I made sounds with LMMS and Audacity)</li>
+<li>Card game validation check (internal issue)</li>
+<li>Show combos</li>
+<li>Level system</li>
+<li>Other minor Fixes (Animation problem/Icon duplication/Some bad coding habits/Colors)</li>
+<li>And maybe more... I forgot</li>
+</ul>
+License: I don't know, but <b>DON'T USE THIS FOR YOUR ASSIGNMENT</b><br>
+(If teacher is reading this, please tell me the license)<br>
+Enjoy! :)<br>
+From github.com/rnielikki

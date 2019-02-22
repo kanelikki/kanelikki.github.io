@@ -1,0 +1,126 @@
+/* @import "~bootstrap/scss/bootstrap"; */
+div#card {
+    border-style: dotted;
+    border-color: gray;
+    border-width: 1px;
+}
+
+#title {
+    text-align: center;
+}
+
+#progress {
+    margin-top: 5px;
+    margin-bottom: 5px;
+	position:relative;
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
+
+.green {
+    color: green;
+}
+.card:not(.animated){
+	background-color:#f7f7ff;
+	color:#bbb6e7;
+}
+.card:not(.animated):hover{
+	cursor:pointer;
+	background-color:#d6e5fc;
+}
+.card-body {
+    text-align: center;
+    font-size: 30px;
+    padding: 4px 0px 4px 0px;
+}
+.card-done{
+	color:#818c92;
+	background-color:#d4d3d1;
+}
+.player-date{
+	font-size:80%;
+	margin-left:0.5em;
+	color:#777;
+}
+.modal-rows{
+	display:inline-block;
+}
+.modal-row0{
+	width:3em;
+}
+.modal-row1{
+	min-width:10em;
+	max-width:100%;
+}
+.player-score-highlight{
+	font-weight:bold;
+}
+@keyframes combo{
+	0%{bottom:-.3em; opacity:1;}
+	100%{bottom:1em; opacity:0;}
+}
+.progress-combo{
+	font-size:2.5em;
+	animation:combo .5s;
+	position:absolute;
+	font-weight:800;
+	width:100%;
+	color:#0f4c46;
+	text-align:center;
+}
+#muter{
+	font-size:120%;
+}
+#muter:not(.oi-volume-off){
+	color:#6473c9;
+}
+#muter.oi-volume-off{
+	color:#989898;
+}
+#muter:hover{
+	color:#5a3a45;
+}
+.rank{
+	width:100%;
+	text-align:center;
+	margin-top:3.5em;
+}
+.rank tr:first-child{
+	background-color:#5c6e92;
+	color:#fff;
+}
+.rank th{
+	padding:0.45em 0;
+}
+.rank td{
+	padding:0.2em 0;
+}
+.rank tr:nth-child(2n+1):not(:first-child){
+	background-color:#f5f5f5;
+}
+.rank tr:nth-child(2n){
+	background-color:#d9dae6;
+}
+.about{
+	position:absolute;
+	top:0;right:0;
+	margin:0.5em;
+	font-size:150%;
+	width:1.5em;height:1.5em;
+	font-weight:800;
+	color:#fff;
+	text-align:center;
+	border-radius:50%;
+	background-color:#597bb9;
+	user-select:none;
+	cursor:pointer;
+}
+.about:hover{
+	background-color:#7a9acc;
+}
