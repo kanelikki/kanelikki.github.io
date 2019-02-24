@@ -63,7 +63,6 @@ const MemoryCard=class{
 	//this.span.classList.remove("flipInX");
     }
     turnInvisible(){
-		(MUTED)?0:AUDIO_RES.UNFLIP.cloneNode().play();
         this.element.classList.remove("flipInX");
         this.element.classList.add("flipOutX");
 		this.promise=new Promise((resolve,reject)=>{
@@ -253,6 +252,7 @@ const MemoryGame=class{ //Try ES6 Class. Good point: Error if you don't use new.
 					//PROBLEM: IF CLICK TOO FAST SETTIMEOUT NOT WORKING
 					//SOLVED WITH THIS.PROMISEDONE FLAG...
 					setTimeout(function(){
+						(MUTED)?0:AUDIO_RES.UNFLIP.cloneNode().play();
 						this.firstCard.turnInvisible();
 						this.secondCard.turnInvisible();
 						Promise.all([this.firstCard.promise,this.secondCard.promise]).then(()=>{
