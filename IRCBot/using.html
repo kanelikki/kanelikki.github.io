@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IRCBot Documentation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div class="header">
+    <a href="index.html" class="header-title">
+      <div>
+        <h1>IRCBot Documentation</h1>
+      </div>
+    </a>
+ </div>
+ <nav>
+     <a href="download.html">Download</a>
+     <a href="using.html">Using the bot</a>
+     <a href="module.html">Making modules</a>
+</nav>
+ <div class="content">
+     <h2>How to use</h2>
+     <h3>Setting</h3>
+     <p>If you have no configuration file, it will ask some informations about the connection.</p>
+     <p>You can rewrite the settings by pressing <span class="content-highlight">c</span> key when the program was just started.</p>
+     <h3>Adding/Removing Modules</h3>
+     <p>It's simple, just copy the module to <span class="content-highlight">Modules</span> folder.</p>
+     <p>All modules are dll files. If the module is not proper, it won't be loaded.</p>
+     <p><span class="content-note">NOTE: You can't add/remove modules at runtime.</span> After adding or removing the module, you must restart the bot to apply it.</p>
+     <p>If you want to make your own module, <a href="module.html">of course you can do it easily</a>.</p>
+     <h3>Editing Configuration file</h3>
+     <div class="content-warning">
+         <p style="font-weight:bold;">Warning!</p>
+         <p>Editing configuration file can cause error. If you feel that you ruined it, please remove the configuration file to reset. We recommend to backup the configuration file before editing.</p>
+     </div>
+     <p>If you want to edit just a little, you can edit <span class="content-highlight">IRCBot.exe.config</span> file without typing everything from first.</p>
+     <p>You only need to change the value, but nothing else.</p>
+     <p>Click <a href="https://docs.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/appsettings/add-element-for-appsettings">here</a> to get more info.</p>
+ </div>
+</body>
+</html>

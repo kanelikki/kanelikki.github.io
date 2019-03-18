@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IRCBot Documentation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div class="header">
+    <a href="index.html" class="header-title">
+      <div>
+        <h1>IRCBot Documentation</h1>
+      </div>
+    </a>
+ </div>
+ <nav>
+     <a href="download.html">Download</a>
+     <a href="using.html">Using the bot</a>
+     <a href="module.html">Making modules</a>
+</nav>
+ <div class="content">
+     <h2>Making modules</h2>
+     <div class="content-warning">
+         <p style="font-weight:bold;">Warning!</p>
+         <p>Do not add directly Model.cs (soruce code) to the project. The module will not work.</p>
+     </div>
+     <p>This instruction is focused on "Visual Studio 2017".</p>
+     <p>If you want to add instruction for other editors, <a href="https://github.com/rnielikki/rnielikki.github.io/IRCBot/">contribute here</a>.</p>
+     <h3>Prepare the project</h3>
+     <p>Right click the project and go to "Properties"</p>
+     <p>Select output type to "Class Library". We'll make a DLL file.</p>
+     <p>Right click the references and select "Add Reference"</p>
+     <p>Click "Browse" from the menu and "Browse..." button</p>
+     <p>Select the "Model.dll" from IRCBot path</p>
+     <p>Make sure that it is selected and click OK</p>
+     <h3>Write the source code</h3>
+     <p>An example code is written below:</p>
+     <pre>
+         
+            <span style="color:#70099f">using</span> <span style="color:#000030">IRCBot.Model</span>;
+
+            <span style="color:#00299f">class</span> <span style="color:#0a6a69">MyFirstModule</span>:<span style="color:#009999">IModule</span>
+            {
+                <span style="color:#00299f">public string</span> command { <span style="color:#00299f">get</span>; <span style="color:#00299f">private set</span>; }
+                <span style="color:#00299f">public string</span> description { <span style="color:#00299f">get</span>; <span style="color:#00299f">private set</span>; }
+                <span style="color:#00299f">public double</span> version { <span style="color:#00299f">get</span>; <span style="color:#00299f">private set</span>; }
+                <span style="color:#006f00">//constructor.</span>
+                <span style="color:#006f00">//the name should be *SAME AS CLASS NAME*</span>
+                <span style="color:#00299f">public</span> <span style="color:#004a39">MyFirstModule</span>() {
+                    <span style="color:#006f00">/* Set your command and description */</span>
+                    command <span style="color:#ad2b2b">=</span> <span style="color:#845000">"ping"</span>;
+                    description <span style="color:#ad2b2b">=</span> <span style="color:#845000">"Sends ping message"</span>;
+                    version <span style="color:#ad2b2b">=</span> <span style="color:#845000">1.0</span>;
+                }
+                <span style="color:#006f00">/* Make the action here */</span>
+                <span style="color:#00299f">public string</span> <span style="color:#004a39">CmdResult</span>(<span style="color:#0a6a69">ChatMsg</span> c) {
+                    <span style="color:#00299f">return</span> c.caller<span style="color:#ad2b2b">+</span><span style="color:#845000">", pong!"</span>;
+                }
+            }
+
+     </pre>
+     <p>In the ChatMsg object, these 5 variables are available:</p>
+     <ul>
+         <li><strong><span style="color:#00299f">ChatMsg</span>.host</strong>: Full hostname of the message sender.</li>
+         <li><strong><span style="color:#00299f">ChatMsg</span>.caller</strong>: Name of the message sender.</li>
+         <li><strong><span style="color:#00299f">ChatMsg</span>.channel</strong>: Channel, where message was sent. Note: If it's private message, the channel is the sender's name.</li>
+         <li><strong><span style="color:#00299f">ChatMsg</span>.text</strong>: Message, but without prefix.</li>
+         <li><strong><span style="color:#00299f">ChatMsg</span>.parameter</strong>: Message without the command name.</li>
+     </ul>
+     <p>If you want to write multiple lines, write <b>"\n"</b> between the lines.</p>
+     <p>Note that max 3 lines are allowed.</p>
+     <h3>Compile and attach the module</h3>
+     <p>Right click the project and build.</p>
+     <p>Right click the project again, and select "Open Folder in File Explorer"</p>
+     <p>You can copy the module.</p>
+     <h3>Publishing</h3>
+     <p>We currently don't have any package manager :( But if you <a href="https://github.com/rnielikki/IRCBot/">tell us</a> that you made a cool module, we can consider to add it in the next version.</p>
+ </div>
+</body>
+</html>
