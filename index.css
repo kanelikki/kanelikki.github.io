@@ -3,6 +3,7 @@ html,body{
 	height:100%;
 	font-family:"lato","roboto","arial",sans-serif;
 	position:relative;
+	min-width:20rem;
 }
 .nav{
 	background-color:#000;
@@ -13,6 +14,7 @@ html,body{
 	top:0;left:0;
 	width:100%;
 	text-align:center;
+	z-index:2;
 }
 .nav a{
 	color:#fff;
@@ -41,29 +43,95 @@ html,body{
 	text-align:center;
 	padding:20% 10%;
 	box-sizing:border-box;
+	position: relative;
 }
 .content:nth-of-type(odd){
-	background-color:#ccccd8;
+	background:#d2bacb linear-gradient(#aa97b1 35%, #fce4ff 65%);
+	border-top:5px solid #7a6a7b;
+	box-sizing:border-box;
 }
 .content:nth-of-type(even){
-	background-color:#afafdf;
+	background:#f1d3cc linear-gradient(#f5c0ca 35%, #f5e9db 65%);
+	border-top:5px solid #a08c77;
+	box-sizing:border-box;
+}
+.content.first{
+	background:#9fafe8 linear-gradient(45deg,#707baf 35%,#a9dcf3 65%);
+}
+.content h1, .content h2{
+	font-family:monospace;
+	font-weight:500;
+	margin-bottom:0.8em;
 }
 .content h1{
 	font-size:400%;
-	margin:0.2em;
 }
-.content p{
-	font-size:200%;
+.content h2{
+	font-size:250%;
 }
-.content-cmd{
-	background-color:#3a3a50;
-	font-family:monospace;
-	border:5px solid #67a28c;
-	color:#0f0;
+.content > p{
+	font-size:150%;
 }
-.content-cmd p{
-	margin:0.333em;
+.content-box{
+	background-color:rgba(255,255,255,0.5);
+	border:5px solid rgba(235,241,243,0.5);
+	border-radius: 5px;
+	padding:1.5rem;
 }
-.content-cmd-comment{
-	color:#999;
+.content-box>p{
+	font-size:120%;
+}
+/* form */
+form{
+	margin-top:1.1em;
+	width:100%;
+	max-width:20em;
+	display: inline-block;
+}
+form input{
+	padding:0.4rem;
+	margin:0.15rem 0;
+	border-radius:5px;
+	border: 1px solid #aaa;
+}
+form label{
+	width:7.5em;
+	display: inline-block;
+}
+form input, form textarea{
+	transition: background-color .3s ease-in-out;
+}
+form textarea{
+	width:100%;
+	padding:0.15rem;
+	height:12.5em;
+	border:1px solid #aaa;
+	border-radius:5px;
+}
+form input:focus:not(.btn), form textarea:focus{
+	background-color:#f1f0fb;
+}
+form .btn{
+	background-color: #3f3faf;
+	color:#fff;
+	font-size:1.1rem;
+	padding:0.5rem 0.75rem;
+}
+form .btn:hover{
+	background-color:#370850;
+}
+/* footer */
+footer{
+	position: absolute;
+	bottom:1.2em;
+	left:0;right:0;
+}
+footer a{
+	text-decoration:none;
+	color:#2950c3;
+	background-color:rgba(255,255,255,0.6);
+	padding:0.5em;
+}
+footer a:hover{
+	color:#e04e14;
 }

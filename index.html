@@ -9,28 +9,46 @@
 <div id="nav" class="nav">
 	<a href="#">Loading...</a>
 </div>
-<div class="content">
+<div class="content first">
 	<h1>Hello, World!</h1>
 	<p>Mielikki.portfoliopage</p>
 </div>
-<div class="content">
-	<div class="content-cmd">
-	<p>$ whoami</p>
-	<p>Lumi (nickname Mielikki)</p>
-	<p>$ pwd</p>
-	<p>Lahti, Finland</p>
-	<p>$ locale</p>
-	<p>LANG="cs_CS"</p>
-	<p>LC_WEB="js_JS.dom"</p>
-	<p>less CV</p>
-	<p>$ps | grep job</p>
-	<p class="content-cmd-comment">#No job available :(</p>
-	<p>$ less CV</p>
-	<p>Permission denied</p>
-	<p class="content-cmd-comment">#Send email to hire :)</p>
+<div class="content" id="minusta">
+	<h2>Olen...</h2>
+	<div class="content-box">
+		<p>Ohjelmistotekniikan opiskelija</p>
+		<p>Harrastanut koodausta</p>
+		<p>C# lover, JS, CSS, mutta osaan paljon muitakin</p>
+		<p>Kiinnostunut koodauksen lisäksi algoritmi, arkkitehturi, UX jne..</p>
 	</div>
 </div>
-<script async src="fetch.js">
-</script>
+<div class="content" id="taito">
+	<h2>Minulla on...</h2>
+	<div class="content-box">
+		<p>Ongelmaratkaisukykyä</p>
+		<p>Ajankohtaisen tekniikan osaamista</p>
+		<p>Kykyä oppia uusia asioita</p>
+		<p>Kiinnostusta ohjelmoinnista</p>
+	</div>
+</div>
+<div class="content" id="yhteys">
+	<h2>Ota yhteyttä</h2>
+	<div class="content-box">
+		<form action="https://niisku.lamk.fi/~Lumi16001/sendmail.php" method="post">
+			<label for="posti">Sähköposti</label>
+			<input type="email" name="posti" required><br>
+			<label for="nimi" required>Nimi</label>
+			<input type="text" name="nimi"><br>
+			<label for="yritys" required>Yritys</label>
+			<input type="text" name="yritys"><br>
+			<textarea name="viesti"></textarea>
+			<input type="submit" class="btn" value="Lähetä">
+		</form>
+		<!--<p>Poistan tietoja, kun asia on hoidettu.</p>-->
+	</div>
+<footer>By <a href="https://github.com/rnielikki">github.com/rnelikki</a></footer>
+</div>
+<!--<script async src="fetch.js">
+</script>-->
 </body>
 </html>
