@@ -71,6 +71,34 @@
      </ul>
      <p>If you want to write multiple lines, write <b>"\n"</b> between the lines.</p>
      <p>Note that max 3 lines are allowed.</p>
+	 <h4>Making event module</h4>
+
+	 <p>Sometimes you'll want to do something with the raw message. And maybe the bot also wants to join, part, quit, change topic and more.</p>
+	 <p>With event module, you can control the channel, make chat log and do more.</p>
+     <div class="content-warning">
+         <p style="font-weight:bold;">Warning!</p>
+		 <p>Unlike normal modules, event modules work <strong>synchronously</strong>. You must call asynchronous method, if you really want to make asynchronous task.</p>
+     </div>
+	 <p>And here's an simple example code, which sends "whois" to every join.</p>
+     <pre>
+         
+            <span style="color:#70099f">using</span> <span style="color:#000030">System.IO</span>;
+            <span style="color:#70099f">using</span> <span style="color:#000030">IRCBot.Model</span>;
+
+            <span style="color:#00299f">class</span> <span style="color:#0a6a69">MyFirstEvent</span>:<span style="color:#009999">IEventModule</span>
+            {
+                <span style="color:#006f00">//Event Module doesn't need any constructor</span>
+                <span style="color:#006f00">/* Make the action here */</span>
+		<span style="color:#00299f">public void</span> <span style="color:#004a39">EventResult</span>(<span style="#00299f">string</span> RawMessage, <span style="color:#0a6a69">StreamWriter</span> w) {
+			<span style="color:#00299f">if</span> (RawMessage.Split(<span style="color:#845000">' '</span>)[<span style="color:#af5900">1</span>]<span style="color:#ad2b2b">==</span><span style="color:#845000">"JOIN"</span>) {
+				w.WriteLine(<span style="color:#845000">"WHOIS "</span><span style="color:#ad2b2b">+</span>RawMessage.Substring(<span style="color:#af5900">1</span>,RawMessage.IndexOf(<span style="color:845000">'!'</span>)<span style="color:#ad2b2b">-</span><span style="color:#af5900">1</span>));
+			}
+                }
+            }
+
+     </pre>
+	 <p>Event modules are not shown on the help list, and it has no description.</p>
+	 <p>Of course you can implement <strong>both</strong>, IModule and IEventModule.</p>
      <h3>Compile and attach the module</h3>
      <p>Right click the project and build.</p>
      <p>Right click the project again, and select "Open Folder in File Explorer"</p>
