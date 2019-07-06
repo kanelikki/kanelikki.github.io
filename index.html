@@ -1,53 +1,54 @@
-<!DOCTYPE HTML>
 <html>
-<head>
-<title>rnielikki.github.io</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./index.css">
-</head>
-<body>
-<div id="nav" class="nav">
-	<a href="#">Loading...</a>
-</div>
-<div class="content first">
-	<h1>Hello, World!</h1>
-	<p>Mielikki.portfoliopage</p>
-</div>
-<div class="content" id="minusta">
-	<h2>Olen...</h2>
-	<div class="content-box">
-		<p>Ohjelmistotekniikan opiskelija</p>
-		<p>Harrastanut koodausta</p>
-		<p>C# lover, JS, CSS, mutta osaan paljon muitakin</p>
-		<p>Kiinnostunut koodauksen lisäksi algoritmi, arkkitehturi, UX jne..</p>
-	</div>
-</div>
-<div class="content" id="taito">
-	<h2>Minulla on...</h2>
-	<div class="content-box">
-		<p>Ongelmaratkaisukykyä</p>
-		<p>Ajankohtaisen tekniikan osaamista</p>
-		<p>Kykyä oppia uusia asioita</p>
-		<p>Kiinnostusta ohjelmoinnista</p>
-	</div>
-</div>
-<div class="content" id="yhteys">
-	<h2>Ota yhteyttä</h2>
-	<div class="content-box">
-		<form action="https://niisku.lamk.fi/~Lumi16001/sendmail.php" method="post">
-			<label for="posti">Sähköposti</label>
-			<input type="email" name="posti" required><br>
-			<label for="nimi" required>Nimi</label>
-			<input type="text" name="nimi"><br>
-			<label for="yritys" required>Yritys</label>
-			<input type="text" name="yritys"><br>
-			<textarea name="viesti"></textarea>
-			<input type="submit" class="btn" value="Lähetä">
-		</form>
-	</div>
-<footer>By <a href="https://github.com/rnielikki">github.com/rnelikki</a></footer>
-</div>
-<script async src="fetch.js">
-</script>
-</body>
+    <head>
+        <title>Portfolio page by Lumi</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./index.css">
+    </head>
+    <body>
+        <div class="header">Ota yhteyttä</div>
+        <div class="content">
+            <div class="content-group group-projects">
+                <a href="./IRCBot"  class="content-group-item">
+                    <div class="content-item-title">IRCBot</div>
+                </a>
+                <a href="./fakeos" class="content-group-item">
+                    <div class="content-item-title">FakeOS</div>
+                </a>
+            </div>
+            <div class="content-group group-games">
+                    <a href="./mine" class="content-group-item">
+                            <div class="content-item-title">Mine</div>
+                    </a>
+                    <a href="./memory" class="content-group-item">
+                            <div class="content-item-title">Memory</div>
+                    </a>
+            </div>
+            <div class="content-group group-tools">
+                    <a href="./Zalgo" class="content-group-item">
+                            <div class="content-item-title">Zalgo</div>
+                    </a>
+                    <a href="./oldbg" class="content-group-item">
+                            <div class="content-item-title">OldBG</div>
+                    </a>
+            </div>
+        </div>
+        <div class="modal-bg">
+            <div class="modal">
+                <div class="modal-title">Ota yhteyttä</div>
+                <div class="modal-content">
+                    <form action="https://niisku.lamk.fi/~Lumi16001/sendmail.php" method="post">
+                        <label for="nimi">Name:</label><input name="nimi" type="text" class="form-text" required>
+                        <label for="posti">Email:</label><input name="posti" type="email" class="form-text" required>
+                        <label for="yritys">Company:</label><input name="yritys" type="text" class="form-text" required>
+                        <textarea class="form-text" name="viesti"></textarea>
+                        <div class="form-group">
+                        <input type="submit" class="form-button" value="Send">
+                        <input type="button" class="form-button form-button-close" value="Close">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script defer src="./index.js"></script>
 </html>
