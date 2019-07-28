@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>IRCBot Documentation</title>
+    <title>IRCBotCore Documentation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
  <div class="header">
     <a href="index.html" class="header-title">
       <div>
-        <h1>IRCBot Documentation</h1>
+        <h1>IRCBotCore Documentation</h1>
       </div>
     </a>
  </div>
@@ -27,7 +27,7 @@
          <p>Do not add directly Model.cs (soruce code) to the project. The module will not work.</p>
      </div>
      <p>This instruction is focused on "Visual Studio 2017".</p>
-     <p>If you want to add instruction for other editors, <a href="https://github.com/rnielikki/rnielikki.github.io/IRCBot/">contribute here</a>.</p>
+     <p>If you want to add instruction for other editors, <a href="https://github.com/rnielikki/rnielikki.github.io/IRCBotCore/">contribute here</a>.</p>
      <h3>Prepare the project</h3>
      <p>Right click the project and go to "Properties"</p>
      <p>Select output type to "Class Library". We'll make a DLL file.</p>
@@ -89,7 +89,7 @@
             {
                 <span style="color:#006f00">//Event Module doesn't need any constructor</span>
                 <span style="color:#006f00">/* Make the action here */</span>
-		<span style="color:#00299f">public void</span> <span style="color:#004a39">EventResult</span>(<span style="#00299f">string</span> RawMessage, <span style="color:#0a6a69">StreamWriter</span> w) {
+		<span style="color:#00299f">public void</span> <span style="color:#004a39">EventResult</span>(<span style="color:#00299f">string</span> RawMessage, <span style="color:#0a6a69">StreamWriter</span> w) {
 			<span style="color:#00299f">if</span> (RawMessage.Split(<span style="color:#845000">' '</span>)[<span style="color:#af5900">1</span>]<span style="color:#ad2b2b">==</span><span style="color:#845000">"JOIN"</span>) {
 				w.WriteLine(<span style="color:#845000">"WHOIS "</span><span style="color:#ad2b2b">+</span>RawMessage.Substring(<span style="color:#af5900">1</span>,RawMessage.IndexOf(<span style="color:845000">'!'</span>)<span style="color:#ad2b2b">-</span><span style="color:#af5900">1</span>));
 			}
@@ -104,7 +104,7 @@
      <p>Right click the project again, and select "Open Folder in File Explorer"</p>
      <p>You can copy the module.</p>
      <h3>Publishing</h3>
-     <p>We currently don't have any package manager :( But if you <a href="https://github.com/rnielikki/IRCBot/">tell us</a> that you made a cool module, we can consider to add it in the next version.</p>
+     <p>We currently don't have any package manager :( But if you <a href="https://github.com/rnielikki/IRCBotCore/">tell us</a> that you made a cool module, we can consider to add it in the next version.</p>
  </div>
 </body>
 </html>

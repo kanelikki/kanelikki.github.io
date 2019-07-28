@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>IRCBot Documentation</title>
+    <title>IRCBotCore Documentation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
  <div class="header">
     <a href="index.html" class="header-title">
       <div>
-        <h1>IRCBot Documentation</h1>
+        <h1>IRCBotCore Documentation</h1>
       </div>
     </a>
  </div>
@@ -22,22 +22,44 @@
 </nav>
  <div class="content">
      <h2>How to use</h2>
+     <h3>Important guide for Linux</h3>
+     <p>Currently, we have dependency on <a href="https://en.wikipedia.org/wiki/International_Components_for_Unicode">icu</a> package.</p>
+     <p>Before start, you need to add execution permit to your execution file:</p>
+     <pre class="cmd">chmod u+x ./IRCBot<br>./IRCBot</pre>
+     <p>You can use screen or tmux.</p>
+     <h4>For Debian, Ubuntu, Mint</h4>
+     <pre class="cmd">sudo apt-get install icu</pre>
+     <p>If you want to use dependent version:</p>
+     <pre class="cmd">sudo apt-get install dotnet</pre>
+     <h4>For Red Hat, Fedora, CentOS</h4>
+     <pre class="cmd">sudo dnf install icu</pre>
+     <p>If you want to use dependent version:</p>
+     <pre class="cmd">sudo dnf install dotnet</pre>
+     <p><span class="content-note">Important Setting with dependent version!</span> Only for Red Hat Line(RHEL, Fedora, CentOS), Add ~/.bashrc to this line:</p>
+     <pre class="cmd">EXPORT DOTNET_ROOT="/usr/lib64/dotnet";</pre>
+     <p>Which can be added by this way:</p>
+     <pre class="cmd">echo 'EXPORT DOTNET_ROOT="/usr/lib64/dotnet";' >> ~/.bashrc</pre>
+     <h4>Should I download independent package?</h4>
+     <p>If you'll not use program never, ever on linux, which use .Net Core, you don't need to install. But since C# is major language and .Net Core is fresh but still good, you may need in the future. It depends on you (or "root" user).</p>
+     <p>Of course if you can't install any package, then remove the package.</p>
+     <h3>Command Usage</h3>
+     <pre class="cmd">./IRCBot [-start] [-encoding Encoding]</pre>
+     <p>All parameters are optional.</p>
+     <p>-start : Load setting file and start directly without setting UI. It won't work without config file.</p>
+     <p>-encoding : Set Encoding.</p>
+     <div class="content-warn">
+       <p style="font-weight:bold;">Note</p>
+       <p>There're no standard about IRC encoding and encoding problem occurs between clients. Check servers' recommendation first. If it won't work, try changing encoding. You can see the available list of encoding by writing IRCbot -encoding (without encoding or wrong encoding)</p>
+     </div>
      <h3>Setting</h3>
-     <p>If you have no configuration file, it will ask some informations about the connection.</p>
-     <p>You can rewrite the settings by pressing <span class="content-highlight">c</span> key when the program was just started.</p>
+     <p>Press up/down arrow to select. You can navigate on the channel list with left/right arrow.</p>
+     <p>Select Connect button and press Enter to save and connect. Cancel button and press Entern to cancel.</p>
+     <p>Setting File(config.json) can be edited manually, but be careful to edit it right.</p>
      <h3>Adding/Removing Modules</h3>
      <p>It's simple, just copy the module to <span class="content-highlight">Modules</span> folder.</p>
      <p>All modules are dll files. If the module is not proper, it won't be loaded.</p>
      <p><span class="content-note">NOTE: You can't add/remove modules at runtime.</span> After adding or removing the module, you must restart the bot to apply it.</p>
      <p>If you want to make your own module, <a href="module.html">of course you can do it easily</a>.</p>
-     <h3>Editing Configuration file</h3>
-     <div class="content-warning">
-         <p style="font-weight:bold;">Warning!</p>
-         <p>Editing configuration file can cause error. If you feel that you ruined it, please remove the configuration file to reset. We recommend to backup the configuration file before editing.</p>
-     </div>
-     <p>If you want to edit just a little, you can edit <span class="content-highlight">IRCBot.exe.config</span> file without typing everything from first.</p>
-     <p>You only need to change the value, but nothing else.</p>
-     <p>Click <a href="https://docs.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/appsettings/add-element-for-appsettings">here</a> to get more info.</p>
  </div>
 </body>
 </html>
