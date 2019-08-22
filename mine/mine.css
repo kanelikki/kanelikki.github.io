@@ -77,18 +77,6 @@ body{
 .init:hover{
 	background-color:#ffffcf;
 }
-.field div .around{
-	position:absolute;
-	width:300%;
-	height:300%;
-	left:-100%;
-	top:-100%;
-	border:2px solid #c00;
-	box-sizing:border-box;
-	background-color:transparent;
-	z-index:1;
-	pointer-events:none;
-}
 .message{
 	margin:1em 0 0 0;
 }
