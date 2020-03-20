@@ -9,8 +9,6 @@ window.addEventListener("load", async function(){
 
 
 function changed(value){
-    let infectionPreviousData = null;
-
     let infectionData = getData("confirmed", value);
     let deathData = getData("deaths", value);
     let curedData = getData("recovered", value);
@@ -18,28 +16,27 @@ function changed(value){
     let allData = getSum(infectionData, deathData, curedData);
     
     domFetcher.fetchAll({
-        Infections: infectionData,
-        Deaths: deathData,
-        Recovers : curedData,
-        Total: allData
+        Infections: extractData(infectionData),
+        Deaths: extractData(deathData),
+        Recovers : extractData(curedData),
+        Total: extractData(allData)
     }, value);
 
     function getData(type, region){
         var filteredData = fetchedData[type];
         if(region!="All") filteredData = filteredData.filter(data => data.healthCareDistrict == region);
         let returnData = filteredData.map(data=>{ return {x:data.date, y:1}; });
-        if(type=="confirmed") infectionPreviousData = returnData;
 
-        return extractData(returnData);
+        return returnData;
     }
 
     function getSum(infections, deaths, cures){
         function reverseToMinus(dataMap) { return dataMap.map(data=>{ let x = data.x; let y = -data.y; return {x, y}; }); }
 
-        var infectionInfo = infectionPreviousData;
+        var infectionInfo = infections;
         var curesInfo = reverseToMinus(cures);
         var deathsInfo = reverseToMinus(deaths);
-        return extractData(infectionInfo.concat(curesInfo).concat(deathsInfo));
+        return infectionInfo.concat(curesInfo).concat(deathsInfo);
     }
     function extractData(dataInput){
         if(!dataInput) return [];
