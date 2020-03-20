@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+    .status-table div > span{
+        display:inline-block;
+    }
+    .status-table div > span:first-child{
+        width:15rem;
+    }
+    .status-table div > span:nth-child(2){
+        margin-left:1.5rem;
+    }
+    .status-table div:nth-child(odd){
+        background-color:lightgreen;
+    }
+    .status-table div:nth-child(even){
+        background-color:lightpink;
+    }
+    </style>
+</head>
+
+<body>
+    <script>
+        fetch("./asdf.json").then(result => result.json()).then(result => {
+            fetchData("confirmed", "healthCareDistrict", "healthcare-district");
+            fetchData("confirmed", "infectionSourceCountry", "infection-country");
+            fetchData("confirmed", "infectionSource", "infection-source");
+            //fetchData("death", "healthCareDistrict", "death-source");
+            fetchData("recovered", "healthCareDistrict", "recovered-source");
+            function fetchData(dataType, dataLabel, elementId) {
+                var dataList = result[dataType];
+                var reducedData = dataList.reduce((dataResult, data) => {
+                    let dataValue = data[dataLabel] ?? "others";
+                    if(dataValue){
+                        if (dataResult[dataValue] === undefined)
+                            dataResult[dataValue] = 1;
+                        else dataResult[dataValue]++;
+                    }
+                    return dataResult;
+                }, {});
+                addToElement(reducedData, elementId);
+                function addToElement(orderedData, elementName) {
+                    for (let dataIndex in orderedData) {
+                        if (!orderedData.hasOwnProperty(dataIndex)) continue;
+                        let data = orderedData[dataIndex];
+                        let div = document.createElement("div");
+                        let label = document.createElement("span");
+                        let numbers = document.createElement("span");
+                        label.innerText = dataIndex;
+                        numbers.innerText = data;
+                        div.appendChild(label);
+                        div.appendChild(numbers);
+                        document.getElementById(elementName).appendChild(div);
+                    }
+                }
+            }
+        });
+    </script>
+    <h2>Confirmed</h2>
+    <h3>District</h3>
+    <div id="healthcare-district" class="status-table">
+    </div>
+    <h3>Infection Country</h3>
+    <div id="infection-country" class="status-table">
+    </div>
+    <h3>Infection Source</h3>
+    <div id="infection-source" class="status-table">
+    </div>
+    <h2>Death</h2>
+    <div id="death-source" class="status-table">
+    </div>
+    <h2>Recovered</h2>
+    <div id="recovered-source" class="status-table">
+    </div>
+</body>
+
+</html>
