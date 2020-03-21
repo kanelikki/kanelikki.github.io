@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style type="text/css">
+    body{
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
     .chart-wrapper{
         width:100%; max-width:1000px
+    }
+    .footer{
+        color: #666666;
     }
     </style>
 </head>
 <body>
-    <select onchange="changed(value)">
+    <select id="region-selection" onchange="changed(value)">
         <option value="All">Kaikki</option>
         <option value="HUS">Uusimaa</option>
         <option value="Pirkanmaa">Pirkanmaa</option>
@@ -34,20 +40,32 @@
         <option value="Ahvenanmaa">Ahvenanmaa</option>
         <option value="Others">Muut</option>
     </select>
+    <button onclick="saveToLocalStorage()">Save as default</button>
+    <h1><span id="covid-district"></span> piiri</h1>
     <div class="chart-wrapper">
+        <h2>Total <span id="covid-total"></span></h2>
         <canvas id="total-chart"></canvas>
     </div>
     <div class="chart-wrapper">
-        <canvas id="infection-chart"></canvas>
+        <h2>Infections <span id="covid-infections"></span></h2>
+        <canvas id="infections-chart"></canvas>
     </div>
     <div class="chart-wrapper">
-        <canvas id="death-chart"></canvas>
+        <h2>Deaths <span id="covid-deaths"></span></h2>
+        <canvas id="deaths-chart"></canvas>
     </div>
     <div class="chart-wrapper">
-        <canvas id="recover-chart"></canvas>
+        <h2>Recovered <span id="covid-recovers"></span></h2>
+        <canvas id="recovers-chart"></canvas>
     </div>
     <script src="./js/dataFetch.js"></script>
     <script src="./js/domFetch.js"></script>
     <script src="./js/Chart.bundle.min.js"></script>
+    <script>
+        let regionSelection;
+        window.addEventListener("load",function(){ regionSelection = document.getElementById("region-selection"); });
+        const saveToLocalStorage = ()=>localStorage.setItem("region", regionSelection.value);
+    </script>
+    <div class="footer">By <a href="https://rnielikki.github.io/" style="color:#595959; font-weight: bold;">Mielikki</a></div>
 </body>
 </html>

@@ -1,21 +1,72 @@
-let Charts = {
-    Infections: null,
-    Deaths: null,
-    Recovers : null,
-    Total: null
+//models
+const ChartOptions = {
+    responsive: true,
+    maintainAspectRatio: true,
+    elements: {
+        line: {
+            tension: 0
+        }
+    },
+    title:{
+        display: false,
+    },
+    scales:{
+        xAxes: [{
+            type:"time",
+            time:{
+                parser: 'MM.YYYY',
+                unit: 'week'
+            },
+            scaleLabel: {
+                labelString: 'Date'
+            }
+        }],
+        yAxes: [{
+            scaleLabel: {
+                labelString: 'value'
+            }
+        }]
+    },
+    legend: {
+        display: false
+    }
 };
-const timeFormat = 'MM.YYYY';
-const Canvases = {
-    Infections: null,
-    Deaths: null,
-    Recovers : null,
-    Total: null
+let Label = null;
+const Info = {
+    Infections: {
+        Canvas: null,
+        Chart: null,
+        Label: null
+    },
+    Deaths: {
+        Canvas: null,
+        Chart: null,
+        Label: null
+    },
+    Recovers : {
+        Canvas: null,
+        Chart: null,
+        Label: null
+    },
+    Total: {
+        Canvas: null,
+        Chart: null,
+        Label: null
+    }
 }
+
+//behaviours
 window.onload = function(){
-    Canvases.Total = document.getElementById("total-chart").getContext("2d");
-    Canvases.Infections = document.getElementById("infection-chart").getContext("2d");
-    Canvases.Deaths = document.getElementById("death-chart").getContext("2d");
-    Canvases.Recovers = document.getElementById("recover-chart").getContext("2d");
+    for(let type of Object.entries(Info))
+        initialize(type[0]);
+
+    Label = document.getElementById("covid-district");
+
+    function initialize(type){
+        let domLabel = type.toLowerCase();
+        Info[type].Canvas = document.getElementById(domLabel+"-chart").getContext("2d");
+        Info[type].Label = document.getElementById("covid-"+domLabel);
+    }
 }
 const domFetcher = {
     fetchAll:function(data, region){
@@ -25,9 +76,9 @@ const domFetcher = {
         this.fetch("Recovers", data.Recovers, region);
     },
     fetch:function(type, data, region){
-        let ctx = Canvases[type];
-        if(Charts[type]) Charts[type].destroy();
-        Charts[type] = new Chart(ctx, {
+        let ctx = Info[type].Canvas;
+        if(Info[type].Chart) Info[type].Chart.destroy();
+        Info[type].Chart = new Chart(ctx, {
             type:'line',
             data:{
                 datasets: [
@@ -38,39 +89,12 @@ const domFetcher = {
                     }
                 ]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                elements: {
-                    line: {
-                        tension: 0
-                    }
-                },
-                title:{
-                    display: true,
-                    text: region+", "+type
-                },
-                scales:{
-                    xAxes: [{
-                        type:"time",
-                        time:{
-                            parser: timeFormat,
-                            unit: 'week'
-                        },
-                        scaleLabel: {
-                            labelString: 'Date'
-                        }
-                    }],
-                    yAxes: [{
-                        scaleLabel: {
-                            labelString: 'value'
-                        }
-                    }]
-                },
-                legend: {
-                    display: false
-                }
-            }
+            options: ChartOptions
         });
+        this.fetchName(type, region, data[data.length-1]?.y);
+    },
+    fetchName:function(type, region, currentData){
+        Label.innerText = region;
+        Info[type].Label.innerText = currentData ?? 0;
     }
 };
