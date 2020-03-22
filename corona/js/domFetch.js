@@ -1,10 +1,12 @@
 //models
+const minimumDate = new Date("2020/2/26");
+const maximumDate =  new Date();
 const ChartOptions = {
     responsive: true,
     maintainAspectRatio: true,
     elements: {
         line: {
-            tension: 0
+            tension: 0.25
         }
     },
     title:{
@@ -17,11 +19,20 @@ const ChartOptions = {
                 parser: 'MM.YYYY',
                 unit: 'week'
             },
+            ticks:{
+                min: minimumDate,
+                max: maximumDate,
+                beginAtZero: true
+                
+            },
             scaleLabel: {
                 labelString: 'Date'
             }
         }],
         yAxes: [{
+            ticks: {
+                beginAtZero: true
+            },
             scaleLabel: {
                 labelString: 'value'
             }
@@ -77,6 +88,10 @@ const domFetcher = {
     },
     fetch:function(type, data, region){
         let ctx = Info[type].Canvas;
+        let lastData = data[data.length-1];
+        let currentValue = (lastData)?lastData.y:0;
+        data.push({x: maximumDate, y: currentValue});
+
         if(Info[type].Chart) Info[type].Chart.destroy();
         Info[type].Chart = new Chart(ctx, {
             type:'line',
@@ -91,11 +106,11 @@ const domFetcher = {
             },
             options: ChartOptions
         });
-        this.fetchName(type, region, data[data.length-1]);
+        this.fetchName(type, region, currentValue);
     },
     fetchName:function(type, region, currentData){
         Label.innerText = region;
-        let currentNumber = currentData?currentData.y:"0";
+        let currentNumber = currentData?currentData:"0";
         Info[type].Label.innerText = currentNumber;
     }
 };
