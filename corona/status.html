@@ -26,7 +26,7 @@
 
 <body>
     <script>
-        fetch("https://w3qa5ydb4l.execute-api.eu-west-1.amazonaws.com/prod/finnishCoronaData").then(result => result.json()).then(result => {
+        fetch("./asdf.json").then(result => result.json()).then(result => {
             fetchData("confirmed", "healthCareDistrict", "healthcare-district");
             fetchData("confirmed", "infectionSourceCountry", "infection-country");
             fetchData("confirmed", "infectionSource", "infection-source");
@@ -35,7 +35,7 @@
             function fetchData(dataType, dataLabel, elementId) {
                 var dataList = result[dataType];
                 var reducedData = dataList.reduce((dataResult, data) => {
-                    let dataValue = data[dataLabel] ?? "others";
+                    let dataValue = (data[dataLabel])?data[dataLabel]:"others";
                     if(dataValue){
                         if (dataResult[dataValue] === undefined)
                             dataResult[dataValue] = 1;

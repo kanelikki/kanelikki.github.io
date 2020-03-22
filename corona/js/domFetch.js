@@ -95,6 +95,6 @@ const domFetcher = {
     },
     fetchName:function(type, region, currentData){
         Label.innerText = region;
-        Info[type].Label.innerText = currentData ?? 0;
+        Info[type].Label.innerText = (currentData)?currentData:0;
     }
 };
