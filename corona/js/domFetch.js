@@ -91,10 +91,11 @@ const domFetcher = {
             },
             options: ChartOptions
         });
-        this.fetchName(type, region, data[data.length-1]?.y);
+        this.fetchName(type, region, data[data.length-1]);
     },
     fetchName:function(type, region, currentData){
         Label.innerText = region;
-        Info[type].Label.innerText = (currentData)?currentData:0;
+        let currentNumber = currentData?currentData.y:"0";
+        Info[type].Label.innerText = currentNumber;
     }
 };
