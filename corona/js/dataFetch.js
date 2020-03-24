@@ -3,7 +3,13 @@ var fetchedData;
 window.addEventListener("load", async function(){
     let response = await fetch("https://w3qa5ydb4l.execute-api.eu-west-1.amazonaws.com/prod/finnishCoronaData");
     fetchedData = await response.json();
-    let region = localStorage.getItem("region");
+    let region;
+    try{
+        region = localStorage.getItem("region");
+    }
+    catch{ //for non-localStorage support (for example, third-party data save not allowed for security reason...)
+        document.getElementById("region-save").style.display = "none";
+    }
     changed(region?region:"All");
 });
 
