@@ -67,7 +67,7 @@ const Info = {
 }
 
 //behaviours
-window.onload = function(){
+window.addEventListener("load", function(){
     for(let type of Object.entries(Info))
         initialize(type[0]);
 
@@ -78,7 +78,7 @@ window.onload = function(){
         Info[type].Canvas = document.getElementById(domLabel+"-chart").getContext("2d");
         Info[type].Label = document.getElementById("covid-"+domLabel);
     }
-}
+});
 const domFetcher = {
     fetchAll:function(data, region){
         this.fetch("Total", data.Total, region);
@@ -109,7 +109,7 @@ const domFetcher = {
         this.fetchName(type, region, currentValue);
     },
     fetchName:function(type, region, currentData){
-        Label.innerText = region;
+        Label.innerText = (region==null)?"Muu":region;
         let currentNumber = currentData?currentData:"0";
         Info[type].Label.innerText = currentNumber;
     }

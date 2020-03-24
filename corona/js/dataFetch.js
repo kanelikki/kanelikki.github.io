@@ -15,6 +15,7 @@ window.addEventListener("load", async function(){
 
 
 function changed(value){
+    if(value=="Others") value = null;
     let infectionData = getData("confirmed", value);
     let deathData = getData("deaths", value);
     let curedData = getData("recovered", value);
