@@ -1,4 +1,4 @@
-# Corona status/chart data, Finland
+# COVID19 status/chart data, Finland
 
 ## Contribution Guideline
 * Either issues or pull requests
