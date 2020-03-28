@@ -1,0 +1,21 @@
+body{
+    margin:8px;
+}
+.menu{
+    margin: -8px;
+    background-color: #ccc;
+    display: flex;
+}
+.menu a{
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: center;
+    color: #000;
+    font-size: 150%;
+    text-decoration: none;
+    padding: 0.75rem;
+}
+.menu a:hover{
+    background-color:#000;
+    color:#fff;
+}

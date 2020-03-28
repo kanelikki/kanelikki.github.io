@@ -1,6 +1,7 @@
 //models
 const minimumDate = new Date("2020/2/26");
 const maximumDate =  new Date();
+const percentFormatter = new Intl.NumberFormat("fi-FI", { style:"percent", maximumSignificantDigits:4 });
 const ChartOptions = {
     responsive: true,
     maintainAspectRatio: true,
@@ -42,6 +43,59 @@ const ChartOptions = {
         display: false
     }
 };
+const ChartManyOptions = {
+    responsive: true,
+    maintainAspectRatio: true,
+    elements: {
+        line: {
+            tension: 0.25
+        }
+    },
+    title:{
+        display: false,
+    },
+    scales:{
+        xAxes: [{
+            type:"time",
+            time:{
+                parser: 'MM.YYYY',
+                unit: 'week'
+            },
+            ticks:{
+                min: minimumDate,
+                max: maximumDate,
+                beginAtZero: true
+                
+            },
+            scaleLabel: {
+                labelString: 'Date'
+            }
+        }],
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            },
+            scaleLabel: {
+                labelString: 'value'
+            }
+        }],
+        elements: {
+            line: {
+                    fill: false
+            }
+        }
+    },
+    tooltips: {
+            callbacks: {
+                label: (tooltipItem, data)=>{
+                    let currentDataSet = data.datasets[tooltipItem.datasetIndex];
+                    let people = currentDataSet.data[tooltipItem.index].number.toString();
+                    let percentage = percentFormatter.format(tooltipItem.value);
+                    return currentDataSet.label + ":" + people +" ("+percentage+")";
+                }
+            }
+    } 
+};
 let Label = null;
 const Info = {
     Infections: {
@@ -72,6 +126,7 @@ window.addEventListener("load", function(){
         initialize(type[0]);
 
     Label = document.getElementById("covid-district");
+    Chart.defaults.global.elements.line.fill = false;
 
     function initialize(type){
         let domLabel = type.toLowerCase();
@@ -90,7 +145,6 @@ const domFetcher = {
         let ctx = Info[type].Canvas;
         let lastData = data[data.length-1];
         let currentValue = (lastData)?lastData.y:0;
-        data.push({x: maximumDate, y: currentValue});
 
         if(Info[type].Chart) Info[type].Chart.destroy();
         Info[type].Chart = new Chart(ctx, {
@@ -112,5 +166,22 @@ const domFetcher = {
         Label.innerText = (region==null)?"Muu":region;
         let currentNumber = currentData?currentData:"0";
         Info[type].Label.innerText = currentNumber;
+    },
+    fetchManyAll:function(data){
+        this.fetchMany("Total", data.Total);
+        this.fetchMany("Infections", data.Infections);
+        this.fetchMany("Deaths", data.Deaths);
+        this.fetchMany("Recovers", data.Recovers);
+    },
+    fetchMany:function(type, dataset){
+        let ctx = Info[type].Canvas;
+        if(Info[type].Chart) Info[type].Chart.destroy();
+        Info[type].Chart = new Chart(ctx, {
+            type:'line',
+            data:{
+                datasets: dataset
+            },
+            options: ChartManyOptions
+        });
     }
 };

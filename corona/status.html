@@ -22,9 +22,14 @@
         background-color:lightpink;
     }
     </style>
+    <link rel="stylesheet" href="menu.css">
 </head>
 
 <body>
+    <div class="menu">
+        <a href="./index.html">Piirit</a>
+        <a href="./percent.html">Väestö %</a>
+    </div>
     <script>
         fetch("https://w3qa5ydb4l.execute-api.eu-west-1.amazonaws.com/prod/finnishCoronaData").then(result => result.json()).then(result => {
             fetchData("confirmed", "healthCareDistrict", "healthcare-district");

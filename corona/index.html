@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style type="text/css">
-    body{
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    .chart-wrapper{
-        width:100%; max-width:1000px
-    }
-    .footer{
-        color: #666666;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .chart-wrapper {
+            width: 100%;
+            max-width: 1000px
+        }
+
+        .footer {
+            color: #666666;
+        }
     </style>
+    <link rel="stylesheet" href="menu.css">
 </head>
+
 <body>
+    <div class="menu">
+        <a href="./percent.html">Väestö %</a>
+        <a href="./status.html">Status</a>
+    </div>
     <select id="region-selection" onchange="changed(value)">
         <option value="All">Kaikki</option>
         <option value="HUS">Uusimaa</option>
@@ -63,9 +73,23 @@
     <script src="./js/Chart.bundle.min.js"></script>
     <script>
         let regionSelection;
-        window.addEventListener("load",function(){ regionSelection = document.getElementById("region-selection"); });
-        const saveToLocalStorage = ()=>localStorage.setItem("region", regionSelection.value);
+        window.addEventListener("load", function () { regionSelection = document.getElementById("region-selection"); });
+        window.addEventListener("load", async function () {
+            let response = await fetch("https://w3qa5ydb4l.execute-api.eu-west-1.amazonaws.com/prod/finnishCoronaData");
+            fetchedData = await response.json();
+            let region;
+            try {
+                region = localStorage.getItem("region");
+            }
+            catch{ //for non-localStorage support (for example, third-party data save not allowed for security reason...)
+                document.getElementById("region-save").style.display = "none";
+            }
+            changed(region ? region : "All");
+        });
+        const saveToLocalStorage = () => localStorage.setItem("region", regionSelection.value);
     </script>
-    <div class="footer">By <a href="https://rnielikki.github.io/" style="color:#595959; font-weight: bold;">Mielikki</a></div>
+    <div class="footer">By <a href="https://rnielikki.github.io/" style="color:#595959; font-weight: bold;">Mielikki</a>
+    </div>
 </body>
+
 </html>
