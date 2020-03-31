@@ -44,8 +44,8 @@ const ChartOptions = {
     }
 };
 const ChartManyOptions = {
+    maintainAspectRatio : false,
     responsive: true,
-    maintainAspectRatio: true,
     elements: {
         line: {
             tension: 0.25

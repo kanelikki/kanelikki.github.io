@@ -10,7 +10,8 @@
         }
         .chart-wrapper {
             width: 100%;
-            max-width: 1000px
+            max-width: 1000px;
+            height:45vh;
         }
         .footer {
             color: #666666;
@@ -25,20 +26,20 @@
         <a href="./status.html">Tilat</a>
     </div>
     <h1>Väestö % (Väestödata 1.2020)</h1>
+    <h2>Total <span id="covid-total"></span></h2>
     <div class="chart-wrapper">
-        <h2>Total <span id="covid-total"></span></h2>
         <canvas id="total-chart"></canvas>
     </div>
+    <h2>Infections <span id="covid-infections"></span></h2>
     <div class="chart-wrapper">
-        <h2>Infections <span id="covid-infections"></span></h2>
         <canvas id="infections-chart"></canvas>
     </div>
+    <h2>Deaths <span id="covid-deaths"></span></h2>
     <div class="chart-wrapper">
-        <h2>Deaths <span id="covid-deaths"></span></h2>
         <canvas id="deaths-chart"></canvas>
     </div>
+    <h2>Recovered <span id="covid-recovers"></span></h2>
     <div class="chart-wrapper">
-        <h2>Recovered <span id="covid-recovers"></span></h2>
         <canvas id="recovers-chart"></canvas>
     </div>
     <script src="./js/dataFetch.js"></script>
