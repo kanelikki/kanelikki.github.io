@@ -6,5 +6,6 @@
 * Issues for bugs/enhancement suggestion
 
 ## Todo:
-* Separate codes
-* Share data and put them into single page
+* Cleaning and packing
+* Keeping API up to date
+* Share data and put them into single page ✔
