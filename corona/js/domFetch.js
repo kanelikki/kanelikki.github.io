@@ -121,7 +121,7 @@ const Info = {
 }
 
 //behaviours
-window.addEventListener("load", function(){
+const loadCharts = function(){
     for(let type of Object.entries(Info))
         initialize(type[0]);
 
@@ -133,7 +133,7 @@ window.addEventListener("load", function(){
         Info[type].Canvas = document.getElementById(domLabel+"-chart").getContext("2d");
         Info[type].Label = document.getElementById("covid-"+domLabel);
     }
-});
+};
 const domFetcher = {
     fetchAll:function(data, region){
         this.fetch("Total", data.Total, region);

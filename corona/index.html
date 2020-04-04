@@ -18,75 +18,198 @@
         .footer {
             color: #666666;
         }
+
+        body {
+            margin: 8px;
+        }
+
+        .menu {
+            margin: -8px;
+            background-color: #ccc;
+            display: flex;
+        }
+
+        .menu a {
+            flex-grow: 1;
+            flex-shrink: 1;
+            text-align: center;
+            color: #000;
+            font-size: 150%;
+            text-decoration: none;
+            padding: 0.75rem;
+        }
+
+        .menu a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .chart-wrapper-percent {
+            width: 100%;
+            max-width: 1000px;
+            height: 45vh;
+        }
+
+        /*status*/
+        .status-table div>span {
+            display: inline-block;
+        }
+
+        .status-table div>span:first-child {
+            width: 15rem;
+        }
+
+        .status-table div>span:nth-child(2) {
+            margin-left: 1.5rem;
+        }
+
+        .status-table div:nth-child(odd) {
+            background-color: lightgreen;
+        }
+
+        .status-table div:nth-child(even) {
+            background-color: lightpink;
+        }
     </style>
-    <link rel="stylesheet" href="menu.css">
 </head>
 
 <body>
     <div class="menu">
-        <a href="./percent.html">Väestö %</a>
-        <a href="./status.html">Status</a>
+        <a href="#" onclick='usePage("piirit")'>Piirit</a>
+        <a href="#" onclick='usePage("percent")'>Väestö %</a>
+        <a href="#" onclick='usePage("status")'>Status</a>
     </div>
-    <select id="region-selection" onchange="changed(value)">
-        <option value="All">Kaikki</option>
-        <option value="HUS">Uusimaa</option>
-        <option value="Pirkanmaa">Pirkanmaa</option>
-        <option value="Varsinais-Suomi">Varsinais-Suomi</option>
-        <option value="Pohjois-Pohjanmaa">Pohjois-Pohjanmaa</option>
-        <option value="Keski-Suomi">Keski-Suomi</option>
-        <option value="Pohjois-Savo">Pohjois-Savo</option>
-        <option value="Satakunta">Satakunta</option>
-        <option value="Päijät-Häme">Päijät-Häme</option>
-        <option value="Etelä-Pohjanmaa">Etelä-Pohjanmaa</option>
-        <option value="Vaasa">Pohjanmaa</option>
-        <option value="Lappi">Lappi</option>
-        <option value="Kymenlaakso">Kymenlaakso</option>
-        <option value="Kanta-Häme">Kanta-Häme</option>
-        <option value="Pohjois-Karjala">Pohjois-Karjala</option>
-        <option value="Etelä-Savo">Etelä-Savo</option>
-        <option value="Etelä-Karjala">Etelä-Karjala</option>
-        <option value="Kainuu">Kainuu</option>
-        <option value="Keski-Pohjanmaa">Keski-Pohjanmaa</option>
-        <option value="Ahvenanmaa">Ahvenanmaa</option>
-        <option value="Others">Muut</option>
-    </select>
-    <button id="region-save" onclick="saveToLocalStorage()">Save as default</button>
-    <h1><span id="covid-district"></span> piiri</h1>
-    <div class="chart-wrapper">
-        <h2>Total <span id="covid-total"></span></h2>
-        <canvas id="total-chart"></canvas>
-    </div>
-    <div class="chart-wrapper">
-        <h2>Infections <span id="covid-infections"></span></h2>
-        <canvas id="infections-chart"></canvas>
-    </div>
-    <div class="chart-wrapper">
-        <h2>Deaths <span id="covid-deaths"></span></h2>
-        <canvas id="deaths-chart"></canvas>
-    </div>
-    <div class="chart-wrapper">
-        <h2>Recovered <span id="covid-recovers"></span></h2>
-        <canvas id="recovers-chart"></canvas>
+    <div class="app-content">
     </div>
     <script src="./js/dataFetch.js"></script>
     <script src="./js/domFetch.js"></script>
     <script src="./js/Chart.bundle.min.js"></script>
     <script>
-        let regionSelection;
-        window.addEventListener("load", function () { regionSelection = document.getElementById("region-selection"); });
+        let pages = {};
+        let pageInit = {
+            piirit: function () {
+                loadCharts();
+                changed(region ? region : "All");
+            },
+            percent: function () {
+                loadCharts();
+                if(!population){
+                    fetch("vaesto.json").then(response=>response.json()).then(data=>{
+                        population = data;
+                        updateChart();
+                    });
+                }
+                else{
+                    updateChart();
+                }
+            },
+            status: function () {
+                (function(){
+                    fetchData(fetchedData.confirmed, "healthCareDistrict", "healthcare-district");
+                    fetchData(oldData.confirmed, "infectionSourceCountry", "infection-country");
+                    fetchData(oldData.confirmed, "infectionSource", "infection-source");
+                    fetchData(oldData.deaths, "healthCareDistrict", "death-source");
+                    fetchData(oldData.recovered, "healthCareDistrict", "recovered-source");
+                    function fetchData(dataList, dataLabel, elementId) {
+                        var reducedData = dataList.reduce((dataResult, data) => {
+                            let dataValue = (data[dataLabel]) ? data[dataLabel] : "others";
+                            if (dataValue) {
+                                if (dataResult[dataValue] === undefined)
+                                    dataResult[dataValue] = 1;
+                                else dataResult[dataValue]++;
+                            }
+                            return dataResult;
+                        }, {});
+                        addToElement(reducedData, elementId);
+                        function addToElement(orderedData, elementName) {
+                            for (let dataIndex in orderedData) {
+                                if (!orderedData.hasOwnProperty(dataIndex)) continue;
+                                let data = orderedData[dataIndex];
+                                let div = document.createElement("div");
+                                let label = document.createElement("span");
+                                let numbers = document.createElement("span");
+                                label.innerText = dataIndex;
+                                numbers.innerText = data;
+                                div.appendChild(label);
+                                div.appendChild(numbers);
+                                document.getElementById(elementName).appendChild(div);
+                            }
+                        }
+                    }
+                })();
+            }
+        }
+        //fetching page
+        let content;
+        async function usePage(pageName) {
+                if (!pages[pageName]) {
+                    let dataFetching = await fetch("./" + pageName + ".html");
+                    let data = await dataFetching.text();
+                    let result = new DOMParser().parseFromString(data, "text/html").body.firstElementChild;
+                    pages[pageName] = result;
+                }
+                content.textContent = '';
+                content.appendChild(pages[pageName]);
+                pageInit[pageName]();
+        }
+        let region;
         window.addEventListener("load", async function () {
-            let response = await fetch("https://w3qa5ydb4l.execute-api.eu-west-1.amazonaws.com/prod/finnishCoronaData");
+            content = document.querySelector(".app-content");
+            let response = await fetch("https://w3qa5ydb4l.execute-api.eu-west-1.amazonaws.com/prod/finnishCoronaData/v2");
+            let oldDataResponse = await fetch("./oldData.json");
+            oldData = await oldDataResponse.json();
             fetchedData = await response.json();
-            let region;
+            //migrating data
+            for(let oldDeath of oldData.deaths){
+                fetchedData.deaths.filter(death=>death.id===oldDeath.referenceDate)[0].healthCareDistrict = oldDeath.healthCareDistrict;
+            }
+
+            // piirit.html
+            regionSelection = document.getElementById("region-selection");
             try {
                 region = localStorage.getItem("region");
             }
             catch{ //for non-localStorage support (for example, third-party data save not allowed for security reason...)
                 document.getElementById("region-save").style.display = "none";
             }
-            changed(region ? region : "All");
+            
+            await usePage("piirit");
         });
+
+        //piirit.html
+        let regionSelection;
+        function changed(value) {
+            if (value == "Others") value = null;
+            domFetcher.fetchAll(getRegionData(value), value);
+        }
         const saveToLocalStorage = () => localStorage.setItem("region", regionSelection.value);
+
+        //percent.html
+        let population;
+        function updateChart() {
+            var places = Object.keys(population);
+            var placeResult = { "Infections": [], "Deaths": [], "Recovers": [], "Total": [] };
+            const HSLinterval = 360 / places.length;
+            let HSLvalue = 0;
+            for (let place of places) {
+                const popu = population[place];
+                let regionData = getRegionData(place);
+                MapDataSet("Infections", place, regionData.Infections, popu);
+                MapDataSet("Deaths", place, regionData.Deaths, popu);
+                MapDataSet("Recovers", place, regionData.Recovers, popu);
+                MapDataSet("Total", place, regionData.Total, popu);
+                HSLvalue += HSLinterval;
+            }
+            domFetcher.fetchManyAll(placeResult);
+            function MapDataSet(type, place, regionDataset, popu) {
+                if (!Array.isArray(regionDataset) || regionDataset.length == 0) return;
+                regionDataset.map(datapair => (datapair.number = datapair.y, datapair.y /= popu));
+                placeResult[type].push({ label: place, data: regionDataset, borderColor: `hsl(${HSLvalue}, 80%, 50%)` });
+            }
+        }
+        
+        //status.html
+        let oldData;
     </script>
     <div class="footer">By <a href="https://rnielikki.github.io/" style="color:#595959; font-weight: bold;">Mielikki</a>
     </div>

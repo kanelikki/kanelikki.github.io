@@ -1,82 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style type="text/css">
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .chart-wrapper {
-            width: 100%;
-            max-width: 1000px;
-            height:45vh;
-        }
-        .footer {
-            color: #666666;
-        }
-    </style>
-    <link rel="stylesheet" href="menu.css">
-</head>
-
-<body>
-    <div class="menu">
-        <a href="./index.html">Piirit</a>
-        <a href="./status.html">Tilat</a>
-    </div>
+<div>
     <h1>Väestö % (Väestödata 1.2020)</h1>
     <h2>Total <span id="covid-total"></span></h2>
-    <div class="chart-wrapper">
+    <div class="chart-wrapper-percent">
         <canvas id="total-chart"></canvas>
     </div>
     <h2>Infections <span id="covid-infections"></span></h2>
-    <div class="chart-wrapper">
+    <div class="chart-wrapper-percent">
         <canvas id="infections-chart"></canvas>
     </div>
     <h2>Deaths <span id="covid-deaths"></span></h2>
-    <div class="chart-wrapper">
+    <div class="chart-wrapper-percent">
         <canvas id="deaths-chart"></canvas>
     </div>
     <h2>Recovered <span id="covid-recovers"></span></h2>
-    <div class="chart-wrapper">
+    <div class="chart-wrapper-percent">
         <canvas id="recovers-chart"></canvas>
     </div>
-    <script src="./js/dataFetch.js"></script>
-    <script src="./js/domFetch.js"></script>
-    <script src="./js/Chart.bundle.min.js"></script>
-    <script>
-        let population;
-        window.addEventListener("load", async function () {
-            let response = await fetch("https://w3qa5ydb4l.execute-api.eu-west-1.amazonaws.com/prod/finnishCoronaData");
-            let populationResponse = await fetch("vaesto.json");
-            fetchedData = await response.json();
-            population = await populationResponse.json();
-            updateChart();
-        });
-        function updateChart(){
-            var places = Object.keys(population);
-            var placeResult = {"Infections":[], "Deaths":[], "Recovers":[], "Total":[]};
-            const HSLinterval = 360/places.length;
-            let HSLvalue = 0;
-            for(let place of places){
-                const popu = population[place];
-                let regionData = getRegionData(place);
-                MapDataSet("Infections", place, regionData.Infections, popu);
-                MapDataSet("Deaths", place, regionData.Deaths, popu);
-                MapDataSet("Recovers", place, regionData.Recovers, popu);
-                MapDataSet("Total", place, regionData.Total, popu);
-                HSLvalue += HSLinterval;
-            }
-            domFetcher.fetchManyAll(placeResult);
-            function MapDataSet(type, place, regionDataset, popu){
-                if(!Array.isArray(regionDataset) || regionDataset.length == 0) return;
-                regionDataset.map(datapair=>(datapair.number = datapair.y, datapair.y/=popu));
-                placeResult[type].push({label:place, data: regionDataset, borderColor: `hsl(${HSLvalue}, 80%, 50%)`});
-            }
-        }
-    </script>
-    <div class="footer">By <a href="https://rnielikki.github.io/" style="color:#595959; font-weight: bold;">Mielikki</a>
-    </div>
-</body>
-</html>
+</div>

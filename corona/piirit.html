@@ -1,0 +1,43 @@
+    <div>
+    <select id="region-selection" onchange="changed(value)">
+        <option value="All">Kaikki</option>
+        <option value="HUS">Uusimaa</option>
+        <option value="Pirkanmaa">Pirkanmaa</option>
+        <option value="Varsinais-Suomi">Varsinais-Suomi</option>
+        <option value="Pohjois-Pohjanmaa">Pohjois-Pohjanmaa</option>
+        <option value="Keski-Suomi">Keski-Suomi</option>
+        <option value="Pohjois-Savo">Pohjois-Savo</option>
+        <option value="Satakunta">Satakunta</option>
+        <option value="Päijät-Häme">Päijät-Häme</option>
+        <option value="Etelä-Pohjanmaa">Etelä-Pohjanmaa</option>
+        <option value="Vaasa">Pohjanmaa</option>
+        <option value="Lappi">Lappi</option>
+        <option value="Kymenlaakso">Kymenlaakso</option>
+        <option value="Kanta-Häme">Kanta-Häme</option>
+        <option value="Pohjois-Karjala">Pohjois-Karjala</option>
+        <option value="Etelä-Savo">Etelä-Savo</option>
+        <option value="Etelä-Karjala">Etelä-Karjala</option>
+        <option value="Kainuu">Kainuu</option>
+        <option value="Keski-Pohjanmaa">Keski-Pohjanmaa</option>
+        <option value="Ahvenanmaa">Ahvenanmaa</option>
+        <option value="Others">Muut</option>
+    </select>
+    <button id="region-save" onclick="saveToLocalStorage()">Save as default</button>
+    <h1><span id="covid-district"></span> piiri</h1>
+    <div class="chart-wrapper">
+        <h2>Total <span id="covid-total"></span></h2>
+        <canvas id="total-chart"></canvas>
+    </div>
+    <div class="chart-wrapper">
+        <h2>Infections <span id="covid-infections"></span></h2>
+        <canvas id="infections-chart"></canvas>
+    </div>
+    <div class="chart-wrapper">
+        <h2>Deaths <span id="covid-deaths"></span></h2>
+        <canvas id="deaths-chart"></canvas>
+    </div>
+    <div class="chart-wrapper">
+        <h2>Recovered <span id="covid-recovers"></span></h2>
+        <canvas id="recovers-chart"></canvas>
+    </div>
+    </div>

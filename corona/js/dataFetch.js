@@ -1,9 +1,4 @@
 var fetchedData;
-
-function changed(value){
-    if(value=="Others") value = null;
-    domFetcher.fetchAll(getRegionData(value), value);
-}
 function getRegionData(value){
     if(value=="Others") value = null;
     let infectionData = getData("confirmed", value);
