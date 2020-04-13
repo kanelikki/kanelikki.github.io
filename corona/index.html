@@ -51,24 +51,33 @@
         }
 
         /*status*/
+        .status-table div {
+            padding: 0.15rem 0.7138rem;
+        }
         .status-table div>span {
             display: inline-block;
         }
 
         .status-table div>span:first-child {
             width: 15rem;
+            border-right: 5px solid rgba(255,255,255,0.5);
         }
 
         .status-table div>span:nth-child(2) {
             margin-left: 1.5rem;
         }
 
-        .status-table div:nth-child(odd) {
-            background-color: lightgreen;
+        .status-table div:nth-child(odd):not(.sum) {
+            background-color: #b9d4de;
         }
 
-        .status-table div:nth-child(even) {
-            background-color: lightpink;
+        .status-table div:nth-child(even):not(.sum) {
+            background-color: #e7e5ff;
+        }
+        .sum {
+            font-weight: bold;
+            background-color: #ffadad;
+            border: 1px solid #a74b4b;
         }
     </style>
 </head>
@@ -78,6 +87,7 @@
         <a href="#" onclick='usePage("piirit")'>Piirit</a>
         <a href="#" onclick='usePage("percent")'>Väestö %</a>
         <a href="#" onclick='usePage("status")'>Status</a>
+        <a href="#" onclick='usePage("recovered")'>Recovered(?)</a>
     </div>
     <div class="app-content">
     </div>
@@ -86,7 +96,7 @@
     <script src="./js/Chart.bundle.min.js"></script>
     <script>
         let pages = {};
-        let pageInit = {
+        const pageLoad = {
             piirit: function () {
                 loadCharts();
                 changed(region ? region : "All");
@@ -104,39 +114,25 @@
                 }
             },
             status: function () {
-                (function(){
-                    fetchData(fetchedData.confirmed, "healthCareDistrict", "healthcare-district");
-                    fetchData(oldData.confirmed, "infectionSourceCountry", "infection-country");
-                    fetchData(oldData.confirmed, "infectionSource", "infection-source");
-                    fetchData(oldData.deaths, "healthCareDistrict", "death-source");
-                    fetchData(oldData.recovered, "healthCareDistrict", "recovered-source");
-                    function fetchData(dataList, dataLabel, elementId) {
-                        var reducedData = dataList.reduce((dataResult, data) => {
-                            let dataValue = (data[dataLabel]) ? data[dataLabel] : "others";
-                            if (dataValue) {
-                                if (dataResult[dataValue] === undefined)
-                                    dataResult[dataValue] = 1;
-                                else dataResult[dataValue]++;
-                            }
-                            return dataResult;
-                        }, {});
-                        addToElement(reducedData, elementId);
-                        function addToElement(orderedData, elementName) {
-                            for (let dataIndex in orderedData) {
-                                if (!orderedData.hasOwnProperty(dataIndex)) continue;
-                                let data = orderedData[dataIndex];
-                                let div = document.createElement("div");
-                                let label = document.createElement("span");
-                                let numbers = document.createElement("span");
-                                label.innerText = dataIndex;
-                                numbers.innerText = data;
-                                div.appendChild(label);
-                                div.appendChild(numbers);
-                                document.getElementById(elementName).appendChild(div);
-                            }
-                        }
-                    }
-                })();
+            },
+            recovered:function(){
+            }
+        }
+        const pageInit = {
+            piirit: function () {
+            },
+            percent: function () {
+            },
+            status: function () {
+                fetchData(fetchedData.confirmed, "healthCareDistrict", "healthcare-district");
+                fetchData(oldData.confirmed, "infectionSourceCountry", "infection-country");
+                fetchData(oldData.confirmed, "infectionSource", "infection-source");
+                fetchData(oldData.deaths, "healthCareDistrict", "death-source");
+                fetchData(oldData.recovered, "healthCareDistrict", "recovered-source");
+            },
+            recovered:function(){
+                document.getElementById("recover-range").textContent = recoverRange;
+                addToElement(recoverData, "recovered-count");
             }
         }
         //fetching page
@@ -147,10 +143,16 @@
                     let data = await dataFetching.text();
                     let result = new DOMParser().parseFromString(data, "text/html").body.firstElementChild;
                     pages[pageName] = result;
+                    content.textContent = '';
+                    content.appendChild(pages[pageName]);
+                    pageInit[pageName]();
                 }
-                content.textContent = '';
-                content.appendChild(pages[pageName]);
-                pageInit[pageName]();
+                else{
+                    content.textContent = '';
+                    content.appendChild(pages[pageName]);
+                }
+                pageLoad[pageName]();
+                
         }
         let region;
         window.addEventListener("load", async function () {
@@ -171,9 +173,11 @@
             }
             catch{ //for non-localStorage support (for example, third-party data save not allowed for security reason...)
                 document.getElementById("region-save").style.display = "none";
-            }
-            
+            }     
             await usePage("piirit");
+
+            //recovered.html
+            recoverData = countRecoverAll(recoverRange);
         });
 
         //piirit.html
@@ -210,6 +214,68 @@
         
         //status.html
         let oldData;
+        function fetchData(dataList, dataLabel, elementId) {
+            var reducedData = reduceData(dataList, dataLabel);
+            addToElement(reducedData, elementId);
+        }
+
+        //status.html and recovered.html
+        function reduceData(dataList, dataLabel){
+            let reducedResult = dataList.reduce((dataResult, data) => {
+                let dataValue = (data[dataLabel]) ? data[dataLabel] : "others";
+                if (dataValue) {
+                    if (dataResult[dataValue] === undefined)
+                        dataResult[dataValue] = 1;
+                    else dataResult[dataValue]++;
+                }
+                return dataResult;
+            }, {});
+            reducedResult.Summa = dataList.length;
+            return reducedResult;
+        }
+        function addToElement(orderedData, elementName) {
+            let elementTable = document.getElementById(elementName);
+            elementTable.textContent = "";
+            for (let dataIndex in orderedData) {
+                if (!orderedData.hasOwnProperty(dataIndex)) continue;
+                let data = orderedData[dataIndex];
+                let div = document.createElement("div");
+                let label = document.createElement("span");
+                let numbers = document.createElement("span");
+                if(dataIndex === "Summa") div.classList.add("sum");
+                label.innerText = dataIndex;
+                numbers.innerText = data;
+                div.appendChild(label);
+                div.appendChild(numbers);
+                elementTable.appendChild(div);
+            }
+        }
+
+        //recovered.html
+        let recoverData;
+        let recoverRange = 20;
+        function setRecoverRange(value){
+            recoverRange = value;
+            document.getElementById("recover-range").textContent = recoverRange;
+            recoverData = countRecoverAll(recoverRange);
+            addToElement(recoverData, "recovered-count");
+        }
+        function countRecoverAll(range){
+            let recoveredCounts = reduceData(assumeRecover(range), "healthCareDistrict");
+            let deathCounts = reduceData(fetchedData.deaths, "healthCareDistrict");
+            let places = Object.keys(recoveredCounts);
+            for(let recoverRegion of places){
+                if(!deathCounts[recoverRegion]) continue;
+                else recoveredCounts[recoverRegion] -= deathCounts[recoverRegion];
+            }
+            return recoveredCounts;
+        }
+        function assumeRecover(range){
+            let regionData = fetchedData.confirmed;
+            let dateRange = new Date();
+            dateRange.setDate(dateRange.getDate() - range);
+            return regionData.filter(data=>new Date(data.date)<dateRange);//.length - deathLength;
+        }
     </script>
     <div class="footer">By <a href="https://rnielikki.github.io/" style="color:#595959; font-weight: bold;">Mielikki</a>
     </div>

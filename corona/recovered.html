@@ -1,0 +1,11 @@
+<!-- 
+    https://edition.cnn.com/2020/04/04/health/recovery-coronavirus-tracking-data-explainer/index.html
+    average 20 days. shortest 8 days. up to 37 days
+-->
+<div>
+    <h2>Warning: This data assumes that everyone are cured after average time. Result is not accurate.</h2>
+    <div>Current assumed average range: <span id="recover-range"></span></div>
+    <input type="range" min="8" max="37" value="20" onchange="setRecoverRange(value)">
+    <div id="recovered-count" class="status-table">
+    </div>
+</div>
