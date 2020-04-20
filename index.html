@@ -1,54 +1,162 @@
-<html>
-    <head>
-        <title>Portfolio page by Lumi</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./index.css">
-    </head>
-    <body>
-        <div class="header">Ota yhteyttä</div>
-        <div class="content">
-            <div class="content-group group-projects">
-                <a href="./IRCBot"  class="content-group-item">
-                    <div class="content-item-title">IRCBot</div>
-                </a>
-                <a href="./fakeos" class="content-group-item">
-                    <div class="content-item-title">FakeOS</div>
-                </a>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="navigator">
+        <a href="#home">
+            <div class="nav-icons nav-home"></div>
+            <div class="nav-label">Home</div>
+        </a>
+        <a href="#about">
+            <div class="nav-icons"
+                style="mask-image:url('res/images/about.svg');-webkit-mask-image:url('res/images/about.svg')"></div>
+            <div class="nav-label">About</div>
+        </a>
+        <a href="#projects">
+            <div class="nav-icons"
+                style="mask-image:url('res/images/projects.svg');-webkit-mask-image:url('res/images/projects.svg')">
             </div>
-            <div class="content-group group-games">
-                    <a href="./mine" class="content-group-item">
-                            <div class="content-item-title">Mine</div>
-                    </a>
-                    <a href="./memory" class="content-group-item">
-                            <div class="content-item-title">Memory</div>
-                    </a>
-            </div>
-            <div class="content-group group-tools">
-                    <a href="./Zalgo" class="content-group-item">
-                            <div class="content-item-title">Zalgo</div>
-                    </a>
-                    <a href="./oldbg" class="content-group-item">
-                            <div class="content-item-title">OldBG</div>
-                    </a>
+            <div class="nav-label">Projects</div>
+        </a>
+        <a href="#" onclick="alert('Blog is not ready')">
+            <div class="nav-icons"
+                style="mask-image:url('res/images/blog.svg');-webkit-mask-image:url('res/images/blog.svg')"></div>
+            <div class="nav-label">Blog</div>
+        </a>
+        <a href="#contact">
+            <div class="nav-icons"
+                style="mask-image:url('res/images/email.svg');-webkit-mask-image:url('res/images/email.svg')"></div>
+            <div class="nav-label">Contact</div>
+        </a>
+    </div>
+    <div class="contacts">
+        <a href="https://linkedin.com/lumi.kwon"><img src="res/images/contact-linkedin-small.svg" alt="LinkedIn"></a>
+        <a href="https://twitter.com/rnielikki"><img src="res/images/contact-twitter-small.svg" alt="Twitter"></a>
+        <a href="https://github.com/rnielikki"><img src="res/images/contact-github-small.svg" alt="GitHub"></a>
+        <a href="mailto:lumi.kwon@student.lab.fi"><img src="res/images/contact-email-small.svg" alt="Email"></a>
+    </div>
+    <div class="content-wrapper">
+        <div class="content intro" id="home">
+            <h1>Beyond C<sup>#</sup>oding.</h1>
+            <div class="intro-buttons">
+                <a href="#about">Learn more</a>
+                <a href="#projects">Show more</a>
             </div>
         </div>
-        <div class="modal-bg">
-            <div class="modal">
-                <div class="modal-title">Ota yhteyttä</div>
-                <div class="modal-content">
-                    <form action="https://niisku.lamk.fi/~Lumi16001/sendmail.php" method="post">
-                        <label for="nimi">Name:</label><input name="nimi" type="text" class="form-text" required>
-                        <label for="posti">Email:</label><input name="posti" type="email" class="form-text" required>
-                        <label for="yritys">Company:</label><input name="yritys" type="text" class="form-text" required>
-                        <textarea class="form-text" name="viesti"></textarea>
-                        <div class="form-group">
-                        <input type="submit" class="form-button" value="Send">
-                        <input type="button" class="form-button form-button-close" value="Close">
+        <div class="content" id="about">
+            <div class="about-wrapper">
+                <div class="about-wrapper-row">
+                    <div class="about-section">
+                        <img src="res/images/about-code.svg">
+                        <div class="about-section-text">
+                            <div class="content-title">Code specialist</div>
+                            <div class="about-section-content">Focusing on C# and web development provides standard,
+                                state-of-the-art and quality code for right place.</div>
                         </div>
-                    </form>
+                    </div>
+                    <div class="about-section">
+                        <img src="res/images/about-quality.svg">
+                        <div class="about-section-text">
+                            <div class="content-title">Quality</div>
+                            <div class="about-section-content">Not such copy-paste from StackOverFlow. Thinking and
+                                finding own solution improves learning curve and code quality.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-wrapper-row">
+                    <div class="about-section">
+                        <img src="res/images/about-organized.svg">
+                        <div class="about-section-text">
+                            <div class="content-title">Maintainability</div>
+                            <div class="about-section-content">Based on theories, codes are planed carefully. Codes are
+                                maintainable, which is important for future extension.</div>
+                        </div>
+                    </div>
+                    <div class="about-section">
+                        <img src="res/images/about-user.svg">
+                        <div class="about-section-text">
+                            <div class="content-title">User-Focused</div>
+                            <div class="about-section-content">Good UX results positive experiment from customers, as
+                                well as productive with easy and clean usage of the program.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-wrapper">
+                <div class="content-title">Main techs</div>
+                <div class="about-tech-list">
+                    <div class="about-tech">
+                        <img src="res/images/techs/1-C_Sharp_logo.svg" alt="C#">
+                        <div class="about-tech-label">C#</div>
+                    </div>
+                    <div class="about-tech">
+                        <img src="res/images/techs/2-NET_Core_Logo.svg" alt=".NET Core">
+                        <div class="about-tech-label">.NET Core</div>
+                    </div>
+                    <div class="about-tech">
+                        <img src="res/images/techs/3-Aspnetcore.svg" alt="ASP.NET Core">
+                        <div class="about-tech-label">ASP.NET Core</div>
+                    </div>
+                    <div class="about-tech">
+                        <img src="res/images/techs/4-Azure.svg" alt="Azure">
+                        <div class="about-tech-label">Azure</div>
+                    </div>
+                    <div class="about-tech">
+                        <img src="res/images/techs/5-Typescript.svg" alt="TypeScript">
+                        <div class="about-tech-label">TypeScript</div>
+                    </div>
+                    <div class="about-tech">
+                        <img src="res/images/techs/6-Javascript.svg" alt="JavaScript">
+                        <div class="about-tech-label">JavaScript</div>
+                    </div>
+                    <div class="about-tech">
+                        <img src="res/images/techs/7-Css3.svg" alt="CSS3">
+                        <div class="about-tech-label">CSS3</div>
+                    </div>
+                    <div class="about-tech">
+                        <img src="res/images/techs/8-Unity.svg" alt="Unity">
+                        <div class="about-tech-label">Unity</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
-    <script defer src="./index.js"></script>
+        <div class="content" id="projects">
+            <div class="content-title">Thesis</div>
+            <ul>
+                <li><a href="https://rnielikki.github.io/res/blazor.pdf">Traveling Blazor WebAssembly, with simple
+                        food recipe page</a> (<a href="https://github.com/rnielikki/blazor-tutkimus-recipe">Sample code</a>)</li>
+                <li><a href="#">Kasvojen osien tunnistus (Custom Vision / Azure Function / FI)</a> - Not ready</li>
+            </ul>
+            <div class="content-title">Projects</div>
+            <ul>
+                <li><a href="https://rnielikki.github.io/corona" style="font-weight:500;">Coronavirus graph and
+                        status</a> (JS)</li>
+                <li><a href="https://github.com/rnielikki/ChristmasCalendar">Advent Calendar</a> (Blazor Sample)</li>
+                <li><a href="https://rnielikki.github.io/mine">MineSweeper</a> (JS), <a
+                        href="https://rnielikki.github.io/fakeos">FakeOS</a> (TS), <a
+                        href="https://rnielikki.github.io/IRCBot">IRCBotCore</a> (C#) and <a
+                        href="https://github.com/rnielikki">more</a>...</li>
+            </ul>
+        </div>
+        <div class="content" id="contact" style="background-color:#ccc">
+            <div class="content-title">Interested?</div>
+            <div class="contact-group">
+                <a href="https://linkedin.com/lumi.kwon" class="img-link"><img src="res/images/contact-linkedin.svg"
+                        alt="LinkedIn"></a>
+                <a href="https://twitter.com/rnielikki" class="img-link"><img src="res/images/contact-twitter.svg"
+                        alt="Twitter"></a>
+                <a href="mailto:lumi.kwon@student.lab.fi" class="img-link"><img src="res/images/contact-email.svg"
+                        alt="Email"></a>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
