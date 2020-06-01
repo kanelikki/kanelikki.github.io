@@ -103,7 +103,7 @@ body{
 .content-title{
     font-size:125%;
     font-weight:400;
-    margin-bottom:0.33rem;
+    margin-bottom:0.65rem;
 }
 /* intro */
 .intro{
@@ -113,6 +113,7 @@ body{
 .intro h1{
     color:#fff;
     font-size:425%;
+    text-align:center;
 }
 .intro-buttons{
     margin-top: 1.78rem;
@@ -145,6 +146,7 @@ body{
 }
 .about-section img, .about-section-text{
     vertical-align: middle;
+    margin: .6rem 0;
 }
 .about-section-text{
     display:inline-block;
