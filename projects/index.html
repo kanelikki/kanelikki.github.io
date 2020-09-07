@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../index.css" />
+    <style type="text/css">
+    .table {
+        display:grid;
+        grid-auto-flow:column;
+        grid-template-rows: auto 1fr auto;
+        column-gap: 1.1rem;
+    }
+    .table p{
+        background-color:#4e2663;
+        margin:0;
+        padding:.8rem .6rem;
+        color:#fff;
+        text-align:center;
+    }
+    .table > ul {
+        padding-right:1.5rem;
+        min-width:16.5rem;
+    }
+    .table > p + ul {
+        background-color:#ffffff;
+        margin:0;
+        padding:2.1rem 1.6rem;
+        border:1px solid #999;
+    }
+    .table > p + ul > li {
+        list-style-type:none;
+    }
+    .table > p + ul > li::before {
+        content:"\2713";
+        margin-right:.95rem;
+        color:green;
+    }
+    .table-end-list {
+        background-color:#f1f2f9;
+        border:1px solid #698bea;
+        border-top:none;
+        margin:0;
+        padding: .75rem 2.7rem;
+    }
+    .table-merge {
+        grid-row-start: 2;
+        grid-row-end: 4;
+    }
+    @media screen and (max-width:60rem) {
+        .table {
+            grid-auto-flow:row;
+            width:100%;
+        }
+        .table > p {
+            margin-top: 1.1rem;
+        }
+        .table-merge {
+            grid-row-start: auto;
+            grid-row-end: auto;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <div class="content" style="background-color:#4e2663;color:#fff">
+            <div >
+                <h1>Projects</h1>
+            </div>
+        </div>
+        <div class="content">
+            <div class="table">
+                    <p>FakeOS2</p>
+                    <ul>
+                        <li>Vue</li>
+                        <li>TypeScript</li>
+                        <li>SCSS</li>
+                        <li>Various components and events</li>
+                    </ul>
+                    <ul class="table-end-list">
+                        <li><a href="https://rnielikki.github.io/fakeos2/">Sample</a></li>
+                        <li><a href="./fakeos.html">More information</a></li>
+                    </ul>
+                    <p>Pagene</p>
+                    <ul>
+                        <li>C# Class Library</li>
+                        <li>WinForms / Console</li>
+                        <li>JSON Serialization</li>
+                        <li>XUnit / Moq / FluentAssertion</li>
+                        <li>GitHub Pipeline (CI Unit test)</li>
+                    </ul>
+                    <ul class="table-end-list">
+                        <li><a href="https://rnielikki.github.io/Blog">Sample</a></li>
+                        <li><a href="https://rnielikki.github.io/Pagene">Documentation</a></li>
+                        <li><a href="./pagene.html">More information</a></li>
+                    </ul>
+                    <p>Joulukalenteri</p>
+                    <ul class="table-merge">
+                        <li>C#</li>
+                        <li>ASP.NET Blazor</li>
+                        <li>Azure Pipeline (CI Unit test)</li>
+                    </ul>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Thesis / Research</h1>
+            <div class="table">
+                    <p>Blazor</p>
+                    <ul>
+                        <li>ASP.NET Blazor WebAssembly</li>
+                        <li>Server-side ASP.NET</li>
+                        <li>MSSQL / Layered Design</li>
+                    </ul>
+                    <ul class="table-end-list">
+                        <li><a href="https://rnielikki.github.io/res/blazor.pdf">Read</a></li>
+                        <li><a href="https://github.com/rnielikki/blazor-tutkimus-recipe">Sample Code</a></li>
+                    </ul>
+                    <p>Custom Vision</p>
+                    <ul>
+                        <li>Machine Learning</li>
+                        <li>Azure Function</li>
+                        <li>REST API</li>
+                    </ul>
+                    <ul class="table-end-list">
+                        <li><a href="https://www.theseus.fi/handle/10024/337018">Read</a></li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

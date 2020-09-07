@@ -5,7 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" />
+    <style type="text/css">
+        .table {
+            display:grid;
+            grid-auto-flow:column;
+            grid-template-rows: auto 1fr auto;
+            column-gap: 1.1rem;
+        }
+        .table p{
+            background-color:#4e2663;
+            margin:0;
+            padding:.8rem .6rem;
+            color:#fff;
+            text-align:center;
+        }
+        .table > ul {
+            padding-right:1.5rem;
+            min-width:16.5rem;
+        }
+        .table > p + ul {
+            background-color:#ffffff;
+            margin:0;
+            padding:2.1rem 1.6rem;
+            border:1px solid #999;
+        }
+        .table > p + ul > li {
+            list-style-type:none;
+        }
+        .table > p + ul > li::before {
+            content:"\2713";
+            margin-right:.95rem;
+            color:green;
+        }
+        .table-end-list {
+            background-color:#f1f2f9;
+            border:1px solid #698bea;
+            border-top:none;
+            margin:0;
+            padding: .75rem 2.7rem;
+        }
+        .table-merge {
+            grid-row-start: 2;
+            grid-row-end: 4;
+        }
+        @media screen and (max-width:60rem) {
+            .table {
+                grid-auto-flow:row;
+                width:100%;
+            }
+            .table > p {
+                margin-top: 1.1rem;
+            }
+            .table-merge {
+                grid-row-start: auto;
+                grid-row-end: auto;
+            }
+        }
+        </style>
 </head>
 
 <body>
@@ -42,13 +99,31 @@
         <a href="https://github.com/rnielikki"><img src="res/images/contact-github-small.svg" alt="GitHub"></a>
         <a href="mailto:lumi.kwon@outlook.com"><img src="res/images/contact-email-small.svg" alt="Email"></a>
     </div>
-    <div class="content-wrapper">
-        <div class="content intro" id="home">
-            <h1>Beyond C<sup>#</sup>oding.</h1>
-            <div class="intro-buttons">
-                <a href="#about">Learn more</a>
-                <a href="#projects">Show more</a>
+    <div class="content-wrapper" style="overflow-x:hidden">
+        <div style="position: relative;">
+        <div class="intro-slide" id="home">
+            <div class="content intro">
+                <h1>Beyond C<sup>#</sup>oding.</h1>
+                <p>&nbsp;</p>
+                <div class="intro-buttons">
+                    <a href="#about">More...</a>
+                </div>
             </div>
+            <div class="content intro">
+                <h1>All About components.</h1>
+                <p>Meet the FakeOS2 Project.</p>
+                <div class="intro-buttons">
+                    <a href="./projects/fakeos.html">Show more</a>
+                </div>
+            </div>
+            <div class="content intro">
+                <h1>Static Blog With Tags.</h1>
+                <p>Pagene, the blog API generator.</p>
+                <div class="intro-buttons">
+                    <a href="./projects/pagene.html">Show more</a>
+                </div>
+            </div>
+        </div>
         </div>
         <div class="content" id="about">
             <div class="about-wrapper">
@@ -125,32 +200,81 @@
                         <div class="about-tech-label">CSS3</div>
                     </div>
                     <div class="about-tech">
-                        <img src="res/images/techs/8-Unity.svg" alt="Unity">
-                        <div class="about-tech-label">Unity</div>
+                        <img src="res/images/techs/8-Vue.svg" alt="Vue">
+                        <div class="about-tech-label">Vue</div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="content" id="projects">
-            <div class="content-title">Thesis</div>
+        <div class="content"  id="projects">
+            <h1>Projects</h1>
+            <div class="table">
+                    <p>FakeOS2</p>
+                    <ul>
+                        <li>Vue</li>
+                        <li>TypeScript</li>
+                        <li>SCSS</li>
+                        <li>Various components and events</li>
+                    </ul>
+                    <ul class="table-end-list">
+                        <li><a href="https://rnielikki.github.io/fakeos2/">Sample</a></li>
+                        <li><a href="./projects/fakeos.html">More information</a></li>
+                    </ul>
+                    <p>Pagene</p>
+                    <ul>
+                        <li>C# Class Library</li>
+                        <li>WinForms / Console</li>
+                        <li>JSON Serialization</li>
+                        <li>XUnit / Moq / FluentAssertion</li>
+                        <li>GitHub Pipeline (CI Unit test)</li>
+                    </ul>
+                    <ul class="table-end-list">
+                        <li><a href="https://rnielikki.github.io/Blog">Sample</a></li>
+                        <li><a href="https://rnielikki.github.io/Pagene">Documentation</a></li>
+                        <li><a href="./projects/pagene.html">More information</a></li>
+                    </ul>
+                    <p>Joulukalenteri</p>
+                    <ul class="table-merge">
+                        <li>C#</li>
+                        <li>ASP.NET Blazor</li>
+                        <li>Azure Pipeline (CI Unit test)</li>
+                    </ul>
+            </div>
+            <div class="content-title" style="margin-top:3.25rem;">More Projects</div>
             <ul>
-                <li><a href="https://rnielikki.github.io/res/blazor.pdf">Traveling Blazor WebAssembly, with simple
-                        food recipe page</a> (<a href="https://github.com/rnielikki/blazor-tutkimus-recipe">Sample code</a>)</li>
-                <li><a href="https://www.theseus.fi/handle/10024/337018">Kasvojen osien tunnistus (Custom Vision / Azure Function / FI)</a></li>
-            </ul>
-            <div class="content-title">Projects</div>
-            <ul>
-                <li><a href="https://github.com/rnielikki/Pagene" style="font-weight:500;">Pagene, static Blog Post File Generator</a> [<a href="https://rnielikki.github.io/Pagene">Docs</a>] (C#)</li>
                 <li><a href="https://rnielikki.github.io/corona" style="font-weight:500;">Coronavirus graph and
                         status</a> (JS)</li>
-                <li><a href="https://github.com/rnielikki/ChristmasCalendar">Advent Calendar</a> (Blazor Sample)</li>
                 <li><a href="https://rnielikki.github.io/mine">MineSweeper</a> (JS), <a
                         href="https://rnielikki.github.io/fakeos">FakeOS</a> (TS), <a
                         href="https://rnielikki.github.io/IRCBotCore">IRCBotCore</a> (C#) and <a
                         href="https://github.com/rnielikki">more</a>...</li>
             </ul>
         </div>
-        <div class="content" id="contact" style="background-color:#ccc">
+        <div class="content">
+            <h1>Thesis / Research</h1>
+            <div class="table">
+                    <p>Blazor</p>
+                    <ul>
+                        <li>ASP.NET Blazor WebAssembly</li>
+                        <li>Server-side ASP.NET</li>
+                        <li>MSSQL / Layered Design</li>
+                    </ul>
+                    <ul class="table-end-list">
+                        <li><a href="https://rnielikki.github.io/res/blazor.pdf">Read</a></li>
+                        <li><a href="https://github.com/rnielikki/blazor-tutkimus-recipe">Sample Code</a></li>
+                    </ul>
+                    <p>Custom Vision</p>
+                    <ul>
+                        <li>Machine Learning</li>
+                        <li>Azure Function</li>
+                        <li>REST API</li>
+                    </ul>
+                    <ul class="table-end-list">
+                        <li><a href="https://www.theseus.fi/handle/10024/337018">Read</a></li>
+                    </ul>
+            </div>
+        </div>
+        <div class="content" id="contact">
             <div class="content-title">Interested?</div>
             <div class="contact-group">
                 <a href="https://www.linkedin.com/in/rnielikki/" class="img-link"><img src="res/images/contact-linkedin.svg"
@@ -162,6 +286,7 @@
             </div>
         </div>
     </div>
+    <script defer src="index.js"></script>
 </body>
 
 </html>
