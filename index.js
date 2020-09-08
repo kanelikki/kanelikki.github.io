@@ -2,13 +2,16 @@ addEventListener("load",function(){
     const contents = document.querySelector(".intro-slide");
     const children = [...contents.children];
     let currentIndex = 0;
+    let reservedIndex = 1;
+    let __timeoutId = -1;
+    let transitionDone = true;
     contents.style.left="0%";
     let currentElement = children[currentIndex];
     currentElement.style.display="block";
     const SLIDE_COUNT = contents.childElementCount;
-    //contents.style.gridTemplateColumns = `repeat(${SLIDE_COUNT}, 100%)`;
+    const NEXT_SLIDE_TIME = 5000;
     contents.after(createNavigator());
-    setInterval(()=>slide((currentIndex+1)%SLIDE_COUNT),5000);
+    setTimeout(()=>slide(reservedIndex),NEXT_SLIDE_TIME);
     //
     function createNavigator(){
         let frag = document.createDocumentFragment();
@@ -22,10 +25,10 @@ addEventListener("load",function(){
         frag.appendChild(navigator);
         return frag;
     }
-    let transitionDone = true;
     function slide(position){
         if(!transitionDone || position == currentIndex || position<0 || position >= SLIDE_COUNT) return;
         transitionDone = false;
+        clearTimeout(__timeoutId);
         let nextElement = children[position];
         contents.appendChild(nextElement);
         nextElement.style.display="block";
@@ -37,7 +40,9 @@ addEventListener("load",function(){
             contents.style.left="0%";
             currentIndex = position;
             currentElement = children[position];
+            reservedIndex = (currentIndex+1)%SLIDE_COUNT;
+            __timeoutId = setTimeout(()=>slide(reservedIndex),NEXT_SLIDE_TIME);
             transitionDone = true;
-        }, { once: true })
+        }, { once: true });
     }
 })
