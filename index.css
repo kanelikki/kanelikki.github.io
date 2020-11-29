@@ -1,12 +1,12 @@
 /* By Lumi - "Always Hard-Coded" */
 /* general */
 html, body{
-    margin:0;
-    padding:0;
     position: relative;
-    height:100%;
+    scroll-behavior: smooth;
 }
 body{
+    margin:0;
+    padding:0;
     display:flex;
     flex-direction:row;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,6 +20,9 @@ body{
     flex-direction:column;
     justify-content: space-evenly;
     align-items: center;
+    position:fixed;
+    height:100%;
+    box-sizing: border-box;
 }
 .navigator a{
     color:#ffffff9f;
@@ -84,8 +87,6 @@ body{
 /* contents */
 .content-wrapper{
     width:100%;
-    overflow-y:scroll;
-    scroll-behavior: smooth;
 }
 .content{
     display:flex;
@@ -239,6 +240,10 @@ body{
         .nav-label{
             display:block;
         }
+    }
+    .content {
+        padding-left:3.5vw;
+        padding-right: 3.5vw;
     }
     .contacts{
         display: none;
