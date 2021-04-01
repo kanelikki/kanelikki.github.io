@@ -1,0 +1,113 @@
+.dialog-background {
+    background-color:rgba(0,0,0,0.3);
+    position:fixed;
+    left:0;top:0;right:0;bottom:0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    z-index:999;
+}
+.dialog-window {
+    width:50%;
+    height:80%;
+    min-width:400px;
+    min-height:500px;
+    font-size:1.5rem;
+    border-radius:5px;
+    background-color:#fff;
+    box-sizing: border-box;
+    position: relative;
+    overflow-y:auto;
+    display: flex;
+    flex-direction: column;
+}
+.dialog-window > div {
+    padding:1.22rem;
+}
+.dialog-title {
+    font-size:2.2rem;
+    margin-top:0;
+    flex-shrink: 1;
+    background-color:navy;
+    color:#fff;
+    padding: .75rem 1.5rem;
+}
+.dialog-content {
+    position: relative;
+    flex-grow: 1;
+}
+.dialog-image {
+    background:transparent url('./res/images/sips.png') no-repeat top right;
+    background-size: 85%;
+    position:absolute;
+    left:0;top:0;right:0;bottom:0;
+    opacity:0.3;
+}
+.dialog-bottom {
+    text-align: right;
+}
+.dialog-button-agree, .dialog-button-manage {
+    display: inline-block;
+    margin-right:2.5rem;
+    cursor:pointer;
+}
+.dialog-button-agree {
+    background-color:slateblue;
+    color:#fff;
+    padding:.6rem 1.5rem;
+    border-radius: 5px;
+}
+.dialog-button-agree:hover {
+    background-color:darkblue;
+}
+.dialog-button-manage {
+    text-decoration: underline;
+    border-radius: 5px;
+}
+.dialog-button-manage:hover {
+    background-color: lightblue;
+}
+.dialog-head-small {
+    font-size:2.1rem;
+}
+.dialog-head-small:first-child {
+    margin-top: -1.5rem;
+}
+.dialog-selection {
+    margin: 1.05rem 0;
+}
+.dialog-selection-button {
+    appearance: none;
+    margin-right:1.05rem;
+    vertical-align: middle;
+}
+.dialog-selection-button::before {
+    content:"";
+    display: inline-block;
+    width:3rem;
+    height:1.5rem;
+    border:1px solid gray;
+    background-color: #fff;
+    border-radius: 25%/50%;
+    box-sizing: border-box;
+}
+.dialog-selection-button:checked:before {
+    background-color: lightgreen;
+}
+.dialog-selection-button::after {
+    content: "";
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    background-color: #ccc;
+    left: 0;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 1px solid #606060;
+    transition: left .5s;
+}
+.dialog-selection-button:checked::after {
+    background-color: green;
+    left: 1.75rem;
+}
