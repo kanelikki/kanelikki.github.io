@@ -32,8 +32,6 @@ window.onload = function(){
         function(){
             arm[0].classList.remove("anim-open-robot-reverse");
             arm[0].classList.remove("anim-open-robot");
-
-            lid.classList.add("anim-open-lid-reverse");
         }
     );
     openOrClose(arm[1],
@@ -54,6 +52,8 @@ window.onload = function(){
             visualButton.classList.remove("button-visual-clicked");
             document.body.style.backgroundColor = unopendColor;
             arm[2].classList.add("anim-open-robot-reverse");
+
+            lid.classList.add("anim-open-lid-reverse");
         },
         function(){
             arm[2].classList.remove("anim-open-robot-reverse");
