@@ -29,6 +29,9 @@ window.addEventListener("load", ()=>{
                     width = maxSize;
                     height= maxSize;
                 }
+                //resize before edge detection process
+                imgTarget.width = width;
+                imgTarget.height = height;
 //------------------ opencv start
 //from https://codepen.io/wallat/pen/yLymMey
                 var src = cv.imread("image-input");
