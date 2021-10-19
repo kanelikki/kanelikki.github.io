@@ -1,6 +1,5 @@
 window.addEventListener("load", ()=>{
     var canvas = document.querySelector("canvas");
-    let imgTarget = document.querySelector("#image-input");
     var ctx = canvas.getContext('2d');
     let img = new Image();
     img.src = "./dalgona.jpg";
@@ -12,7 +11,10 @@ window.addEventListener("load", ()=>{
         var reader  = new FileReader();
         reader.readAsDataURL(uploadedImage);
         reader.onloadend = function (e) {
+            imgTarget = new Image();
             imgTarget.src = e.target.result;
+            let xPos = 200;
+            let yPos = 165;
             const maxSize = 500;
             imgTarget.onload = ()=>{
                 let width = imgTarget.width;
@@ -20,10 +22,12 @@ window.addEventListener("load", ()=>{
                 if(width > height) {
                     height = maxSize * height / width;
                     width = maxSize;
+                    yPos += (maxSize - height) / 2;
                 }
                 else if(width < height) {
                     width = maxSize * width / height;
                     height = maxSize;
+                    xPos += (maxSize - width) / 2;
                 }
                 else {
                     width = maxSize;
@@ -32,9 +36,10 @@ window.addEventListener("load", ()=>{
                 //resize before edge detection process
                 imgTarget.width = width;
                 imgTarget.height = height;
+
 //------------------ opencv start
 //from https://codepen.io/wallat/pen/yLymMey
-                var src = cv.imread("image-input");
+                var src = cv.imread(imgTarget);
                 var dst = new cv.Mat();
         
                 cv.cvtColor(src, src, cv.COLOR_RGB2GRAY, 0);
@@ -46,7 +51,7 @@ window.addEventListener("load", ()=>{
                 cv.imshow(temp, dst);
         
                 ctx.globalCompositeOperation = "lighter";
-                ctx.drawImage(temp, 202, 202, width, height);
+                ctx.drawImage(temp, xPos, yPos, width, height);
 
                 //add colour
                 tempCtx.globalCompositeOperation = "darken";
@@ -59,9 +64,8 @@ window.addEventListener("load", ()=>{
                 //draw
                 ctx.filter = "blur(2px)";
                 ctx.globalCompositeOperation = "multiply";
-                ctx.drawImage(temp,202, 202, width, height);
-                ctx.drawImage(temp,202, 202, width, height);
-                ctx.drawImage(temp,202, 202, width, height);
+
+                for(let i=0;i<3;i++) ctx.drawImage(temp,xPos, yPos, width, height);
 
                 src.delete();
                 dst.delete();
