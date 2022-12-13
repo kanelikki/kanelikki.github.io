@@ -1,0 +1,27 @@
+1. patapata0
+2. ponpon0
+3. chakachaka0
+4. ponpata0
+5. ponchaka0
+6. dondon0
+7. donchaka0
+
+[8.patapata1]
+[9.ponpon1]
+[10.chakachaka1]
+11.ponpata1
+12.ponchaka1
+13.dondon1
+14.donchaka1
+
+[15.patapata2]
+[16.ponpon2]
+[17.chakachaka2]
+[18.patapata3]
+[19.ponpon3]
+[20.chakachaka3]
+
+21.ponpata2/3
+22.ponchaka2/3
+23.dondon2/3
+24.donchaka2/3

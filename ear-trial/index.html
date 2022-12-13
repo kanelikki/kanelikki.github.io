@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="scripts/util-wav-converter.js"></script>
+    <script src="scripts/sound-data.js"></script>
+    <script src="scripts/sound-loader.js"></script>
+    <script src="scripts/sound-player.js"></script>
+    <script src="scripts/sound-validator.js"></script>
+    <script src="scripts/theme-selector.js"></script>
+    <script>
+        window.addEventListener("load", function(){
+            let drumData;
+            let songData;
+            let feverData;
+            const audioElement = document.querySelector("#result-audio");
+            const resultMessage = document.querySelector("#result-loading-message");
+            soundLoader.getSounds()
+                .then(res => {
+                    drumData = res.DrumData;
+                    songData = res.SongData;
+                    feverData = res.FeverData;
+                });
+            //context, loadTheme() left.
+            document.querySelector("#music-form")
+            .addEventListener("submit", function() {
+                resultMessage.removeAttribute("hidden");
+                audioElement.setAttribute("hidden", "");
+                soundLoader.loadTheme(GetTheme()).then(
+                    ()=>{
+                        const buffers = getUploadedData();
+                        if(buffers != null) {
+                            soundPlayer.play(buffers, drumData, songData, feverData)
+                        }
+                        resultMessage.setAttribute("hidden", "");
+                        audioElement.removeAttribute("hidden");
+                    }
+                )
+            });
+        });
+    </script>
+</head>
+<body>
+    <!--form section-->
+    <section>
+    <form action="javascript:void(0)" id="music-form">
+        <fieldset>
+            <legend>Files</legend>
+            <div>
+                <label for="music-base">Base (0)</label>
+                <input type="file" id="music-base" class="music-file" accept="audio/wav, audio/ogg" data-seconds="8">
+                <p class="music-error" hidden></p>
+            </div>
+            <div>
+                <label for="music-no-fever">No Fever (1)</label>
+                <input type="file" id="music-no-fever" class="music-file" accept="audio/wav, audio/ogg" data-seconds="16">
+                <p class="music-error" hidden></p>
+            </div>
+            <div>
+                <label for="music-before-fever">Before Fever (2)</label>
+                <input type="file" id="music-before-fever" class="music-file" accept="audio/wav, audio/ogg" data-seconds="20">
+                <p class="music-error" hidden></p>
+            </div>
+            <div>
+                <label for="music-fever">Fever (3)</label>
+                <input type="file" id="music-fever" class="music-file" accept="audio/wav, audio/ogg" data-seconds="68">
+                <p class="music-error" hidden></p>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Theme</legend>
+            <select id="theme-selector" size=6 title="theme-selector">
+            </select>
+        </fieldset>
+        <input type="submit" value="Play!">
+    </form>
+    </section>
+    <!--result section-->
+    <section>
+        <p id="result-loading-message" hidden>Loading...</p>
+        <audio controls id="result-audio" hidden></audio>
+    </section>
+</body>
+</html>
