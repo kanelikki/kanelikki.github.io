@@ -19,6 +19,7 @@
             let feverData;
             const audioElement = document.querySelector("#result-audio");
             const resultMessage = document.querySelector("#result-loading-message");
+            const resultErrorMessage = document.querySelector("#result-fail-message");
             soundLoader.getSounds()
                 .then(res => {
                     drumData = res.DrumData;
@@ -29,15 +30,20 @@
             document.querySelector("#music-form")
             .addEventListener("submit", function() {
                 resultMessage.removeAttribute("hidden");
+                resultErrorMessage.setAttribute("hidden", "");
                 audioElement.setAttribute("hidden", "");
+                audioElement.pause();
                 soundLoader.loadTheme(GetTheme()).then(
                     ()=>{
                         const buffers = getUploadedData();
                         if(buffers != null) {
                             soundPlayer.play(buffers, drumData, songData, feverData)
+                            audioElement.removeAttribute("hidden");
+                        }
+                        else {
+                            resultErrorMessage.removeAttribute("hidden");
                         }
                         resultMessage.setAttribute("hidden", "");
-                        audioElement.removeAttribute("hidden");
                     }
                 )
             });
@@ -82,6 +88,7 @@
     <!--result section-->
     <section>
         <p id="result-loading-message" hidden>Loading...</p>
+        <p id="result-fail-message" hidden>Failed to load. Check if any field is empty or invalid.</p>
         <audio controls id="result-audio" hidden></audio>
     </section>
 </body>

@@ -38,7 +38,7 @@ const soundLoader = (function(){
                 const value = SongSoundMap[key];
                 for(let i=0;i<3;i++){
                     promises.push(
-                        loadSound(`sounds/themes/_common/${value}-${i+1}.wav`)
+                        loadSound(`sounds/themes/@common/${value}-${i+1}.wav`)
                             .then(data => {
                                 songData[key][i]=data;
                                 if(i===2) songData[key][3] = data;
@@ -50,7 +50,7 @@ const soundLoader = (function(){
             for(const key of NonCommonSongs){
                 const value = SongSoundMap[key];
                 promises.push(
-                    loadSound(`sounds/themes/_common/${value}-1.wav`)
+                    loadSound(`sounds/themes/@common/${value}-1.wav`)
                         .then(data => songData[key][0]=data));
             }
         }
