@@ -1,0 +1,92 @@
+body {
+    font-family: sans-serif;
+}
+h1 {
+    text-align: center;
+}
+.music-row {
+    margin:0.8rem 0.2rem;
+}
+label {
+    margin-right: 1.5rem;
+    font-size: 1.05rem;
+}
+fieldset {
+    border: 1px solid #303030;
+    background-color: #10103010;
+    margin:.8rem;
+    padding-left: 1.2rem;
+    padding-right: 1.6rem;
+}
+fieldset:not(:last-of-type) {
+    margin-bottom: 1.5rem;
+}
+legend {
+    font-size: 1.25rem;
+    padding: 0.2rem 0.8rem;
+}
+.music-error {
+    background: #ffe1e8;
+    margin: .3rem .8rem 1.2rem .8rem;
+    padding: .6rem .8rem;
+    border: 1px solid salmon;
+    color:#b70000;
+}
+select {
+    width:100%;
+    margin: .8rem .4rem;
+}
+option {
+    font-size: 1.05rem;
+}
+input::file-selector-button {
+    color: #d3e9ff;
+    background-color: darkslateblue;
+    padding: .3rem .6rem;
+    border-radius: 5px;
+    font-weight: bold;
+}
+input::file-selector-button, input[type=submit]{
+    border:1px solid #fff;
+}
+input::file-selector-button:hover, input[type=file]:focus::file-selector-button {
+    color: #001c5a;
+    background-color: #efb3ea;
+    cursor:pointer;
+}
+input[type=submit] {
+    color: #ede2e9;
+    background-color: #8f035d;
+    padding: .4rem .8rem;
+    border-radius: 7px;
+    margin: .6rem .8rem;
+    font-size: 1.05rem;
+}
+input[type=submit]:hover, input[type=submit]:focus {
+    color: #3e210b;
+    background-color: #ffb4cc;
+    font-weight: bold;
+    cursor:pointer;
+}
+audio {
+    width:100%;
+}
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+}
+footer a {
+    color: #4c30a3;
+    background-color: #efefef;
+}
+footer a:hover, footer a:focus {
+    color: #c923b4;
+    background-color: #bedeff;
+    font-weight: bold;
+}
+.result {
+    padding: .4rem 1.6rem;
+    background-color: #30204020;
+    margin: .8rem 1.2rem;
+    border: 1px solid #9090af;
+}

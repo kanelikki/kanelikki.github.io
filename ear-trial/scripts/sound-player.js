@@ -6,7 +6,7 @@ const soundPlayer = (function () {
     function createOffCtx(){
         offCtx = new OfflineAudioContext({
             numberOfChannels: 2,
-            length: 44100 * (10+(SongSequence[0].length+SongSequence[1].length+SongSequence[2].length)*4),
+            length: 44100 * (7+(SongSequence[0].length+SongSequence[1].length+SongSequence[2].length)*4),
             sampleRate: 44100,
         });
     }
@@ -38,7 +38,7 @@ const soundPlayer = (function () {
         addLoopingMusicWithIntro(musicData[2],
             8+SongSequence[0].length*4, SongSequence[1].length*4);
         addLoopingMusicWithIntro(musicData[3],
-            8+(SongSequence[0].length+SongSequence[1].length)*4, SongSequence[2].length*4);
+            8+(SongSequence[0].length+SongSequence[1].length)*4, SongSequence[2].length*4-2);
         //they said, FEVER!!!!!!
         addSound(feverData,
             10+(SongSequence[0].length+SongSequence[1].length)*4);

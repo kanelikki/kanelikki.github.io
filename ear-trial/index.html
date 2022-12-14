@@ -17,6 +17,7 @@
             let drumData;
             let songData;
             let feverData;
+            const resultContainerElement = document.querySelector(".result");
             const audioElement = document.querySelector("#result-audio");
             const resultMessage = document.querySelector("#result-loading-message");
             const resultErrorMessage = document.querySelector("#result-fail-message");
@@ -29,6 +30,7 @@
             //context, loadTheme() left.
             document.querySelector("#music-form")
             .addEventListener("submit", function() {
+                resultContainerElement.removeAttribute("hidden");
                 resultMessage.removeAttribute("hidden");
                 resultErrorMessage.setAttribute("hidden", "");
                 audioElement.setAttribute("hidden", "");
@@ -51,28 +53,36 @@
     </script>
 </head>
 <body>
+    <header>
+        <h1>Test your own theme!</h1>
+        <ul>
+            <li>Is it in rhythm?</li>
+            <li>Does loop work fine?</li>
+            <li>Find best voice for the theme!</li>
+        </ul>
+    </header>
     <!--form section-->
     <section>
     <form action="javascript:void(0)" id="music-form">
         <fieldset>
-            <legend>Files</legend>
-            <div>
-                <label for="music-base">Base (0)</label>
+            <legend>Music</legend>
+            <div class="music-row">
+                <label for="music-base" title="loop, intro + base, total 8 seconds.">Phase 0</label>
                 <input type="file" id="music-base" class="music-file" accept="audio/wav, audio/ogg" data-seconds="8">
                 <p class="music-error" hidden></p>
             </div>
-            <div>
-                <label for="music-no-fever">No Fever (1)</label>
+            <div class="music-row">
+                <label for="music-no-fever" title="no fever + not enough perfect, loop, total 16 seconds.">Phase 1</label>
                 <input type="file" id="music-no-fever" class="music-file" accept="audio/wav, audio/ogg" data-seconds="16">
                 <p class="music-error" hidden></p>
             </div>
-            <div>
-                <label for="music-before-fever">Before Fever (2)</label>
+            <div class="music-row">
+                <label for="music-before-fever" title="no fever + enough perfect, intro + loop, total 20 seconds.">Phase 2</label>
                 <input type="file" id="music-before-fever" class="music-file" accept="audio/wav, audio/ogg" data-seconds="20">
                 <p class="music-error" hidden></p>
             </div>
-            <div>
-                <label for="music-fever">Fever (3)</label>
+            <div class="music-row">
+                <label for="music-fever" title="fever, intro + loop, total 68 seconds.">Phase 3</label>
                 <input type="file" id="music-fever" class="music-file" accept="audio/wav, audio/ogg" data-seconds="68">
                 <p class="music-error" hidden></p>
             </div>
@@ -82,14 +92,17 @@
             <select id="theme-selector" size=6 title="theme-selector">
             </select>
         </fieldset>
-        <input type="submit" value="Play!">
+        <input type="submit" value="Make test music!">
     </form>
     </section>
     <!--result section-->
-    <section>
+    <section class="result" hidden>
         <p id="result-loading-message" hidden>Loading...</p>
         <p id="result-fail-message" hidden>Failed to load. Check if any field is empty or invalid.</p>
         <audio controls id="result-audio" hidden></audio>
     </section>
+    <footer>
+        <p>If you enjoyed this, it's time to  use <a href="https://github.com/rnielikki/CustomMusicCreator">Pan Pakapon</a> app! ♫</p>
+    </footer>
 </body>
 </html>

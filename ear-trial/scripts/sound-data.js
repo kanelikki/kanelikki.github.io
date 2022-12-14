@@ -41,14 +41,16 @@ const CommonSongs = [Song.Ponpata, Song.Ponchaka, Song.Dondon, Song.Donchaka];
 Object.freeze(CommonSongs);
 //defines how the song goes.
 //starts from 6s.
-//follows patapon2 music soundtrack (wuffunfa) pattern.
+//follows patapon2 music soundtrack pattern, except (for loop test):
+// - first part follows patapon3 music sound track pattern + additional ponpon song.
+// - in fever, added some commands in the end.
 const SongSequence = [
-    [Song.Patapata, Song.Ponpon],
+    [Song.Patapata, Song.Ponpon, Song.Chakachaka, Song.Patapata, Song.Ponpon],
     [Song.Patapata, Song.Ponpon, Song.Chakachaka, Song.Patapata, Song.Ponpata, Song.Ponpon, Song.Ponchaka, Song.Donchaka, Song.Dondon],
     [Song.Patapata, Song.Patapata, Song.Ponpon, Song.Ponpon,
         Song.Chakachaka, Song.Chakachaka, Song.Patapata, Song.Patapata,
         Song.Ponpata, Song.Ponpon, Song.Ponpon, Song.Ponchaka,
-        Song.Chakachaka, Song.Chakachaka, Song.Donchaka, Song.Patapata, Song.Dondon]
+        Song.Chakachaka, Song.Chakachaka, Song.Donchaka, Song.Patapata, Song.Ponpon, Song.Chakachaka, Song.Dondon]
 ];
 Object.freeze(SongSequence);
 const ThemeNames = [
