@@ -20,7 +20,7 @@ let languagePromise = (async function () {
             "nf":"French",
             "np":"Portuguese"
         },
-        "Asia / Oceania":{
+        "Asia":{
             "au":"English (AU)",
             "jp":"Japanese",
             "kr":"Korean",
@@ -50,7 +50,7 @@ let languagePromise = (async function () {
                 for(let [langCode, langName] of Object.entries(langGroup)) {
                     let opt = document.createElement("option");
                     opt.value = langCode;
-                    opt.textContent = langName;
+                    opt.textContent = `${langName}, ${groupLabel}`;
                     if(langCode === defaultValue){
                         opt.setAttribute("selected","")
                     }
