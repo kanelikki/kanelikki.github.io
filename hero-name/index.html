@@ -19,6 +19,7 @@
             var val = heroForm["hero-name"].value;
             if(val < 1 || val > 6) {
                 //WRITE ERRR MSG HERE
+                resultField.textContent = "Error: Name must be 1-6 letters";
                 return false;
             }
             let result = heroNameString;
@@ -53,5 +54,7 @@
     </form>
     <pre class="code-result">
     </pre>
+    <p class="warning">Turn on this cheat code IN HIDEOUT.</p>
+    <p class="warning">TURN OFF THIS CHEAT CODE WHILE LOADING GAME.</p>
 </body>
 </html>
