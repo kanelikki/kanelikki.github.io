@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download the mod</title>
+    <script>
+        window.onload = function() {
+            const currentDateData = new Date();
+            const currentMonth = currentDateData.getMonth()+1;
+            const currentDate = currentDateData.getDate();
+            let hiddenTarget;
+            if(isDate(3,31) || isDate(4, 1) || isDate(4,2)) {
+                hiddenTarget = document.getElementsByClassName("content")[0];
+            }
+            else {
+                hiddenTarget = document.getElementsByClassName("placeholder")[0];
+            }
+            hiddenTarget.removeAttribute("hidden");
+            function isDate(month, day) {
+                return month === currentMonth && day === currentDate;
+            }
+            document.querySelector("button").addEventListener("click",
+            ()=>{
+               let video = document.querySelector("video");
+               video.style.display="block";
+               video.muted = false;
+               video.play();
+           })
+        };
+    </script>
+    <style type="text/css">
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background: #e6d8f3 url("https://rnielikki.github.io/pataroad-website/bg1.jpg") repeat-x bottom fixed;
+        }
+        ol, p {
+            font-size:1.4rem;
+        }
+        ol {
+            list-style-position: inside;
+        }
+        button {
+            font-size:1.6rem;
+            padding:.4rem 1.2rem;
+            background-color:rebeccapurple;
+            color:#fff;
+        }
+        button:hover {
+            cursor:pointer;
+        }
+        button:hover, button:focus{
+            background-color: skyblue;
+            border:3px solid blueviolet;
+            color:darkblue;
+        }
+        .video-parent{
+            display: flex;
+            margin:3rem 1.6rem;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="content" hidden>
+        <h1>Customize your Patapon 3 game!</h1>
+        <ol>
+            <li>Random hideout music (beta)</li>
+            <li>Custom summon music</li>
+            <li>Emoji equipment name</li>
+            <li>Custom equipment color</li>
+        </ol>
+        <button onclick="">Download!</button>
+        <!--insert video here-->
+        <div class="video-parent">
+            <video width="800" autoplay muted loop hidden>
+            <source src="https://rnielikki.github.io/pataroad-website/rickroll-final.mp4" type="video/mp4"> 
+                I never gonna give Patapons up,
+                I never gonna let Patapons down,
+                I never gonna run around and desert Patapons.
+                I never gonna make Patapons cry,
+                I never gonna say goodbye,
+                I never gonna tell a lie and hurt Patapons.
+            </video>
+        </div>
+    </div>
+    <div class="placeholder" hidden>
+        <h1>Not today, Satan!</h1>
+        <p>This webpage is for April joke :D Thank you for visiting anyway.</p>
+    </div>
+</body>
+</html>

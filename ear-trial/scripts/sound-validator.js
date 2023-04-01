@@ -31,8 +31,8 @@ const getUploadedData = (function(){
                     throw "Wrong caller of the function.";
                 }
                 const [duration, errorMessage] = [fileElementData.duration, fileElementData.errorMessage];
-                if (audioData.duration < duration - 0.001
-                    || audioData.duration > duration + 0.001) {
+                if (audioData.duration < duration - 1
+                    || audioData.duration > duration + 1) {
                     //show error message
                     errorMessage.textContent =
                         `duration doesn't match! expected ${duration}, result ${audioData.duration}, difference ${audioData.duration - duration}`;
