@@ -26,6 +26,7 @@
                let video = document.querySelector("video");
                video.style.display="block";
                video.muted = false;
+               window.scrollTo(0, document.body.scrollHeight);
                video.play();
            })
         };
@@ -45,6 +46,7 @@
         button {
             font-size:1.6rem;
             padding:.4rem 1.2rem;
+            margin:1.2rem 0.6rem;
             background-color:rebeccapurple;
             color:#fff;
         }
@@ -73,8 +75,10 @@
             <li>Emoji equipment name</li>
             <li>Custom equipment color</li>
         </ol>
+        <div class="yt-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/OQj9Ef1ftdQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
         <button onclick="">Download!</button>
-        <!--insert video here-->
         <div class="video-parent">
             <video width="800" autoplay muted loop hidden>
             <source src="https://rnielikki.github.io/pataroad-website/rickroll-final.mp4" type="video/mp4"> 
