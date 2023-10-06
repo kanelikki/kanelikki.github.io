@@ -1,0 +1,20 @@
+.eq-default {
+    color:#000;
+}
+.eq-enchants {
+    color:steelblue;
+}
+.eq-unique {
+    color:orangered;
+}
+.eq-superunique {
+    color:purple;
+}
+.eq-ultimate {
+    color:green;
+}
+.error p {
+    background-color: black;
+    border: 1px solid grey;
+    color:red;
+}

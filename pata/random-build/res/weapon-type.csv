@@ -1,0 +1,258 @@
+rarity	group	name	type
+default	sword	sword	weapon
+enchant	sword	flame sword	weapon
+enchant	sword	ice Sword	weapon
+enchant	sword	sleep Sword	weapon
+unique	sword	flangil	weapon
+unique	sword	drigonlay	weapon
+super unique	sword	fendus	weapon
+super unique	sword	castram	weapon
+super unique	sword	butcher	weapon
+ultimate	sword	Tatepon's Sword	weapon
+default	blade	Blade	weapon
+enchant	blade	critical Blade	weapon
+enchant	blade	lightning Blade	weapon
+unique	blade	tsuyugiri	weapon
+unique	blade	murapata	weapon
+super unique	blade	Blade of Astria	weapon
+ultimate	blade	Tsukigiri	weapon
+default	spear	Spear	weapon
+enchant	spear	critical Spear	weapon
+enchant	spear	repel Spear	weapon
+enchant	spear	fire Spear	weapon
+unique	spear	gesundbeit	weapon
+unique	spear	yumspar	weapon
+super unique	spear	palkyrie's flight	weapon
+super unique	spear	dokaknel's fang	weapon
+super unique	spear	poseipon's trident	weapon
+ultimate	spear	Yaripon's Spear	weapon
+default	pike	Pike	weapon
+enchant	pike	ice Pike	weapon
+enchant	pike	stagger Pike	weapon
+unique	pike	goldora	weapon
+unique	pike	pointidon	weapon
+super unique	pike	super cedar log	weapon
+ultimate	pike	Lance of Asuwish	weapon
+default	lance	Lance	weapon
+enchant	lance	fire Halberd	weapon
+enchant	lance	ice Halberd	weapon
+enchant	lance	stagger Halberd	weapon
+unique	lance	Romulus'	weapon
+unique	lance	incensar	weapon
+super unique	lance	gungnir	weapon
+super unique	lance	battachin	weapon
+super unique	lance	murakumon	weapon
+ultimate	lance	Hotenpon's Halberd	weapon
+default	arm	arm	weapon
+enchant	arm	repel Arm	weapon
+enchant	arm	ice Arm	weapon
+enchant	arm	sleep Arm	weapon
+unique	arm	deathwringer	weapon
+unique	arm	great golem arm	weapon
+super unique	arm	piringar zingar	weapon
+super unique	arm	chosan's arm	weapon
+super unique	arm	natura's touch	weapon
+ultimate	arm	Super megadogu arm	weapon
+default	dagger	dagger	weapon
+enchant	dagger	critical Dagger	weapon
+enchant	dagger	sleep Dagger	weapon
+unique	dagger	crablessa	weapon
+super unique	dagger	feisho	weapon
+ultimate	dagger	Krauser	weapon
+default	shiv	shiv	weapon
+enchant	shiv	poison Shiv	weapon
+unique	shiv	heltopay's kiss	weapon
+super unique	shiv	goliamon's shiv	weapon
+super unique	shiv	holymadda shiv	weapon
+ultimate	shiv	Pain of Pentavus	weapon
+default	greatsword	greatsword	weapon
+enchant	greatsword	critical Greatsword	weapon
+enchant	greatsword	ice Greatsword	weapon
+unique	greatsword	excalipon	weapon
+unique	greatsword	quagar	weapon
+super unique	greatsword	serberker	weapon
+ultimate	greatsword	Caladbong	weapon
+default	greatblade	greatblade	weapon
+enchant	greatblade	flame Greatblade	weapon
+enchant	greatblade	sleep Greatblade	weapon
+unique	greatblade	mono hoshibo	weapon
+unique	greatblade	onigiri's greatblade	weapon
+super unique	greatblade	murasamune	weapon
+ultimate	greatblade	Kusanakin	weapon
+default	axe	axe	weapon
+enchant	axe	stagger Axe	weapon
+enchant	axe	poison Axe	weapon
+unique	axe	hilkinga's chillaxe	weapon
+unique	axe	susurapon	weapon
+super unique	axe	axe of hanboon	weapon
+ultimate	axe	Bumpalion Axe	weapon
+default	club	hammer	weapon
+enchant	club	lightning Hammer	weapon
+enchant	club	sleepi Hammer	weapon
+unique	club	genmaru	weapon
+unique	club	mjolnir	weapon
+super unique	club	thor	weapon
+ultimate	club	Humthor’s harm	weapon
+default	bow	bow	weapon
+enchant	bow	flame Bow	weapon
+enchant	bow	sleepi Bow	weapon
+unique	bow	apollopon's bow	weapon
+unique	bow	yamibashiri	weapon
+super unique	bow	rajipon's bow	weapon
+ultimate	bow	Yumipon's bow	weapon
+default	longbow	longbow	weapon
+enchant	longbow	poison Longbow	weapon
+enchant	longbow	stagger Longbow	weapon
+unique	longbow	crossbow of faible	weapon
+super unique	longbow	krakabom crossbow	weapon
+super unique	longbow	yochiro	weapon
+ultimate	longbow	Dekiramos' Crossbow	weapon
+default	crossbow	crossbow	weapon
+enchant	crossbow	ice Crossbow	weapon
+enchant	crossbow	repel Crossbow	weapon
+unique	crossbow	the machinator	weapon
+super unique	crossbow	illiamtel's overture	weapon
+super unique	crossbow	teskatori shooter	weapon
+ultimate	crossbow	Goweecha Gun	weapon
+default	horn	horn	weapon
+enchant	horn	flame Horn	weapon
+enchant	horn	ice Horn	weapon
+unique	horn	healixir horn	weapon
+unique	horn	dragonap horn	weapon
+super unique	horn	sonic demonslayer	weapon
+ultimate	horn	Horn of Panchunan	weapon
+default	longhorn	longhorn	weapon
+enchant	longhorn	sleepi Longhorn	weapon
+enchant	longhorn	stagger Longhorn	weapon
+unique	longhorn	horn of homugai	weapon
+super unique	longhorn	megaslayer	weapon
+super unique	longhorn	great howl	weapon
+ultimate	longhorn	Bellophone	weapon
+default	twinhorn	twinhorn	weapon
+enchant	twinhorn	lightning Twinhorn	weapon
+enchant	twinhorn	poison Twinhorn	weapon
+unique	twinhorn	horns of hamlin	weapon
+super unique	twinhorn	siren's song	weapon
+super unique	twinhorn	spirrigan's song	weapon
+ultimate	twinhorn	Gjallarborn	weapon
+default	stave	staff	weapon
+enchant	stave	fireball Staff	weapon
+enchant	stave	volcano Staff	weapon
+enchant	stave	lightning Staff	weapon
+unique	stave	thunderstorm	weapon
+super unique	stave	flamesea	weapon
+super unique	stave	holymist	weapon
+super unique	stave	venomist	weapon
+super unique	stave	jewelsword	weapon
+ultimate	stave	Phoenix Ultimate Staff	weapon
+default	scepter	scepter	weapon
+enchant	scepter	defence Scepter	weapon
+enchant	scepter	purity Scepter	weapon
+enchant	scepter	healiing Scepter	weapon
+unique	scepter	firefighter	weapon
+unique	scepter	antifrost	weapon
+super unique	scepter	antivenom	weapon
+super unique	scepter	sleepless	weapon
+super unique	scepter	maeltstrom	weapon
+ultimate	scepter	Sceptre of Rahmon	weapon
+default	cannon	Cannon	weapon
+enchant	cannon	flame Cannon	weapon
+unique	cannon	bonkadonk	weapon
+super unique	cannon	lullablight	weapon
+ultimate	cannon	Universatile Cannon	weapon
+default	blunderbuss	Blunderbuss	weapon
+enchant	blunderbuss	ice Blunderbuss	weapon
+unique	blunderbuss	euryalus	weapon
+super unique	blunderbuss	dreadmare	weapon
+ultimate	blunderbuss	Eisaiho	weapon
+default	laser	Laser	weapon
+enchant	laser	critical Laser	weapon
+unique	laser	horeinho	weapon
+super unique	laser	ichigeki	weapon
+ultimate	laser	Sunflare Laser	weapon
+default	helm	Helm	armour
+enchant	helm	lightning Helm	armour
+enchant	helm	fire Helm	armour
+enchant	helm	ice Helm	armour
+unique	helm	tahla helm	armour
+unique	helm	bunny hood	armour
+super unique	helm	tebenos helm	armour
+super unique	helm	samurai helm	armour
+super unique	helm	marumenko helm	armour
+ultimate	helm	Dolmorn Helm	armour
+default	shield	Shield	armour
+enchant	shield	fire Shield	armour
+enchant	shield	ice Shield	armour
+enchant	shield	eyeball Shield	armour
+unique	shield	stinger	armour
+unique	shield	galapagoth shield	armour
+super unique	shield	octagon shield	armour
+super unique	shield	alldemonium shield	armour
+super unique	shield	fireblessed shield	armour
+ultimate	shield	Oharan Shield	armour
+default	greatshield	shield	armour
+enchant	greatshield	poison Greatshield	armour
+enchant	greatshield	grond Greatshield	armour
+unique	greatshield	aegis	armour
+unique	greatshield	tokoyomamori	armour
+super unique	greatshield	bacteon	armour
+ultimate	greatshield	Greatshield of Ironimo	armour
+default	shoulderguard	shoulderguard	armour
+enchant	shoulderguard	flame Shoulderguards	armour
+enchant	shoulderguard	ice Shoulderguards	armour
+unique	shoulderguard	frayola's spaulders	armour
+unique	shoulderguard	lonestars	armour
+super unique	shoulderguard	crono riggers	armour
+ultimate	shoulderguard	Gydeen's Shoulders	armour
+default	cape	cape	armour
+enchant	cape	fire Cape	armour
+enchant	cape	ice Cape	armour
+unique	cape	cape of ulysses	armour
+unique	cape	freja's cape	armour
+super unique	cape	vamp cloak	armour
+ultimate	cape	Nemean Cloak	armour
+default	shoes	boots	armour
+enchant	shoes	wide awake 	armour
+enchant	shoes	flame boots	armour
+unique	shoes	alarium stompers	armour
+unique	shoes	moonwalkers	armour
+super unique	shoes	lilith shoes	armour
+ultimate	shoes	Hermerossa's Sandals	armour
+default	horse	horse	armour
+enchant	horse	wide awake Horse	armour
+enchant	horse	flame Horse	armour
+unique	horse	sibircus the frosty	armour
+unique	horse	bullgam the bully	armour
+super unique	horse	ponbiscuit	armour
+ultimate	horse	Halcypon	armour
+default	warhorse	warhorse	armour
+enchant	warhorse	ice Warhorse	armour
+enchant	warhorse	poison Warhorse	armour
+unique	warhorse	deep impact	armour
+super unique	warhorse	kotenho the king	armour
+super unique	warhorse	ponteo the victoriuos	armour
+ultimate	warhorse	Apobao the Absolute	armour
+default	chariot	chariot	armour
+enchant	chariot	ice Chariot	armour
+enchant	chariot	fire Chariot	armour
+enchant	chariot	critical Chariot	armour
+unique	chariot	the silencer	armour
+unique	chariot	ruemelter	armour
+super unique	chariot	silver murzephone	armour
+super unique	chariot	chariot of light	armour
+super unique	chariot	deedsaurus helltank	armour
+ultimate	chariot	Gargan War Machine	armour
+default	claw	claw	weapon
+enchant	claw	flame Claw	weapon
+enchant	claw	poison Claw	weapon
+unique	claw	demonic dark claw	weapon
+unique	claw	gardsormr ice claw	weapon
+super unique	claw	bengal tiger claw	weapon
+ultimate	claw	Kaisak Ultimate Claw	weapon
+default	scythe	scythe	weapon
+enchant	scythe	flame Scythe	weapon
+enchant	scythe	deflect Scythe	weapon
+unique	scythe	quickflash	weapon
+unique	scythe	deathsoul scythe	weapon
+super unique	scythe	great god scythe	weapon
+ultimate	scythe	Deathmoon Ultimate Scythe	weapon
