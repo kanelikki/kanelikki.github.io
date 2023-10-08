@@ -2,52 +2,52 @@
     "sword": [
         {
             "rarity": "default",
-            "name": "sword",
+            "name": "Sword",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "flame sword",
+            "name": "Flame Sword",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "ice Sword",
+            "name": "Ice Sword",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "sleep Sword",
+            "name": "Sleepi Sword",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "flangil",
+            "name": "Flangil",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "drigonlay",
+            "name": "Drigonlay",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "fendus",
+            "name": "Fendus",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "castram",
+            "name": "Castram",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "butcher",
+            "name": "The Butcher",
             "type": "weapon"
         },
         {
             "rarity": "ultimate",
-            "name": "Tatepon's Sword",
+            "name": "Tatepon Sword",
             "type": "weapon"
         }
     ],
@@ -59,22 +59,22 @@
         },
         {
             "rarity": "enchants",
-            "name": "critical Blade",
+            "name": "Critical Blade",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "lightning Blade",
+            "name": "Lightning Blade",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "tsuyugiri",
+            "name": "Tsuyugiri",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "murapata",
+            "name": "Murapata",
             "type": "weapon"
         },
         {
@@ -96,42 +96,42 @@
         },
         {
             "rarity": "enchants",
-            "name": "critical Spear",
+            "name": "Critical Spear",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "repel Spear",
+            "name": "Repel Spear",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "fire Spear",
+            "name": "Flame Spear",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "gesundbeit",
+            "name": "Gesundbeit",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "yumspar",
+            "name": "Yumspar",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "palkyrie's flight",
+            "name": "Palkyria's Flight",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "dokaknel's fang",
+            "name": "Dokaknel's Fang",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "poseipon's trident",
+            "name": "Poseipon's Trident",
             "type": "weapon"
         },
         {
@@ -143,32 +143,32 @@
     "pike": [
         {
             "rarity": "default",
-            "name": "Pike",
+            "name": "Lance",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "ice Pike",
+            "name": "Ice Pike",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "stagger Pike",
+            "name": "Stagger Pike",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "goldora",
+            "name": "Goldora",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "pointidon",
+            "name": "Pointidon",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "super cedar log",
+            "name": "Super Cedar Log",
             "type": "weapon"
         },
         {
@@ -180,47 +180,47 @@
     "lance": [
         {
             "rarity": "default",
-            "name": "Lance",
+            "name": "Halberd",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "fire Halberd",
+            "name": "Fire Lance",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "ice Halberd",
+            "name": "Ice Lance",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "stagger Halberd",
+            "name": "Stagger Lance",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "Romulus'",
+            "name": "Romulus' Halberd",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "incensar",
+            "name": "Incensar",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "gungnir",
+            "name": "Gugnir",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "battachin",
+            "name": "Battachin",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "murakumon",
+            "name": "Murakumon",
             "type": "weapon"
         },
         {
@@ -232,79 +232,79 @@
     "arm": [
         {
             "rarity": "default",
-            "name": "arm",
+            "name": "Arm",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "repel Arm",
+            "name": "Repel Arm",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "ice Arm",
+            "name": "Ice Arm",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "sleep Arm",
+            "name": "Sleepi Arm",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "deathwringer",
+            "name": "Deathwringer",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "great golem arm",
+            "name": "Great Golem Arm",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "piringar zingar",
+            "name": "Piringar Zingar",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "chosan's arm",
+            "name": "Chosan's Arm",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "natura's touch",
+            "name": "Natura's Touch",
             "type": "weapon"
         },
         {
             "rarity": "ultimate",
-            "name": "Super megadogu arm",
+            "name": "Super Megadogu Arm",
             "type": "weapon"
         }
     ],
     "dagger": [
         {
             "rarity": "default",
-            "name": "dagger",
+            "name": "Dagger",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "critical Dagger",
+            "name": "Critical Dagger",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "sleep Dagger",
+            "name": "Sleepi Dagger",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "crablessa",
+            "name": "Crablessa",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "feisho",
+            "name": "Feisho",
             "type": "weapon"
         },
         {
@@ -316,27 +316,27 @@
     "shiv": [
         {
             "rarity": "default",
-            "name": "shiv",
+            "name": "Shiv",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "poison Shiv",
+            "name": "Poison Shiv",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "heltopay's kiss",
+            "name": "Heltopay's Kiss",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "goliamon's shiv",
+            "name": "Goliamon's Shiv",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "holymadda shiv",
+            "name": "Holymadda Shiv",
             "type": "weapon"
         },
         {
@@ -348,32 +348,32 @@
     "greatsword": [
         {
             "rarity": "default",
-            "name": "greatsword",
+            "name": "Greatsword",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "critical Greatsword",
+            "name": "Critical Greatsword",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "ice Greatsword",
+            "name": "Ice Greatsword",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "excalipon",
+            "name": "Excalipon",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "quagar",
+            "name": "Quagar",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "serberker",
+            "name": "Serberker",
             "type": "weapon"
         },
         {
@@ -385,32 +385,32 @@
     "greatblade": [
         {
             "rarity": "default",
-            "name": "greatblade",
+            "name": "Greatblade",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "flame Greatblade",
+            "name": "Flame Greatblade",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "sleep Greatblade",
+            "name": "Sleepi Greatblade",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "mono hoshibo",
+            "name": "Mono Hoshibo",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "onigiri's greatblade",
+            "name": "Onigiri's Greatblade",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "murasamune",
+            "name": "Murasamune",
             "type": "weapon"
         },
         {
@@ -422,32 +422,32 @@
     "axe": [
         {
             "rarity": "default",
-            "name": "axe",
+            "name": "Axe",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "stagger Axe",
+            "name": "Stagger Axe",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "poison Axe",
+            "name": "Poison Axe",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "hilkinga's chillaxe",
+            "name": "Hilkinga's Chillaxe",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "susurapon",
+            "name": "Susurapon",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "axe of hanboon",
+            "name": "Axe of Hanboon",
             "type": "weapon"
         },
         {
@@ -459,143 +459,143 @@
     "club": [
         {
             "rarity": "default",
-            "name": "hammer",
+            "name": "Club",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "lightning Hammer",
+            "name": "Lightning Club",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "sleepi Hammer",
+            "name": "Dreamweaver",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "genmaru",
+            "name": "Genmaru",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "mjolnir",
+            "name": "Mjollnir",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "thor",
+            "name": "Thor",
             "type": "weapon"
         },
         {
             "rarity": "ultimate",
-            "name": "Humthor's harm",
+            "name": "Humthor's Harm",
             "type": "weapon"
         }
     ],
     "bow": [
         {
             "rarity": "default",
-            "name": "bow",
+            "name": "Bow",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "flame Bow",
+            "name": "Flame Bow",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "sleepi Bow",
+            "name": "Sleepi Bow",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "apollopon's bow",
+            "name": "Bow of Apollopon",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "yamibashiri",
+            "name": "Yamibashiri",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "rajipon's bow",
+            "name": "Raijinpon's Bow",
             "type": "weapon"
         },
         {
             "rarity": "ultimate",
-            "name": "Yumipon's bow",
+            "name": "Yumipon's Bow",
             "type": "weapon"
         }
     ],
     "longbow": [
         {
             "rarity": "default",
-            "name": "longbow",
+            "name": "Longbow",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "poison Longbow",
+            "name": "Poison Longbow",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "stagger Longbow",
+            "name": "Stagger Longbow",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "crossbow of faible",
+            "name": "Crossbow of Faible",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "krakabom crossbow",
+            "name": "Krakabom Crossbow",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "yochiro",
+            "name": "Yoichiro",
             "type": "weapon"
         },
         {
             "rarity": "ultimate",
-            "name": "Dekiramos' Crossbow",
+            "name": "Dekiramos's Crossbow",
             "type": "weapon"
         }
     ],
     "crossbow": [
         {
             "rarity": "default",
-            "name": "crossbow",
+            "name": "Crossbow",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "ice Crossbow",
+            "name": "Ice Crossbow",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "repel Crossbow",
+            "name": "Repel Crossbow",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "the machinator",
+            "name": "The Machinator",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "illiamtel's overture",
+            "name": "Illiamtel's Overture",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "teskatori shooter",
+            "name": "Teskatori Shooter",
             "type": "weapon"
         },
         {
@@ -607,32 +607,32 @@
     "horn": [
         {
             "rarity": "default",
-            "name": "horn",
+            "name": "Horn",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "flame Horn",
+            "name": "Flame Horn",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "ice Horn",
+            "name": "Ice Horn",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "healixir horn",
+            "name": "Healixir Horn",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "dragonap horn",
+            "name": "Dragonap Horn",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "sonic demonslayer",
+            "name": "Sonic Demonslayer",
             "type": "weapon"
         },
         {
@@ -644,32 +644,32 @@
     "longhorn": [
         {
             "rarity": "default",
-            "name": "longhorn",
+            "name": "Long Horn",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "sleepi Longhorn",
+            "name": "Sleepi Longhorn",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "stagger Longhorn",
+            "name": "Stagger Longhorn",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "horn of homugai",
+            "name": "Horn of Homugai",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "megaslayer",
+            "name": "Megaslayer",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "great howl",
+            "name": "Great Howl",
             "type": "weapon"
         },
         {
@@ -681,32 +681,32 @@
     "twinhorn": [
         {
             "rarity": "default",
-            "name": "twinhorn",
+            "name": "Twinhorn",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "lightning Twinhorn",
+            "name": "Lightning Twinhorn",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "poison Twinhorn",
+            "name": "Poison Twinhorn",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "horns of hamlin",
+            "name": "Horns of Hamlin",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "siren's song",
+            "name": "Siren's Song",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "spirrigan's song",
+            "name": "Spriggan's Song",
             "type": "weapon"
         },
         {
@@ -718,47 +718,47 @@
     "stave": [
         {
             "rarity": "default",
-            "name": "staff",
+            "name": "Staff",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "fireball Staff",
+            "name": "Fireball Staff",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "volcano Staff",
+            "name": "Firewall Staff",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "lightning Staff",
+            "name": "Lightning Staff",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "thunderstorm",
+            "name": "Thunderstorm Staff",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "flamesea",
+            "name": "Flamesea Staff",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "holymist",
+            "name": "Holymist Staff",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "venomist",
+            "name": "Darkvenom Staff",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "jewelsword",
+            "name": "Jewelsword Staff",
             "type": "weapon"
         },
         {
@@ -770,47 +770,47 @@
     "scepter": [
         {
             "rarity": "default",
-            "name": "scepter",
+            "name": "Sceptre",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "defence Scepter",
+            "name": "Defence Sceptre",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "purity Scepter",
+            "name": "Purity Sceptre",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "healiing Scepter",
+            "name": "Healing Sceptre",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "firefighter",
+            "name": "Firefighter Sceptre",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "antifrost",
+            "name": "Defrost Sceptre",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "antivenom",
+            "name": "Antivenom Sceptre",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "sleepless",
+            "name": "Sleepless Sceptre",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "maeltstrom",
+            "name": "Maelstrom Sceptre",
             "type": "weapon"
         },
         {
@@ -827,17 +827,17 @@
         },
         {
             "rarity": "enchants",
-            "name": "flame Cannon",
+            "name": "Flame Cannon",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "bonkadonk",
+            "name": "Bonkadonk Cannon",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "lullablight",
+            "name": "Lullablight",
             "type": "weapon"
         },
         {
@@ -854,17 +854,17 @@
         },
         {
             "rarity": "enchants",
-            "name": "ice Blunderbuss",
+            "name": "Ice Blunderbuss",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "euryalus",
+            "name": "Euryalus",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "dreadmare",
+            "name": "Dreadmare",
             "type": "weapon"
         },
         {
@@ -881,17 +881,17 @@
         },
         {
             "rarity": "enchants",
-            "name": "critical Laser",
+            "name": "Critical Laser",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "horeinho",
+            "name": "Hoirenho",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "ichigeki",
+            "name": "Ichigeki",
             "type": "weapon"
         },
         {
@@ -908,42 +908,42 @@
         },
         {
             "rarity": "enchants",
-            "name": "lightning Helm",
+            "name": "Lightning Helm",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "fire Helm",
+            "name": "Flame Helm",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "ice Helm",
+            "name": "Ice Helm",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "tahla helm",
+            "name": "Tahla Helm",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "bunny hood",
+            "name": "Bunny Head",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "tebenos helm",
+            "name": "Tebenos Helm",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "samurai helm",
+            "name": "Samurai Head",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "marumenko helm",
+            "name": "Marumenko Helm",
             "type": "armour"
         },
         {
@@ -960,42 +960,42 @@
         },
         {
             "rarity": "enchants",
-            "name": "fire Shield",
+            "name": "Flame Shield",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "ice Shield",
+            "name": "Ice Shield",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "eyeball Shield",
+            "name": "Eyeball Shield",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "stinger",
+            "name": "Stinger Shield",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "galapagoth shield",
+            "name": "Galapagoth Shield",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "octagon shield",
+            "name": "Octagon Shield",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "alldemonium shield",
+            "name": "Alldemonium Shield",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "fireblessed shield",
+            "name": "Fireblessed Shield",
             "type": "armour"
         },
         {
@@ -1007,32 +1007,32 @@
     "greatshield": [
         {
             "rarity": "default",
-            "name": "shield",
+            "name": "Greatshield",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "poison Greatshield",
+            "name": "Poison Greatshield",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "grond Greatshield",
+            "name": "Grond Greatshield",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "aegis",
+            "name": "Aegis",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "tokoyomamori",
+            "name": "Tokoyomamori",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "bacteon",
+            "name": "Bacteon Greatshield",
             "type": "armour"
         },
         {
@@ -1044,32 +1044,32 @@
     "shoulderguard": [
         {
             "rarity": "default",
-            "name": "shoulderguard",
+            "name": "Shoulderguard",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "flame Shoulderguards",
+            "name": "Flame Shoulders",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "ice Shoulderguards",
+            "name": "Ice Shoulders",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "frayola's spaulders",
+            "name": "Frayola's Spaulders",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "lonestars",
+            "name": "Lonestars",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "crono riggers",
+            "name": "Crono Riggers",
             "type": "armour"
         },
         {
@@ -1081,32 +1081,32 @@
     "cape": [
         {
             "rarity": "default",
-            "name": "cape",
+            "name": "Cape",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "fire Cape",
+            "name": "Fire Cape",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "ice Cape",
+            "name": "Ice Cape",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "cape of ulysses",
+            "name": "Cape of Ulysses",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "freja's cape",
+            "name": "Freja's Cape",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "vamp cloak",
+            "name": "Vamp Cloak",
             "type": "armour"
         },
         {
@@ -1118,32 +1118,32 @@
     "shoes": [
         {
             "rarity": "default",
-            "name": "boots",
+            "name": "Sandals",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "wide awake ",
+            "name": "Wide Awake Boots",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "flame boots",
+            "name": "Flame Boots",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "alarium stompers",
+            "name": "Alarium Stompers",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "moonwalkers",
+            "name": "Moonwalkers",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "lilith shoes",
+            "name": "Lilith Shoes",
             "type": "armour"
         },
         {
@@ -1155,32 +1155,32 @@
     "horse": [
         {
             "rarity": "default",
-            "name": "horse",
+            "name": "Horse",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "wide awake Horse",
+            "name": "Wide Awake Horse",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "flame Horse",
+            "name": "Flame Horse",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "sibircus the frosty",
+            "name": "Sibericus the Frosty",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "bullgam the bully",
+            "name": "Bullgam the Bully",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "ponbiscuit",
+            "name": "Ponbiscuit",
             "type": "armour"
         },
         {
@@ -1192,84 +1192,84 @@
     "warhorse": [
         {
             "rarity": "default",
-            "name": "warhorse",
+            "name": "Warhorse",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "ice Warhorse",
+            "name": "Ice Warhorse",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "poison Warhorse",
+            "name": "Poison Warhorse",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "deep impact",
+            "name": "Deep Impact",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "kotenho the king",
+            "name": "Kotenho the King",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "ponteo the victoriuos",
+            "name": "Ponteo the Victorious",
             "type": "armour"
         },
         {
             "rarity": "ultimate",
-            "name": "Apobao the Absolute",
+            "name": "Apabao the Absolute",
             "type": "armour"
         }
     ],
     "chariot": [
         {
             "rarity": "default",
-            "name": "chariot",
+            "name": "Chariot",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "ice Chariot",
+            "name": "Ice Chariot",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "fire Chariot",
+            "name": "Flame Chariot",
             "type": "armour"
         },
         {
             "rarity": "enchants",
-            "name": "critical Chariot",
+            "name": "Critical Chariot",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "the silencer",
+            "name": "The Silencer",
             "type": "armour"
         },
         {
             "rarity": "unique",
-            "name": "ruemelter",
+            "name": "Ruemelter",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "silver murzephone",
+            "name": "Silver Murzephone",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "chariot of light",
+            "name": "Chariot of Light",
             "type": "armour"
         },
         {
             "rarity": "super-unique",
-            "name": "deedsaurus helltank",
+            "name": "Deedsarus Helltank",
             "type": "armour"
         },
         {
@@ -1281,32 +1281,32 @@
     "claw": [
         {
             "rarity": "default",
-            "name": "claw",
+            "name": "Claw",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "flame Claw",
+            "name": "Flaming Claw",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "poison Claw",
+            "name": "Poison Claw",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "demonic dark claw",
+            "name": "Demonic Dark Claw",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "gardsormr ice claw",
+            "name": "Gardsormr Ice Claw",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "bengal tiger claw",
+            "name": "Bengal Tiger Claw",
             "type": "weapon"
         },
         {
@@ -1318,32 +1318,32 @@
     "scythe": [
         {
             "rarity": "default",
-            "name": "scythe",
+            "name": "Scythe",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "flame Scythe",
+            "name": "Flaming Scythe",
             "type": "weapon"
         },
         {
             "rarity": "enchants",
-            "name": "deflect Scythe",
+            "name": "Deflecting Scythe",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "quickflash",
+            "name": "Quickflash Scythe",
             "type": "weapon"
         },
         {
             "rarity": "unique",
-            "name": "deathsoul scythe",
+            "name": "Deathsoul Scythe",
             "type": "weapon"
         },
         {
             "rarity": "super-unique",
-            "name": "great god scythe",
+            "name": "Great God Scythe",
             "type": "weapon"
         },
         {
