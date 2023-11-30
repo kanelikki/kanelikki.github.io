@@ -6,12 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patapon 3 Informations</title>
     <style type="text/css">
+        :root {
+          --box-size: 20rem;
+        }
         body {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
-
+        section {
+            overflow: auto;
+        }
         ul {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, var(--box-size));
+            justify-content: center;
+            margin: 3rem 0 5rem 0;padding:0;
         }
 
         a {
@@ -22,11 +30,12 @@
             padding: 0;
             display: block;
             position: relative;
+            z-index: 2;
         }
 
         li {
-            width: 25rem;
-            height: 25rem;
+            width: var(--box-size);
+            height: var(--box-size);
             list-style-type: none;
             position: relative;
             overflow: hidden;
@@ -42,7 +51,6 @@
             background-position: top left;
             position: absolute;
             top:0;left: 0;right: 0;bottom: 0;
-            z-index: -1;
         }
         .list-topic {
             font-size: 2.5rem;
@@ -72,21 +80,56 @@
             color:black;
             background-color: #ffffff80;
         }
-
+        a:hover, a:focus {
+            border:3px solid salmon;
+            box-sizing: border-box;
+        }
         h1 {
             font-size: 3rem;
         }
 
         h2 {
-            font-size: 2rem;
-        }
-
-        h3 {
-            font-size: 1.5rem;
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 0; padding: .6rem;
+            background-color: #00000060;
+            color: #fff;
         }
 
         a:hover+div, a:focus+div {
             filter: grayscale(100%) blur(5px);
+        }
+        @media screen and (max-width:800px) {
+            :root {
+                --box-size: 10rem;
+            }
+            h1 {
+                display: none;
+            }
+            .list-topic {
+                font-size:1.5rem;
+            }
+            .list-desc {
+                font-size: 1rem;
+            }
+            .list-topic,
+            .list-desc,
+            a:hover > .list-topic,
+            a:hover > .list-desc,
+            a:focus > .list-topic,
+            a:focus > .list-desc {
+                background-color: transparent;
+            }
+            .list-bg::after {
+                content:"";
+                position: absolute;
+                width:100%;height:100%;
+                background-color: #00000080;
+            }
+            a:hover + .list-bg:after,
+            a:focus + .list-bg:after {
+                background-color: #ffffff80;
+            }
         }
     </style>
 </head>
@@ -96,8 +139,8 @@
         <h1>Patapon 3 Info Collection by Mielikki</h1>
     </header>
     <article>
-        <h2>Patapon 3</h2>
-        <h3>Utils</h3>
+        <section style="background-color: #a5b8c5;">
+        <h2>Utils</h2>
         <ul>
             <li>
                     <a href="https://www.youtube.com/watch?v=EfnX1W0vsKY">
@@ -135,7 +178,9 @@
                 <div class="list-bg" style="background-image:url('!imgs/1-5.png')"></div>
             </li>
         </ul>
-        <h3>Music</h3>
+        </section>
+        <section style="background-color: #f2b1ff;">
+        <h2>Music</h2>
         <ul>
             <li>
                     <a href="https://github.com/rnielikki/CustomMusicCreator/releases/tag/newest">
@@ -159,7 +204,9 @@
                 <div class="list-bg" style="background-image:url('!imgs/2-3.png')"></div>
             </li>
         </ul>
-        <h3>Docs</h3>
+        </section>
+        <section style="background-color: #ffeac4;">
+        <h2>Docs</h2>
         <ul>
             <li>
                     <a href="https://1drv.ms/w/s!ArCS5RW_WtrEsHc0ZN9gJevGq7L0">
@@ -204,8 +251,9 @@
                 <div class="list-bg" style="background-image:url('!imgs/3-6.png')"></div>
             </li>
         </ul>
+        </section>
+        <section style="background-color: #73dd6b;">
         <h2>Patapon 2</h2>
-        <p>100% play experience based.</p>
         <ul>
             <li>
                     <a href="./p2/material">
@@ -222,6 +270,7 @@
                 <div class="list-bg" style="background-image:url('!imgs/4-2.png')"></div>
             </li>
         </ul>
+        </section>
     </article>
 </body>
 
