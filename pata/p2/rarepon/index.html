@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patapon 2 Rarepon info</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <script src="./rarepon.js">
+    </script>
+    <script>
+        function setRatioOnError() {
+            let target = document.querySelector(".rarepon-wrapper");
+            setRatio();
+            window.addEventListener("resize", setRatio);
+            function setRatio() {
+                target.style.height = (target.getBoundingClientRect().width * 1080/1920) + "px";
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div class="lang">
+        <a href="index.html?region=eu">EU</a>
+        <a href="index.html?region=us">US</a>
+    </div>
+    <div class="rarepon-wrapper">
+        <a class="rarepon-class" href="#" title="Click to select Rarepon class"></a>
+        <div class="rarepon-class-name">
+            <span>Mission failed</span>
+        </div>
+        <img src="rarepons.jpg" onerror="setRatioOnError()" alt="">
+    </div>
+</body>
+</html>
