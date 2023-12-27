@@ -1,1 +1,0 @@
-const windowPromise = new Promise(r => window.addEventListener("load", r));
