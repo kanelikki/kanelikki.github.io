@@ -4,22 +4,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patapon Says Donchaka</title>
-</head>
+    <title>snow</title>
+    <style type="text/css">
+        body {
+            background: #000 url("bg.jpg") no-repeat bottom center;
+            background-size: cover;
+        }
+        html, body {
+            margin:0;padding:0;
+            width:100%;height: 100%;
+        }
+        #snow-bg {
+            position: fixed;
+            filter:blur(4px);
+            top:0;left:0;right:0;bottom:0;
+        }
+        #content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100%;
+        }
+        header {
+            text-align: center;
+            background-color: #30303060;
+            width:100%;
+            color:#fff;
+        }
+        header h1 {
+            font-size:4rem;
+        }
+        header p {
+            font-size:2.6rem;
+        }
+    </style>
+    <script>
+        let bg;
+        const sizeRange = [3,10];
+        const opacityRange = [0.5,1];
+        const speed = 4;
+        const xMoveSpeed = 0.02;
+        const xMoveScale = 2;
+        const snowflakes = [];
+        const snowChance = 0.1;
+        const maxParticles = 500;
+        //ground data
+        const groundSpeed = 0.01;
+        const maxHeight = 20;
+        //w h data
+        let bgsize;
+        window.addEventListener("load", function(){
 
+            bg = document.getElementById("snow-bg");
+            resizeBg();
+            const ctx = bg.getContext("2d");
+            let groundHeight = 0;
+            requestAnimationFrame(moveSnow);
+            function createSnow() {
+                const snow = {
+                    x: getRandomX(),
+                    y: 0,
+                    opacity:getRandomBetween(opacityRange[0], opacityRange[1]),
+                    size: getRandomBetween(sizeRange[0],sizeRange[1]),
+                    seed: Math.random()*Math.PI
+                }
+                snowflakes.push(snow);
+            }
+            function moveSnow() {
+                ctx.clearRect(0,0,bgsize[0],bgsize[1]);
+                for(var flake of snowflakes) {
+                    ctx.fillStyle = `rgba(255,255,255,${flake.opacity})`;
+                    drawSnow(flake);
+                    flake.seed+=xMoveSpeed;
+                    flake.x+=Math.sin(flake.seed)*xMoveScale;
+                    flake.y+=speed;
+                }
+                ctx.fillStyle = `white`;
+                drawGround();
+                if(snowflakes.length<maxParticles) {
+                    if(Math.random()>snowChance) createSnow();
+                }
+                requestAnimationFrame(moveSnow);
+            }
+            function drawSnow(flake) {
+                if((flake.y+flake.size)>bgsize[1]) {
+                    let index = snowflakes.indexOf(flake);
+                    if(groundHeight<maxHeight) groundHeight+=groundSpeed;
+                    if(index>-1) {
+                        snowflakes.splice(index, 1);
+                        return;
+                    }
+                }
+                ctx.beginPath();
+                ctx.arc(flake.x, flake.y, flake.size, 0, 2 * Math.PI, false);
+                ctx.fill();
+            }
+            function drawGround() {
+                if(groundHeight > 0) {
+                    ctx.fillRect(0, bgsize[1]-groundHeight, bgsize[0], groundHeight);
+                }
+            }
+            function getRandomX() {
+                return document.body.clientWidth*Math.random()
+            }
+            function getRandomBetween(min,max) {
+                return min + (max-min)*Math.random();
+            }
+        })
+        window.addEventListener("resize", resizeBg);
+        function resizeBg(){
+            if(!bg) return;
+            bg.width = document.body.clientWidth;
+            bg.height = document.body.clientHeight;
+            bgsize = [bg.width, bg.height];
+        }
+    </script>
+</head>
 <body>
-    <h1>Oh hello! You're here!</h1>
-    <h2><a href="pataroad-website">PataRoad</a> Project</h2>
-    <p>Pataroad is fangame of Patapon series. <em>Note: the game contains spoilers of Patapon series.</em></p>
-    <h2><a href="PataponFarmingInfo">Patapon2 farming info</a></h2>
-    <p>This contains farming information (especially status effect) for each boss with strategy.</p>
-    <p>For material requirement calculation for each rarepons, see <a href="PataponFarmingInfo/rarepon/">Rarepon info</a>.</p>
-    <h2><a href="https://github.com/rnielikki/CustomMusicCreator">Custom music creator</a> / <a href="ear-trial">Ear trial</a> </h2>
-    <p>Create Patapon 3 music (BGM.DAT) / Test your music online!</p>
-    <h2><a href="./item-lang/">Patapon 3 language translator</a></h2>
-    <p>Note: this doesn't support whole sentences, like descriptions! It also may omit some words.</p>
-    <h2>Contact</h2>
-    <p>from <a href="https://twitter.com/patapon_meden">donchaka</a></p>
-    <footer>Also note: It doesn't mean that I don't know CSS, as you see in the links, I can... Just I don't want to</footer>
+    <canvas id="snow-bg"></canvas>
+    <div id="content">
+        <header>
+            <h1>No portfolio here.</h1>
+            <p>But I am playing around with your GPU! Enjoy ❄</p>
+        </header>
+    </div>
 </body>
 </html>
