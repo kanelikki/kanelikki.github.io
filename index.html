@@ -16,7 +16,6 @@
         }
         #snow-bg {
             position: fixed;
-            filter:blur(4px);
             top:0;left:0;right:0;bottom:0;
         }
         #content {
@@ -95,13 +94,17 @@
                         return;
                     }
                 }
-                ctx.beginPath();
-                ctx.arc(flake.x, flake.y, flake.size, 0, 2 * Math.PI, false);
-                ctx.fill();
+                ctx.font = flake.size*2+"px Sans-Serif";
+                ctx.fillText("❄",flake.x, flake.y);
             }
             function drawGround() {
                 if(groundHeight > 0) {
-                    ctx.fillRect(0, bgsize[1]-groundHeight, bgsize[0], groundHeight);
+                    let yOffest = bgsize[1]-groundHeight;
+                    const fill = ctx.createLinearGradient(0,bgsize[1]-Math.max(groundHeight,2),0,bgsize[1]);
+                    fill.addColorStop(0,"transparent");
+                    fill.addColorStop(1,"white");
+                    ctx.fillStyle=fill;
+                    ctx.fillRect(0, yOffest, bgsize[0], groundHeight);
                 }
             }
             function getRandomX() {
