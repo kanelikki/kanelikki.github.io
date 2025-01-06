@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="clr.js"></script>
+    <script src="map.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/3.0.0/sigma.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/graphology/0.25.4/graphology.umd.min.js"></script>
+    <script src="./sigma-node-image.cjs.prod.js"></script>
+    <script src="./layout-defaults.js"></script>
+    <script src="./forceatlas2.js"></script>
+    <script src="./layout-random.js"></script>
+    <!--can't take both for performance reason-->
+    <!--<script src="./sigma-node-border.cjs.prod.js"></script>-->
+</head>
+<style>
+    html, body{
+        width:100%;
+        height:100%;
+    }
+    #container {
+        height: calc(100% - 6rem);
+    }
+    .sigma-labels {
+        display:none;
+    }
+    .box {
+        width:auto;height:auto;
+        background:purple;
+        border:3px solid pink;
+        position: absolute;
+        z-index:10;
+    }
+    .box img {
+        width:30px;
+        height:30px;
+    }
+    .box p {
+        margin:6px;
+    }
+</style>
+<body>
+    <div id="box" class="box" hidden></div>
+    <div id="container"></div>
+    <footer>
+        <p>This page is NOT affiliated to <a href="https://littlealchemy2.com/">Little Alchemy 2</a> official. Does NOT include DLC.</p>
+        <p><small>please understand forceatlas2 does not work without package manager</small></p>
+    </footer>
+</body>
+</html>

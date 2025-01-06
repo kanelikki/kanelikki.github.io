@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script>
+        (async function(){
+            let fetchJson = n => fetch(n).then(j => j.json());
+            const [data, categoryRaw, description, win] =
+                await Promise.all([
+                    fetchJson("data.json"), fetchJson("category.json"), fetchJson("description.json"),
+                    new Promise(res => window.addEventListener("load", res))
+                ]);
+            const category = (function(){
+                let res = {};
+                for(let cat of categoryRaw) {
+                    for(let elem of cat.elements) {
+                        if(!data[elem]) continue;
+                        if(!res[elem]) res[elem] = [cat.name];
+                        else res[elem].push(cat.name);
+                    }
+                }
+                return res;
+            })();
+            const toName = id => data[id].n;
+            const toImg = id => {
+                const img = document.createElement("img");
+                img.src = `imgs/${id}.svg`;
+                img.alt = toName(id);
+                return img;
+            }
+            const tableTemplateName = {
+                "id": (id, td) => td.textContent = id,
+                "name": (id, td) => td.textContent = data[id].n,
+                "category": (id, td) => td.textContent = category[id]?category[id].join(", "):"",
+                "from": (id, td) => td.textContent = data[id].p?data[id].p.map(d=>d.map(dd=>toName(dd)).join("+")).join(", "):"",
+                "makes": (id, td) => td.textContent = data[id].c?data[id].c.map(c=>toName(c)).join(", "):"",
+                "description": (id, td) => td.textContent = description[id]
+            };
+            const tableTemplateImg = {
+                "id": (id, td) => td.textContent = id,
+                "name": (id, td) => td.textContent = data[id].n,
+                "image": (id, td) => td.appendChild(toImg(id)),
+                "category": (id, td) => td.textContent = category[id]?category[id].join(", "):"",
+                "from": (id, td) => {
+                    if(!data[id].p) return;
+                    for(let p of data[id].p) {
+                        const comb = document.createElement("span");
+                        comb.appendChild(toImg(p[0]));
+                        comb.appendChild(toImg(p[1]));
+                        td.appendChild(comb);
+                    }
+                },
+                "makes": (id, td) => {
+                    if(!data[id].c) return;
+                    for(let c of data[id].c) {
+                        td.appendChild(toImg(c));
+                    }
+                },
+                "description": (id, td) => td.textContent = description[id]
+            };
+
+            const containerByName = document.getElementById("container-byname");
+            const containerByImg = document.getElementById("container-byimg");
+            const buttonByName = document.getElementById("button-byname");
+            const buttonByImg = document.getElementById("button-byimg");
+            let byNameLoaded = false;
+            let byImgLoaded = false;
+            let currentTable = "";
+            let currentFilter = "";
+            
+            (function(){
+                const filterContainer = document.getElementById("filter-container");
+                const frag = document.createDocumentFragment();
+                append("", "None", "cat-none").setAttribute("checked", "");
+                for(let cat of Object.values(categoryRaw)) {
+                    append(cat.name, cat.name, "cat-"+cat.name.toLowerCase());
+                }
+                filterContainer.appendChild(frag);
+                function append(c, l, elemId){
+                    const button = document.createElement("input");
+                    const label = document.createElement("label");
+                    button.id = elemId;
+                    label.htmlFor = elemId;
+                    button.name = "category";
+                    button.type = "radio";
+                    label.textContent = l;
+                    button.value = c;
+                    button.onchange = e=>filter(c, e);
+                    frag.appendChild(button);
+                    frag.appendChild(label);
+                    return button;
+                }
+            })();
+            buttonByName.onclick = function() {
+                toggle(containerByName, containerByImg);
+                currentTable = "name";
+                if(byNameLoaded) {
+                    filter2(currentFilter);
+                }
+                else {
+                    build(tableTemplateName, containerByName);
+                    filter2(currentFilter);
+                    byNameLoaded = true;
+                }
+            }
+            buttonByImg.onclick = function() {
+                toggle(containerByImg, containerByName);
+                currentTable = "img";
+                if(byImgLoaded) {
+                    filter2(currentFilter);
+                }
+                else{
+                    build(tableTemplateImg, containerByImg);
+                    filter2(currentFilter);
+                    byImgLoaded = true;
+                }
+            }
+
+            function build(template, parent) {
+                parent.textContent = "";
+                const table = document.createElement("table");
+                parent.appendChild(table);
+                const frag  = document.createDocumentFragment();
+                const thead = document.createElement("thead");
+                const tbody = document.createElement("tbody");
+
+                thead.appendChild(buildLine(Object.keys(template), (d, td) => td.textContent = d, true));
+                for(const info of Object.keys(data)) {
+                    const line = buildLine(Object.keys(template), (d, td)=>template[d](info, td), false);
+                    if(category[info]) {
+                        line.dataset.category = category[info];
+                    }
+                    tbody.appendChild(line);
+                }
+                frag.appendChild(thead);
+                frag.appendChild(tbody);
+                table.appendChild(frag);
+
+                function buildLine(lineData, contentFunc, header) {
+                    const tr = document.createElement("tr");
+                    let tag = header?"th":"td";
+                    for(let content of lineData) {
+                        const td = document.createElement(tag);
+                        td.classList.add("column-"+content);
+                        contentFunc(content, td);
+                        tr.appendChild(td);
+                    }
+                    return tr;
+                }
+            }
+            function toggle(toShow, toHide) {
+                toShow.removeAttribute("hidden");
+                toHide.setAttribute("hidden","");
+            }
+            function filter(cat, ev) {
+                if(!ev || !ev.target || !ev.target.checked) return;
+                else filter2(cat);
+            }
+            function filter2(cat){
+                switch(currentTable) {
+                    case "name":
+                        filterTable(containerByName, cat);
+                        break;
+                    case "img":
+                        filterTable(containerByImg, cat);
+                        break;
+                    default:
+                        break;
+                }
+                currentFilter = cat;
+            }
+            function filterTable(container, cat){
+                const trs = container.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+                for(const tr of trs) {
+                    if(!tr.dataset.category) {
+                        (cat==="")?tr.removeAttribute("hidden"):tr.setAttribute("hidden", "");
+                        continue;
+                    }
+                    let allCat = tr.dataset.category.split(",");
+                    if(cat==="" || allCat.indexOf(cat)>-1) {
+                        tr.removeAttribute("hidden");
+                    }
+                    else {
+                        tr.setAttribute("hidden", "");
+                    }
+                }
+            }
+        })();
+    </script>
+    <style>
+        table {
+            font-family: sans-serif;
+            border-collapse: collapse;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        th {
+            background-color: lightblue;
+            padding: 0.3rem 1.2rem;
+        }
+        th, td {
+            border: 1px solid lightslategrey;
+        }
+        tbody td {
+            padding: .4rem .6rem;
+        }
+        tbody > tr:hover {
+            background-color: lightcyan;
+        }
+        .column-from {
+            width:12rem;
+        }
+        .column-makes {
+            width:20rem;
+        }
+        table img {
+            width:1.5rem;
+            background: mediumslateblue;
+            border-radius: 50%;
+            padding: 3px;
+        }
+        table span {
+            margin: 0 .25rem;
+            white-space: nowrap;
+        }
+        table span>img:first-child {
+            border-radius: 50% 0 0 50%;
+        }
+        table span>img:last-child {
+            border-radius: 0 50% 50% 0;
+        }
+        .button-collections {
+            margin: 1.4rem 1.8rem;
+        }
+        input[type="radio"] {
+            appearance: none;
+        }
+        input[type="radio"] + label {
+            display: inline-block;
+            margin: .1rem;
+            padding:.3rem .8rem;
+            vertical-align: middle;
+            border: 1px solid transparent;
+        }
+        input[type="radio"]:checked + label {
+            background-color: darkmagenta;
+            color: #ffcaca;
+            border: 1px solid salmon;
+            border-radius: 8px;
+        }
+        .show-by {
+            display: flex;
+        }
+        .show-by button {
+            flex-grow: 1;
+            flex-shrink: 1;
+            font-size: 1.1rem;
+            padding: .2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <h1>Little Alchemy 2 Full Cheatsheet</h1>
+    </header>
+    <article>
+    <fieldset class="button-collections" id="filter-container">
+        <legend>Filter By...</legend>
+    </fieldset>
+    <fieldset class="button-collections show-by">
+        <legend>Show By...</legend>
+        <button id="button-byname">By Name</button>
+        <button id="button-byimg">By Image</button>
+    </fieldset>
+    <div id="container-byname"></div>
+    <div id="container-byimg"></div>
+    </article>
+    <footer>
+        <p>This page is NOT affiliated to <a href="https://littlealchemy2.com/">Little Alchemy 2</a> official. Does NOT include DLC.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About blank with little alchemy2 data loaded</title>
+    <script>
+        //set data to global for sandbox
+        let data;
+        let dataByName;
+        (async function () {
+            data = await fetch("data.json").then(a => a.json());
+            let isBool = val => (val === true) || (val === false);
+            dataByName = deepCopy(data, false, true);
+            //verify(data); //checks duplicated combination. we have to remove that dupes actually...
+            //verify(dataByName);
+
+            function deepCopy(target, isArray, firstDepth) {
+                let d = isArray ? [] : {};
+                for (let key of Object.keys(target)) {
+                    const current = target[key];
+                    const k = firstDepth ? data[key].n : key;
+                    if (typeof current === "object") { //also array
+                        d[k] = deepCopy(current, Array.isArray(current), false);
+                        if(firstDepth) {
+                            d[k].id = key;
+                        }
+                    }
+                    // extra logic starts
+                    else if (!isBool(current) && !isNaN(current) && key !== "total") {
+                        d[k] = data[current].n;
+                    }
+                    //extra logic ends
+                    else d[k] = current;
+                }
+                return d;
+            }
+            function verify(target) {
+                for (let d of Object.values(target)) {
+                    if (d.p) verifyEach(d);
+                }
+            }
+            function verifyEach(target) {
+                for (let comb of target.p) {
+                    let hasCount = 0;
+                    for (let comb2 of target.p) {
+                        if ((comb[0] === comb2[0] && comb[1] === comb2[1])
+                            || (comb[0] === comb2[1] && comb[1] === comb2[0])) {
+                            hasCount++;
+                        }
+                        if (hasCount > 1) {
+                            console.log(target.p, comb);
+                        }
+                    }
+                }
+            }
+        })();
+    </script>
+    </head>    
+    <body>
+        <h1>Use "data" in console for testing, "dataByName" is by name...</h1>
+        <p>Open developer tool in web browser and play with it!</p>
+    </body>
+    <footer>
+        <p>This page is NOT affiliated to <a href="https://littlealchemy2.com/">Little Alchemy 2</a> official. Does NOT include DLC.</p>
+    </footer>
+    </html>

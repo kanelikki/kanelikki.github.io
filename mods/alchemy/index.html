@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Some Little Alchemy 2 cheatsheets</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <header>
+        <h1>Little Alchemy 2 Cheatsheet</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="graph.html">
+                    <img src="./imgs/524.svg" alt="family tree image">
+                    <p>Visualised as Network Graph</p>
+                </a>
+            </li>
+            <li>
+                <a href="table.html">
+                    <img src="./imgs/707.svg" alt="closet image">
+                    <p>Cheatsheet as Table</p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <article>
+    <h1>About Data</h1>
+    <p>The data is scrapped from Little Alchemy 2 official page.</p>
+    <p>Though, this page is UNOFFICIAL and NOT AFFILIATED to Little Alchemy 2.</p>
+    <h2>Document about the json files</h2>
+    <h3><a href="category.json">category.json</a> (category)</h3>
+    <p><b>Array</b> of categories.</p>
+    <ul>
+        <li><code>id</code>: ID of the <i>category</i>.</li>
+        <li><code>name</code>: the category name to display.</li>
+        <li><code>elements</code>: elements ID that belongs to the category (one element can have more than one category).</li>
+    </ul>
+    <h4>other notes</h4>
+    <ul>
+        <li>There are some "elements" with underscore, which does not look like normal element key (I guess this could be DLC).</li>
+    </ul>
+
+    <h3><a href="description.json">description.json</a> (description only)</h3>
+    <p>Key is ID of each element, value is description of the element as string.</p>
+    
+    <h3><a href="data.json">data.json</a> (real data)</h3>
+    <p>Key is ID of each element.</p>
+    <ul>
+        <li><code>prime</code>: is this start element (optional)</li>
+        <li><code>n</code>: Name of the element</li>
+        <li><code>p</code>: made from this combination (Might contain duplicates!)</li>
+        <li><code>c</code>: creates those elements (optional) (if does not exist it is final)</li>
+        <li><code>base</code>: is the base element, note that this is NOT prime (optional)</li>
+        <li><code>condition</code>: reveal condition, if base is true (optional)
+            <ul>
+                <li><code>type</code>: unlock condition type, <code>progress</code> is based on total discovered element amount, <code>elements</code> is based on discovered elements (described on the <code>elements</code> section).</li>
+                <li><code>progress</code>: used with <code>type</code>:<code>progress</code>. how many <i>other</i> elements must be unlocked to unlock this element.</li>
+                <li><code>elements</code>: used with <code>type</code>:<code>elements</code>. which element are required to unlock this element (see also <code>min</code>).</li>
+                <li><code>min</code>: used with <code>type</code>:<code>elements</code>. how many elements from <code>elements</code> list are required at least to unlock this element.</li>
+            </ul>
+        </li>
+    </ul>
+    <h3>other notes</h3>
+    <ul>
+        <li>If <code>p</code> has duplicated combination, the combination <b>produces more than 1 element</b>. (Mountain + Sound, Love + Gold, Human + Zombie)
+            <ul>
+                <li>(I am guessing one of the Mountain + Sound should be Mountain range + Sound but bugged, so Mountain range + Sound does <i>nothing</i>. Others seem work as intended.)</li>
+            </ul>
+        </li>
+        <li>If the <code>base</code> element is unlocked (through combination described in <code>p</code>) <i>before</i> filling the <code>condition</code>, the combination through <code>p</code> takes priority, and reaching <code>condition</code> will do nothing.
+            <ul>
+                <li>(If you opened metal before reaching 50 elements, reaching 50 elements will do nothing)</li>
+            </ul>
+        </li>
+    </ul>
+    </article>
+    <footer>
+        <p>This page is NOT affiliated to <a href="https://littlealchemy2.com/">Little Alchemy 2</a> official. Does NOT include DLC.</p>
+    </footer>
+</body>
+</html>

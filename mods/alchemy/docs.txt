@@ -1,0 +1,35 @@
+== category.json (category) ==
+
+**Array** of categories.
+- id: ID of the *category*.
+- name: the category name to display.
+- elements: elements ID that belongs to the category (one element can have more than one category).
+
+--- [other notes] ---
+
+There are some "elements" with underscore, which does not look like normal element key (I guess this could be DLC).
+
+== description.json (description only) ==
+
+Key is ID of each element, value is description of the element as string.
+
+== data.json (real data) ==
+
+Key is ID of each element.
+
+- "prime": is this start element (optional)
+- "n": Name of the element
+- "p": made from this combination (Might contain duplicates!)
+- "c": creates those elements (optional) (if does not exist it is final)
+- "base": is the base element, note that this is NOT prime (optional)
+- "condition": reveal condition, if base is true (optional)
+    - "type": unlock condition type, "progress" is based on total discovered element amount, "elements" is based on discovered elements (described on the "elements" section).
+    - "progress": used with "type":"progress". how many *other* elements must be unlocked to unlock this element.
+    - "elements": used with "type":"elements". which element are required to unlock this element (see also "min").
+    - "min": used with "type":"elements". how many elements from "elements" list are required at least to unlock this element.
+
+--- [other notes] ---
+- If "p" has duplicated combination, the combination **produces more than 1 element**. (Mountain + Sound, Love + Gold, Human + Zombie)
+  - (I am guessing one of the Mountain + Sound should be Mountain range + Sound but bugged, so Mountain range + Sound does *nothing*. Others seem work as intended.)
+- If the "base" element is unlocked (through combination described in "p") *before* filling the "condition", the combination through "p" takes priority, and reaching "condition" will do nothing.
+  - (If you opened metal before reaching 50 elements, reaching 50 elements will do nothing)
