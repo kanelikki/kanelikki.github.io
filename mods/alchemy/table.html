@@ -35,6 +35,15 @@
                 "id": (id, td) => td.textContent = id,
                 "name": (id, td) => td.textContent = data[id].n,
                 "category": (id, td) => td.textContent = category[id]?category[id].join(", "):"",
+                "condition": (id, td) => (function(d, t){
+                    if(!d.base) t.textContent = "N/A";
+                    else if(d.condition.type === "progress") {
+                        t.textContent = `Unlock ${d.condition.total} elements`;
+                    }
+                    else if(d.condition.type === "elements") {
+                        t.innerText = `At least ${d.condition.min} of \n${d.condition.elements.map(id => data[id].n).join(", ")}`;
+                    }
+                })(data[id], td),
                 "from": (id, td) => td.textContent = data[id].p?data[id].p.map(d=>d.map(dd=>toName(dd)).join("+")).join(", "):"",
                 "makes": (id, td) => td.textContent = data[id].c?data[id].c.map(c=>toName(c)).join(", "):"",
                 "description": (id, td) => td.textContent = description[id]
@@ -44,6 +53,21 @@
                 "name": (id, td) => td.textContent = data[id].n,
                 "image": (id, td) => td.appendChild(toImg(id)),
                 "category": (id, td) => td.textContent = category[id]?category[id].join(", "):"",
+                "condition": (id, td) => (function(d, t){
+                    if(!d.base) t.textContent = "N/A";
+                    else if(d.condition.type === "progress") {
+                        t.textContent = `Unlock ${d.condition.total} elements`;
+                    }
+                    else if(d.condition.type === "elements") {
+                        t.innerText = `At least ${d.condition.min} of \n`;
+                        for(const elemId of d.condition.elements) {
+                            const img = document.createElement("img");
+                            img.src = `./imgs/${elemId}.svg`;
+                            img.alt = data[elemId].n;
+                            t.appendChild(img);
+                        }
+                    }
+                })(data[id], td),
                 "from": (id, td) => {
                     if(!data[id].p) return;
                     for(let p of data[id].p) {
@@ -128,7 +152,7 @@
                 const tbody = document.createElement("tbody");
 
                 thead.appendChild(buildLine(Object.keys(template), (d, td) => td.textContent = d, true));
-                for(const info of Object.keys(data)) {
+                for(const info of Object.keys(data).sort((a,b) => data[a].n.localeCompare(data[b].n))) {
                     const line = buildLine(Object.keys(template), (d, td)=>template[d](info, td), false);
                     if(category[info]) {
                         line.dataset.category = category[info];

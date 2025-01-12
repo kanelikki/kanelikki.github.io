@@ -76,6 +76,104 @@
             </ul>
         </li>
     </ul>
+<h2>In-game</h2>
+    <p>This is available with Developer Tool Console.</p>
+    <h3>Properties</h3>
+    <ul>
+        <li><code>workspace.__vue__.$store.getters.prime</code> : Prime element IDs.</li>
+        <li><code>workspace.__vue__.$store.getters.progress</code> : Array of every discovered element IDs except prime, final, and base.</li>
+        <li><code>workspace.__vue__.$store.getters.final</code> : Discovered final element IDs.</li>
+        <li><code>workspace.__vue__.$store.getters.elementsIds</code> : All available element IDs as array.</li>
+        <li><code>workspace.__vue__.$store.getters.baseElementsIds</code> : All available base elements (elements that can be "discovered" without combinating)</li>
+        <li><code>workspace.__vue__.$store.getters.elements</code> : Objects of all available elements. <b>Key is element ID</b>.
+            <ul>
+                <li><code>id</code>: the element id</li>
+                <li><code>name</code>: the element name</li>
+                <li><code>parents</code>: "this element is combined from..."</li>
+                <li><code>children</code>: "this element makes..."</li>
+            </ul>
+            <ul>
+                <li><code>prime</code>: is one of the default 4 elements (fire, wataer, earth, air)</li>
+                <li><code>final</code>: final element (makes nothing, no children)</li>
+                <li><code>description</code>: (empty)</li>
+                <li><code>tags</code>: (empty)</li>
+            </ul>
+            <ul>
+                <li><code>base</code>: can be discovered in other way than combining. prime element is NOT base element.</li>
+                <li><code>condition</code>:
+                    <ul>
+                        <li><code>type</code>: "progress" (unlock by discovered element amount) or "condition" (unlocked with certain multiple combinations).</li>
+                        <li><code>total</code>: Total elements to discover before opening this. Valid with ONLY type:"progress".</li>
+                        <li><code>elements</code>: Array of other combinations to unlock this. Valid with ONLY type:"condition".</li>
+                        <li><code>min</code>: Minimal amount of combination to be discovered, described in elements. Valid with ONLY type:"condition".</li>
+                    </ul>
+                    (if base can be discovered with normal combination, new base is not activaed, e.g. metal, container)
+                </li>
+            </ul>
+        </li>
+        <li><code>workspace.__vue__.$store.getters.elementsList</code> : All available elements as array.</li>
+        <li><code>workspace.__vue__.$store.getters.library</code> : Element IDs in the library list, <b>in the alphabet name order</b>.</li>
+        <li><code>workspace.__vue__.$store.getters.elementsCount</code> : Amount of the total available elements (720).</li>
+        <li><code>workspace.__vue__.$store.getters.connectionsCount</code> : Amount of all available connections (3455). INCLUDES duplicates.</li>
+        <li><code>workspace.__vue__.$store.getters.total</code> : Array of all discovered elements, EXCEPT prime (starter) elements.</li>
+        <li><code>workspace.__vue__.$store.getters.totalProgress</code> : Amount of total discovered elements.</li>
+        <li><code>workspace.__vue__.$store.getters.totalProgressWithoutFinal</code> : Amount of total discovered elements, EXCEPT final elements.</li>
+        <li><code>workspace.__vue__.$store.getters.totalProgressElements</code> : Array of EVERY discovered Element IDs.</li>
+        <li><code>workspace.__vue__.$store.getters.history</code> : Array of combination history with timestamp. Also available in localStorage.</li>
+    <li><code>workspace.__vue__.$store.getters.historyMap</code> : combination history <b>as Object</b> (the key is format of <code>elementID1#elementID2</code>).</li>
+    </ul>
+    <h3>Methods</h3>
+    <ul>
+        <li><code>workspace.__vue__.$store.getters.hasElement(elementId)</code> : Returns if the element ID is existent. <b>This will return true to undiscovered elements</b>.</li>
+        <li><code>workspace.__vue__.$store.getters.descriptionById(elementId)</code> : Returns description of the given element ID. <b>This also works to undiscovered elements</b>.</li>
+        <li><code>workspace.__vue__.$store.getters.elementById(elementId)</code> : Returns element object (described above) by given element ID.</b>.</li>
+        <li><code>workspace.__vue__.$store.getters.hasInLibrary(elementId)</code> : Returns if the given element is in the library.</b>.</li>
+    </ul>
+    <h3>Event Actions</h3>
+    <p>Each action contains array of functions. This can be subscribed by just pushing the custom function to there.</p>
+    <ul>
+        <li><code>workspace.__vue__.$store._actions.mixOccured</code> : Any kind of mixing attempt invokes this.
+            <ul>
+                <li><code>status</code>: "fail" if it is invalid combination, "new" if successfully combined (doesn't matter if the child is new or not), "mixed" if the combination is already performed.</li>
+                <li><code>children</code>: Newly created element status. Not available with "fail" status.
+                    <ul><code>id</code>: Element ID of the newly created element.</ul>
+                    <ul><code>position</code>: Object that contains <code>x</code> and <code>y</code> coordinates.</ul>
+                </li>
+            </ul>
+        </li>
+        <li><code>workspace.__vue__.$store._actions.mixFail</code> : When try mixing, but no combination found.</li>
+        <li><code>workspace.__vue__.$store._actions.mixMixed</code> : When try mixing, but the combination is already done before.</li>
+        <li>
+            <code>workspace.__vue__.$store._actions.mixNew</code> : When elements are successfully mixed. <b>Any new combination</b> calls this, ALSO when existing item is created.</li>
+            <ul>
+                <p>This applies to <code>mixNew</code>, <code>mixMixed</code>, <code>mixFail</code>.</p>
+                <li><code>parent</code>: Array of combination element IDs. Expected length of 2.</li>
+                <li><code>children</code>: Array of newly created element IDs. Note this is array, since the new element can be created 1 or more. Empty with <code>mixFail</code>.</li>
+                <li><code>positions</code>: Object that contains <code>x</code> and <code>y</code> as world coordinate. The point the parent elements meet. Empty with <code>mixFail</code> AND <code>mixMixed</code>.</li>
+            </ul>
+            returns <b>Array of newly discovered element</b>.
+        </li>
+        <li><code>workspace.__vue__.$store._actions.mixBase</code> : When any new base item is discovered.
+            <ul>
+                <li><code>base</code>: Array of the element ID of the discovered base elements.</li>
+                <li><code>children</code>: Array of the any <b>most recent</b> created element IDs just before this base item.</li>
+                <li><code>positions</code>: Array of the object that contains <code>x</code> and <code>y</code> as world coordinate, should be 1:1 match to the <code>children</code>.</li>
+            </ul>
+        <li>
+            <code>workspace.__vue__.$store._actions.progressNewBase</code> : When elements are successfully mixed. <b>Any new combination</b> calls this, ALSO when existing item is created.
+            <p>returns <b>Array of newly discovered element IDs</b>.</p>
+        </li>
+    </ul>
+    <p>Workspace method (event) is called for every element in the workspace.</p>
+    <ul>
+        <li><code>workspace.__vue__.$store._actions.workspaceRemoveExhausted</code>: Called when the element is depleted (including final item) and removed from the workspace. Passes <b>Element ID</b> as event parameter.<br><b>The element MUST BE in the workspace</b>.</li>
+    </ul>
+    <h3>Non-Event Actions</h3>
+    <ul>
+        <li><code>workspace.__vue__.$store._actions.search[0]</code>: Activates searching. Parameter is the keyword string to search.</li>
+        <li><code>workspace.__vue__.$store._actions.searchHide[0]</code>: Cancels searching. Does not need any parameter.</li>
+        <li><code>workspace.__vue__.$store._actions.searchShow[0]</code>: Displays search bar. Does not need any parameter.</li>
+    </ul>
     </article>
     <footer>
         <p>This page is NOT affiliated to <a href="https://littlealchemy2.com/">Little Alchemy 2</a> official. Does NOT include DLC.</p>
