@@ -13,17 +13,6 @@ const allCombiData = workspace.__vue__.$store.getters.elementsList.reduce((a,b) 
     }
     return a;
 }, {});
-const highPriorities = new Set([
-    //steel because metal and steel reactions can be paired a lot. Thus organic matter must have priority aswell.
-    "40", "626",
-    //container if exists, because many are depleted with container
-    //same goes to big, small, philosophy, idea
-    "683", "607", "616", "661", "304",
-    //medusa and robot because a lot of human reaction
-    //tool is just tool... has so many reactions.
-    //and glass because glass clears planets. Thus, the sand must be important aswell.
-    "141", "422", "53", "32", "28"
-]);
 const allCombinations = workspace.__vue__.$store.getters.elementsList.map(a=>a.parents).flat().map(a=>makeCombiId(...a));
 const stat = {
     get created(){
@@ -83,8 +72,50 @@ const stat = {
         return stat.getObject(id).name;
     }
 };
+const highPriorities = new Set([
+    //steel because metal and steel reactions can be paired a lot. Thus organic matter must have priority aswell.
+    "40", "626",
+    //container if exists, because many are depleted with container
+    //same goes to big, small, philosophy, idea
+    "683", "607", "616", "661", "304",
+    //medusa and robot because a lot of human reaction
+    //tool is just tool... has so many reactions.
+    //and glass because glass clears planets. Thus, the sand must be important aswell.
+    "141", "422", "53", "32", "28"
+]);
+const orderMap = (function(){
+    const elemList = workspace.__vue__.$store.getters.elementsList;
+    const baseOrder = elemList
+    .map(a => [...new Set(a.parents.flat())]).reduce((a,b) => {
+        for(const id of b) {
+            /*
+            if(highPriorities.has(b)) {
+                a.set(b, 0);
+                return a;
+            }
+            */
+            if(!a.has(id)) {
+                a.set(id,  0);
+            }
+            a.set(id, a.get(id)+1);
+        }
+        return a;
+    },new Map());
+    const finalOrder = new Map([...baseOrder]);
+    const avgChildLength = elemList.reduce((a,b)=>(b.children)?(a+b.children.length):a,0)/elemList.length;
+    for(let key of baseOrder.keys()) {
+        const val = baseOrder.get(key);
+        const obj = stat.getObject(key);
+        for(const c of obj.children) {
+            const current = finalOrder.get(c);
+            finalOrder.set(c, current+(c.length-avgChildLength));
+        }
+    }
+    return finalOrder;
+})();
 
 decide({children: [], parents: []});
+
 
 function decide(e) {
     const workspace = [...stat.workspace, ...e.children];
@@ -106,10 +137,6 @@ function decideNewBase(e) {
 function isFound(workspace, currentLib, lib, algorithm = null) {
     const algo = (algorithm===null)?
         ((n, center) => getCenterDistance(n[0], n[1], center)):algorithm;
-    if(workspace[0]) {
-        if(isFoundEach(workspace, workspace)) return true;
-        if(isFoundEach(workspace, currentLib)) return true;
-    }
     if(isFoundEach(lib, lib)) return true;
     return false;
     function isFoundEach(comp1, comp2) {
@@ -122,11 +149,12 @@ function isFound(workspace, currentLib, lib, algorithm = null) {
     }
 }
 function isFoundExhaust(workspace, currentLib, lib) {
-    //exhaust first search
+    /*
     if(workspace[0]) {
         if(isFoundEach(workspace, workspace)) return true;
         if(isFoundEach(workspace, currentLib)) return true;
     }
+    */
     if(isFoundEach(lib, lib)) return true;
     //discovery search
     return isFound(workspace, currentLib, lib, setPriority);
@@ -142,26 +170,12 @@ function isFoundExhaust(workspace, currentLib, lib) {
     function setPriority(val) {
         const hash = makeCombiId(...val);
         const ids = allCombiData[hash];
-        if(ids===undefined) return 9999;
-        let result = ids.length*100;
-        for(const c of allCombiData[hash]) if(highPriorities.has(c)) return -9999;
+        if(!ids) return -9999;
+        let result = 0;
         for(const id of ids) {
-            result+=getExhaustLevel(id);
+            if(stat.created.indexOf(id) < 0) result+=orderMap.get(id);
         }
         return result;
-    }
-    function getExhaustLevel(id) {
-        let children = stat.getObject(id).children;
-        let parentCount = 0;
-        let parentAvailableCount = 0;
-        for(const c of children) {
-            const parents = stat.getObject(c).parents;
-            const parentAvailable = parents
-                .filter(p => (stat.library.indexOf(p[0])>=0 && p[1]===id) || (p[0]===id && stat.library.indexOf(p[1])>=0));
-            parentCount+= parents.length;
-            parentAvailableCount += parentAvailable.length;
-        }
-        return parentCount - parentAvailableCount;
     }
 }
 
