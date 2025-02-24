@@ -1,5 +1,5 @@
 Original source code by Matti Welin<br>
-Edited by github @rnielikki<br>
+Edited by github @kanelikki<br>
 Added feature:<br>
 <ul>
 <li>Score calculated and saved to LocalStorage + Ranking System table</li>
@@ -13,4 +13,4 @@ Added feature:<br>
 License: I don't know, but <b>DON'T USE THIS FOR YOUR ASSIGNMENT</b><br>
 (If teacher is reading this, please tell me the license)<br>
 Enjoy! :)<br>
-From github.com/rnielikki
+From github.com/kanelikki

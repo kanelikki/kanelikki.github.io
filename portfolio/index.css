@@ -1,0 +1,177 @@
+:root {
+    --padding-horizontal: .6rem;
+    --padding-vertical: .8rem;
+}
+html, body {
+    min-width:fit-content;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    margin:0;
+}
+html {
+    padding: 0;
+    min-height: 100%;
+}
+body {
+    padding:var(--padding-vertical) var(--padding-horizontal);
+    min-height:calc(100vh - 2*var(--padding-vertical));
+    box-sizing: border-box;
+    background-color: skyblue;
+}
+body {
+    font-family: sans-serif;
+    background-image:url('./icon/star.gif');
+}
+/* modal */
+.modal-background {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background: #00000080;
+    padding:8rem;
+}
+.modal-window{
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+/* img preview */
+button > img {
+    max-height:200px;
+}
+.thumbs > button {
+    border:3px solid #ccc;
+    padding: 0;
+    cursor:pointer;
+    line-height: 0;
+}
+.thumbs > button:hover {
+    border-color: #403fc8;
+}
+/* yt embed */
+.yt-embed {
+    background:#c0c0c0;
+    display: inline-block;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width:360px;
+    height:200px;
+    vertical-align: top;
+    position: relative;
+}
+.yt-embed .yt-alt {
+    font-size:0.9rem;
+    margin: 0;
+    padding:.6rem .4rem;
+    text-align: center;
+    background-color: #1010108c;
+    color:#fff;
+    position: absolute;
+    left:0;right:0;
+    bottom:0;
+    line-height: initial;
+}
+iframe {
+    border:none;
+}
+.yt-embed.yt-playing > .yt-alt {
+    display:none;
+}
+.yt-embed:not(.yt-playing)::after {
+    content:"";
+    width:170px;
+    height:150px;
+    position: absolute;
+    top:0;left:0;
+    background: transparent url('file/play-button.svg') top left no-repeat;
+    background-size: 66%;
+}
+.yt-embed:hover::after {
+    filter:invert(1);
+}
+/* header */
+h1, h2 {
+    margin:0;
+    padding:0;
+    font-family: "Comic Sans MS";
+}
+hgroup {
+    padding: 1.6rem 0 1.2rem 0;
+}
+@keyframes marquee {
+    from { left: -100%;}
+    to { left: 100%;}
+}
+@keyframes blinking {
+    from { color: red; }
+    to { color: blue; }
+}
+header > hgroup {
+    overflow: hidden;
+}
+h1 {
+    position:relative;
+    animation: 10s linear infinite forwards marquee;
+    font-size:3.6rem;
+    color:brown;
+    white-space: nowrap;
+}
+h1 > .username {
+    animation: .5s linear infinite alternate blinking;
+}
+/* content */
+main {
+    border:3px outset #c0c0c0;
+    width:calc(100vw - 2*var(--padding-horizontal));
+    padding:.6rem .8rem;
+    box-sizing: border-box;
+    max-width:fit-content;
+    display: inline-block;
+    margin-bottom:4rem;
+    background-color: white;
+    color:#000;
+}
+.article-topic {
+    margin: .8rem 0 .6rem 0;
+}
+a {
+    color:blue;
+}
+a:hover {
+    color:#fa2800;
+}
+a:visited {
+    color:#800080;
+}
+ul {
+    width:fit-content;
+    display: inline-block;
+    text-align: left;
+}
+ul::before {
+    content:"";
+    display:block;
+}
+/* footer */
+footer {
+    font-size: 0.9rem;
+    position: absolute;
+    width:100%;
+    bottom:0;
+}
+/* background */
+.global-bg {
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:-1;
+}
