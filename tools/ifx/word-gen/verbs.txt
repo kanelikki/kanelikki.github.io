@@ -1,0 +1,75 @@
+walking
+walking {background}
+running
+running {background}
+jumping
+jumping {background}
+jumping over {word}
+flying
+flying over {word}
+flying {background}
+showing {word}
+playing with the {word}
+cooking {word}
+making {word}
+complaining to {word}
+in love with {word}
+laughing
+crying
+falling
+riding on {word}
+dancing
+breaking {word}
+eating {word}
+biting {word}
+fighting against {word}
+reading a book about {word}
+drawing {word}
+painting {word}
+thinking of {word}
+cleaning a house
+dreaming of {word}
+obsessed with {word}
+worrying about {word}
+killing {word}
+saving {word} from danger
+accepting {word}
+refusing to accept {word}
+giving {word}
+running away from {word}
+chasing {word}
+watching {word}
+carrying {word}
+taking selfie
+taking a picture with {word}
+shaking {word}
+sniffing
+coughing
+confused
+attacking {word}
+holding {word}
+stealing {word}
+throwing {word}
+throwing {word} to {word}
+drinking
+drinking {background}
+snoozing
+snoozing {background}
+sleeping
+sleeping {background}
+turning into {word}
+having bad day
+having great day
+breathing heavily
+worshipping {word}
+sewing
+doing marathon
+hiding from {word}
+hiding {background}
+buying {word}
+swimming
+diving
+driving a car
+calling {word}
+making a phone call
+delivering {words}

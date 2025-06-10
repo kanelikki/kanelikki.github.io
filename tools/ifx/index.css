@@ -1,0 +1,103 @@
+:root {
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+html {
+    text-align: center;
+    background: white;
+}
+body{
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width:fit-content;
+    background-color: #123;
+    color:#eee;
+}
+header {
+    width: 100%;
+    position:relative;
+}
+#reset {
+    position: absolute;
+    right:2.4rem;top:1.6rem;
+    font-size: 1.25rem;
+}
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 1140px;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.workspace {
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#paper {
+    border: 1px solid #333;
+}
+.toolbox {
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    gap:7px;
+}
+.note p {
+    font-size:1.2rem;
+    margin:.4rem;
+}
+.status {
+    display: grid;
+    grid-auto-flow: row;
+}
+.palette {
+    flex-grow: 1;
+    flex-shrink: 1;
+    border:1px solid #333;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(3, 2rem);
+}
+.palette button {
+    height:2rem;
+    border:none;
+    position:relative;
+}
+.palette-selected::after {
+    content:"";
+    position: absolute;
+    color:white;
+    border:1px solid #333;
+    background-color: #fff;
+    display: block;
+    width:5px;height:5px;
+    left:1rem;top:.5rem;
+}
+.pencils {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(4, 2rem);
+}
+.pencils button {
+    border: 1px solid transparent;
+}
+.pencils button.pencils-selected {
+    border: 1px solid black;
+    background-color: #ccc;
+}
+.pencils button:focus {
+    outline:none;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="base.js"></script>
+    <script src="drawer.js"></script>
+    <script src="history.js"></script>
+    <script src="refresher.js"></script>
+    <script src="keybinder.js"></script>
+    <script src="timer.js"></script>
+    <script src="word-gen/sentence.js"></script>
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <header>
+        <h1 class="headline">Sandbox</h1>
+        <p>Draw: <span id="word">Anything</span> <button id="word-shuffle">Shuffle</button></p>
+        <p>Time: <spani id="timer">00:00</span></p>
+        <button id="reset">Reset</button>
+    </header>
+    <!--z undo x redo c last colour used-->
+    <!-- media screen size 768 width... -->
+    <!--palette 1rem, small width 0.8rem (height)-->
+    <main>
+        <article class="workspace" id="workspace">
+            <canvas id="paper" width="680px" height="680px"></canvas>
+        </article>
+        <article class="toolbox" id="toolbox">
+            <div class="status">
+                <button id="undo">Undo</button>
+                <button id="redo">Redo</button>
+            </div>
+            <div class="palette" id="palette"></div>
+            <div class="pencils" id="pencils">
+                <button data-size="1" data-shortcut="1">1</button>
+                <button data-size="5" data-shortcut="2">2</button>
+                <button data-size="10" data-shortcut="3">3</button>
+                <button data-size="20" data-shortcut="4">4</button>
+                <button data-size="50" data-shortcut="5">5</button>
+                <button data-size="75" data-shortcut="6">6</button>
+            </div>
+        </article>
+    </main>
+    <footer class="note">
+        <p>This is independently developed and does NOT affiliated to the IFX. Might be slightly different from the original IFX.</p>
+    </footer>
+</body>
+</html>
