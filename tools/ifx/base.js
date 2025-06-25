@@ -26,7 +26,6 @@
         paper = document.querySelector("#paper");
         initPalette();
         initLineWidth();
-        resize();
         resetWord();
         wordShuffler.addEventListener("click", resetWord);
         document.addEventListener("timereset", initSetup);
@@ -43,13 +42,6 @@
     function initSetup() {
         Drawer.setColour("#000000");
         Drawer.setStroke("10");
-    }
-    function resize(){
-        if(!paper) return;
-        const workspaceSize = paper.parentElement.getBoundingClientRect();
-        const minSize = Math.min(workspaceSize.width, workspaceSize.height) - 10;
-        paper.width = minSize;
-        paper.height = minSize;
     }
     function initPalette() {
         const frag = document.createDocumentFragment();

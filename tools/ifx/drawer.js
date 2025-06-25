@@ -9,13 +9,14 @@ const Drawer = (function() {
 
         let pressing = false;
         let position = [-1, -1];
+        let movedAfterPress = false;
 
         baseCanvas.addEventListener("mousedown", setPress);
         window.addEventListener("mouseup", stopPress);
         baseCanvas.addEventListener("mousemove", draw);
         baseCanvas.addEventListener("mouseover", dropLine);
         baseCanvas.addEventListener("touchstart", setPressTouch);
-        baseCanvas.addEventListener("touchend", stopPress);
+        baseCanvas.addEventListener("touchend", stopPressTouch);
         baseCanvas.addEventListener("touchmove", drawTouch);
 
         baseCtx.lineCap = "round";
@@ -32,7 +33,8 @@ const Drawer = (function() {
             baseCtx.fillRect(0, 0, baseCanvas.width, baseCanvas.height);
         }
         function setPress(e) {
-           setPressXY(e.offsetX, e.offestY);
+            console.log(e.offsetX, e.offsetY)
+           setPressXY(e.offsetX, e.offsetY);
         }
         function setPressTouch(e) {
             e.preventDefault()
@@ -51,11 +53,24 @@ const Drawer = (function() {
             if(!touchCoords) return;
             drawXY(touchCoords[0], touchCoords[1]);
         }
+        function stopPress(e) {
+            stopPressXY(e.offsetX, e.offsetY);
+        }
+        function stopPressTouch(e) {
+            e.preventDefault();
+            const touchCoords = loadTouch(e);
+            if(!touchCoords) return;
+            stopPressXY(touchCoords[0], touchCoords[1]);
+        }
         function dropLine(e) {
             dropLineXY(e.offsetX, e.offsetY);
         }
         function loadTouch(e) {
-            if(!e.touches || e.touches.length!==1) return false;
+            const touch = e.touches
+            if(!touch || e.touches.length!==1) {
+                stopPressXY(position[0], position[1]);
+                return false;
+            }
             let res = [
                 e.touches[0].pageX - baseCanvas.offsetLeft,
                 e.touches[0].pageY - baseCanvas.offsetTop
@@ -66,13 +81,11 @@ const Drawer = (function() {
             if(pressing || History.ongoing) return;
             e.preventDefault();
             pressing = true;
-            position[0]=-1;
-            position[1]=-1;
             baseCtx.beginPath();
             baseCtx.lineWidth=lineWidth;
             baseCtx.strokeStyle = clr;
             setPosition(x, y);
-            drawXY(x, y);
+            movedAfterPress = false;
             Refresher.markAsDirty();
         }
         function drawXY(x, y) {
@@ -81,15 +94,20 @@ const Drawer = (function() {
             baseCtx.moveTo(position[0],position[1]);
             baseCtx.lineTo(x, y);
             baseCtx.stroke();
+            movedAfterPress = true;
             setPosition(x, y);
         }
         function dropLineXY(x, y){
             if(pressing) setPosition(x, y);
         }
-        function stopPress() {
+        function stopPressXY(x, y) {
             if(!pressing) return;
             History.save();
+            if(!movedAfterPress) {
+                drawXY(position[0], position[1])
+            }
             pressing = false;
+            movedAfterPress = false;
             setPosition(-1, -1);
         }
         function setPosition(x, y) {

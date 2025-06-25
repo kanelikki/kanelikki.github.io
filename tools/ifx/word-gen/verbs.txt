@@ -8,6 +8,10 @@ jumping over {word}
 flying
 flying over {word}
 flying {background}
+sitting {background}
+sitting on {word}
+rolling
+rolling {background}
 showing {word}
 playing with the {word}
 cooking {word}
@@ -28,6 +32,7 @@ drawing {word}
 painting {word}
 thinking of {word}
 cleaning a house
+cleaning a window
 dreaming of {word}
 obsessed with {word}
 worrying about {word}
@@ -51,8 +56,10 @@ holding {word}
 stealing {word}
 throwing {word}
 throwing {word} to {word}
+eating with {word}
 drinking
 drinking {background}
+drinking with {word}
 snoozing
 snoozing {background}
 sleeping
@@ -72,4 +79,47 @@ diving
 driving a car
 calling {word}
 making a phone call
-delivering {words}
+delivering {word}
+waiting for {word}
+changing form to {word}
+dressing up
+praying for {word}
+petting {word} gently
+hugging {word}
+standing on a mirror
+chilling
+chilling {background}
+hunting for {word}
+pulling {word}
+pushing {word}
+dragging {word}
+taking a shower
+lost {background}
+looking for {word}
+singing
+taking care of {word}
+brushing the teeth
+caught a cold
+hesitating between {word} and {word}
+destroying {word}
+bleeding
+ignoring {word}
+greeting to {word}
+lifting weights
+casting a spell
+shrugs
+calculating distance
+blocking a road
+breathing deeply
+preparing a party
+being criminal
+yelling at {word}
+in panic
+sending telepathy to {word}
+writing on {word}
+proposing to {word}
+trying to explain about {word}
+studying
+studying {background}
+evaluating {word}
+{background}

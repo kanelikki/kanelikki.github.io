@@ -13,7 +13,9 @@ in the lawn
 in a rainbow
 in a mountain
 on a hill
-on the river
+on a river
+on a lake
+on a frozen lake
 in the garden
 in the kitchen
 in rain
@@ -30,9 +32,27 @@ in a bar
 in a café
 in a restraunt
 on a road
+on a crossroad
 in a beautiful sunset
 in a beautiful sunrise
 on a cliff
-with a waterfall
-with a volcano
 on a playground
+in a castle
+in a valley
+in a square
+in mars
+in the dark
+in a park
+in a bench
+on a chair
+in bushes
+in a cave
+in a dungeon
+in a field
+on a swamp
+in a egloo
+in a graveyard
+in a jail
+in a maze
+on a chair
+on a bench

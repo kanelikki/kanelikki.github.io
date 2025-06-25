@@ -8,6 +8,7 @@ queen
 prince
 princess
 knight
+soldier
 santa claus
 witch
 magician
@@ -18,3 +19,9 @@ astrounaut
 musician
 grim reaper
 skater
+pirate
+waiter
+guard
+doctor
+nurse
+ninja

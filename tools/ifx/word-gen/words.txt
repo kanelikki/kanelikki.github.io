@@ -8,14 +8,12 @@
 +dogs
 -wolf
 +wolves
--duck
-+ducks
--goose
-+gooses
 -frog
 +frogs
 -salamander
 +salamanders
+-alligator
++alligators
 -snake
 +snakes
 -dinosaur
@@ -34,12 +32,15 @@
 +rabbits
 -bear
 +bears
+-sloth
 -panda
 +pandas
 -raccoon
 +raccoons
 -deer
 +deers
+-elk
+-moose
 -kitty
 +kitties
 -puppy
@@ -52,16 +53,28 @@
 +axolotls
 -bird
 +birds
+-duck
++ducks
+-goose
++geese
+-swan
++swans
+-hummingbird
++hummingbirds
 -parrot
 +parrots
 -pigeon
 +pigeons
 -penguin
 +penguins
++chicken
+-chickens
 -owl
 +owls
 -crow
 +crows
+-magpie
++magpies
 -eagle
 +eagles
 -seagull
@@ -70,6 +83,12 @@
 +mice
 -rat
 +rats
+-squirrel
++squirrels
+-hedgehog
++hedgehogs
+-hamster
++hamsters
 -scorpion
 +scorpions
 -monkey
@@ -84,8 +103,10 @@
 +cows
 -camel
 +camels
-+chicken
--chickens
+-sheep
++sheeps
+-goat
++goats
 -pig
 +pigs
 -woodpecker
@@ -112,6 +133,10 @@
 +ants
 -fish
 +fishes
+-jellyfish
++jellyfishes
+-clam
++clams
 -egg
 +eggs
 -shark
@@ -126,6 +151,8 @@
 +lobsters
 -shrimp
 +shrimps
+-octopus
++octopuses
 -seal
 +seals
 -human
@@ -160,6 +187,8 @@
 +carrots
 -tomato
 +tomatoes
+-pumpkin
++pumpkins
 -mushroom
 +mushrooms
 -potato
@@ -175,6 +204,7 @@
 +garlics
 -tree
 +trees
+-palm
 -vine
 +bush
 -bushes
@@ -182,7 +212,8 @@
 +branches
 -seed
 +seeds
-*grass
+-grass
++grasses
 -leaf
 +leaves
 -flower
@@ -205,6 +236,10 @@
 +pears
 -melon
 +melons
+-watermelon
++watermelons
+-grape
++grapes
 -peach
 +peaches
 -juice
@@ -228,6 +263,11 @@
 -cup of coffee
 +coffee beans
 -cup of tea
+-can of beer
+-glass of wine
+-jelly
+-candy
++candies
 -chocolate
 +chocolates
 -almond
@@ -244,6 +284,8 @@
 *spaghetti
 -bread
 +breads
+-cinnamon roll
++cinnamon rolls
 -rice
 -fried rice
 -soup
@@ -289,6 +331,7 @@
 +boxes
 -glass
 +glasses
++sunglasses
 -pencil
 +pencils
 -ruler
@@ -335,9 +378,11 @@
 -sun
 -cloud
 +clouds
+-earth
 -moon
 -star
 +stars
+-black hole
 -window
 +windows
 -house
@@ -461,6 +506,8 @@
 +usb cables
 -shoe
 +shoes
+-boot
++boots
 -sock
 +socks
 -shirt
@@ -472,6 +519,8 @@
 -sweater
 -hat
 +hats
+-cap
++caps
 -chair
 +chairs
 -table
@@ -484,6 +533,10 @@
 +dishes
 -kettle
 +kettles
+-frying pan
++frying pans
+-spetula
++spetulas
 -flag
 +flags
 -phone
@@ -503,6 +556,8 @@
 +microwaves
 -oven
 +ovens
+-toaster
++toasters
 -arrow
 +arrows
 -bow
@@ -513,6 +568,10 @@
 +swords
 -blade
 +blades
+-chain
++chains
+-chainsaw
+-axe
 -firework
 +fireworks
 -orb
@@ -560,8 +619,12 @@
 +clothes pegs
 -bag
 +bags
++paper bag
+-paper bags
 -backpack
 +backpacks
+-paper bag
++paper bags
 -shopping cart
 +shopping carts
 -chalk
@@ -650,6 +713,92 @@
 -crystal ball
 -snowman
 -ribbon
++ribbons
 -coin
 +coins
 -umbrella
++umbrellas
+-clock
++clocks
+-watch
++watches
+-bell
++bells
+-bomb
++bombs
+-cannon
+-magnet
++magnets
+-stickman
++stickmans
+-wind
+-tornado
+-lawn mower
+-cabinet
+-suitcase
++suitcases
+-hanger
++hangers
+-curtain
++curtains
+-ticket
++tickets
+-magnifier
++magnifiers
+-washing machine
++washing machhines
+-fridge
++fridges
+-mirror
++mirrors
+-salt shaker
++salt shakers
+-vending machine
++vending machines
+-cocktail
++cocktails
+-capsule
++capsules
+-sponge
++sponges
+-painting
++paintings
+-bench
++bench
+-apron
++aprons
+-balloon
++balloons
+-parachute
+-egg timer
++egg timers
+-microscope
+-spray
+-smoke
+-steam
+-cigarette
++cigarettes
+-gravestone
++gravestones
+-monster
++monsters
+-elf
++elves
+-thermometer
+-thermometers
+-glacier
+-cyclops
+-crown
++crowns
+-feather
++feathres
+-golem
++golems
+-brick
++bricks
+-fishing rod
+-scarf
+-tape
++tapes
+-typewriter
+-remote controller
