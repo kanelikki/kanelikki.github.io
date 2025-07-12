@@ -24,6 +24,7 @@ const Drawer = (function() {
         document.addEventListener("dragstart", e => e.preventDefault())
         document.addEventListener("drop", e => e.preventDefault())
         document.addEventListener("timereset", initCanvas);
+        window.addEventListener("blur", () => stopPressXY(position[0], position[1]));
         
         KeyBinder.add('c', function() {
             changeColour(lastClr);
@@ -33,7 +34,6 @@ const Drawer = (function() {
             baseCtx.fillRect(0, 0, baseCanvas.width, baseCanvas.height);
         }
         function setPress(e) {
-            console.log(e.offsetX, e.offsetY)
            setPressXY(e.offsetX, e.offsetY);
         }
         function setPressTouch(e) {
