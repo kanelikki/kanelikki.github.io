@@ -299,8 +299,8 @@
 +cupcakes
 -pancake
 +pancakes
-+waffle
--waffles
+-waffle
++waffles
 -donut
 +donuts
 -marshmallow
@@ -315,6 +315,8 @@
 +hams
 -hamburger
 +hamburgers
+-pie
++pies
 -sandwich
 -sausage
 +sausages
@@ -365,6 +367,8 @@
 +printers
 -keyboard
 +keyboards
+-computer mouse
++computer mice
 -machine
 +machines
 -gear
@@ -619,8 +623,6 @@
 +clothes pegs
 -bag
 +bags
-+paper bag
--paper bags
 -backpack
 +backpacks
 -paper bag
@@ -802,3 +804,7 @@
 +tapes
 -typewriter
 -remote controller
+-cart
++carts
+-crayon
++crayons

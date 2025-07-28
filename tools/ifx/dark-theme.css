@@ -1,0 +1,97 @@
+body {
+  color:#fff;
+  background-image: none;
+}
+a:not(nav a) {
+  color:#80ccff;
+}
+.user_standard {
+  color:#bcbcbc;
+}
+
+div.home-item-heading.p-1 {
+  color:#323400;
+}
+.btn-primary, .btn-secondary {
+  font-weight: bold;
+}
+.btn-primary {
+  color:#322400;
+}
+.btn-secondary {
+  background-color: #707070;
+  border-color:#707070;
+  color:white;
+}
+.item-container a, .no-link-colour, .dropdown-item {
+  color: #fff;
+}
+.list-group-item {
+  color:#fff;
+  background-color: #202020;
+}
+.foreground-color {
+  color:#fff;
+}
+.activity-cell-inactive, .activity-cell-active {
+  color:#000;
+}
+.nav-tabs a {
+  color:#e0dec4;
+}
+.nav-tabs .nav-item.show .nav-link {
+  background-color: #202000;
+}
+.nav-tabs .nav-link.active {
+  background-color: #806230;
+  color:white;
+}
+.card, .dropdown-menu, .post-author-area {
+  background-color: #202020;
+}
+.dropdown-menu {
+  border: 1px solid #606060;
+}
+.card-header {
+  background-color:#ffffff0c;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+  background-color: #404030;
+}
+[aria-label="Page navigation"] .btn-sm:not(:disabled) {
+  color:#dedede;
+}
+.item-border {
+  border:1px solid #808080;
+}
+.modal-content {
+  background-color: #202020;
+}
+button.close > span {
+  color:#fff;
+}
+.user_staff {
+  color:#af9dec;
+}
+.btn-outline-secondary {
+  color:#e0e0c4;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #ffffff12;
+}
+.table td {
+  border-color:#604a3f;
+}
+.join-grid {
+  background-color: transparent;
+}
+.drawing-grid .no-gutters h5 {
+  background-color: transparent;
+  color:#fff;
+}
+.d-md-block .size-col > div > div {
+  border:1px solid #a0a0a0;
+}
+.badge {
+  color:#000;
+}

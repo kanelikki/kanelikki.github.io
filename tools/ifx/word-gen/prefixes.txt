@@ -53,3 +53,4 @@ young
 old
 warm
 cool
+furry
