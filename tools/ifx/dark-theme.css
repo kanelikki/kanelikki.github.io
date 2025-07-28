@@ -95,3 +95,13 @@ button.close > span {
 .badge {
   color:#000;
 }
+input[type=text], textarea {
+  background-color: #404040;
+  color:#fff;
+}
+input[type=text]::selection, textarea::selection {
+  background-color:#a07000;
+}
+.loading-grid {
+  background-color: #333;
+}
