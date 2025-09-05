@@ -90,6 +90,7 @@
             const containerByImg = document.getElementById("container-byimg");
             const buttonByName = document.getElementById("button-byname");
             const buttonByImg = document.getElementById("button-byimg");
+            const searchField = document.getElementById("search-field");
             let byNameLoaded = false;
             let byImgLoaded = false;
             let currentTable = "";
@@ -118,18 +119,7 @@
                     return button;
                 }
             })();
-            buttonByName.onclick = function() {
-                toggle(containerByName, containerByImg);
-                currentTable = "name";
-                if(byNameLoaded) {
-                    filter2(currentFilter);
-                }
-                else {
-                    build(tableTemplateName, containerByName);
-                    filter2(currentFilter);
-                    byNameLoaded = true;
-                }
-            }
+            buttonByName.onclick = showByName;
             buttonByImg.onclick = function() {
                 toggle(containerByImg, containerByName);
                 currentTable = "img";
@@ -142,7 +132,27 @@
                     byImgLoaded = true;
                 }
             }
-
+            searchField.addEventListener("input", function(){
+                const keyword = getKeyword();
+                if(!keyword) {
+                    filter2(currentFilter);
+                    return;
+                }
+                filterByText(getCurrentContainer(currentFilter), keyword);
+            });
+            showByName();
+            function showByName() {
+                toggle(containerByName, containerByImg);
+                currentTable = "name";
+                if(byNameLoaded) {
+                    filter2(currentFilter);
+                }
+                else {
+                    build(tableTemplateName, containerByName);
+                    filter2(currentFilter);
+                    byNameLoaded = true;
+                }
+            }
             function build(template, parent) {
                 parent.textContent = "";
                 const table = document.createElement("table");
@@ -157,6 +167,7 @@
                     if(category[info]) {
                         line.dataset.category = category[info];
                     }
+                    line.dataset.name = data[info].n;
                     tbody.appendChild(line);
                 }
                 frag.appendChild(thead);
@@ -184,33 +195,51 @@
                 else filter2(cat);
             }
             function filter2(cat){
-                switch(currentTable) {
-                    case "name":
-                        filterTable(containerByName, cat);
-                        break;
-                    case "img":
-                        filterTable(containerByImg, cat);
-                        break;
-                    default:
-                        break;
-                }
                 currentFilter = cat;
+                filterTable(getCurrentContainer(), cat);
             }
             function filterTable(container, cat){
                 const trs = container.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
                 for(const tr of trs) {
-                    if(!tr.dataset.category) {
-                        (cat==="")?tr.removeAttribute("hidden"):tr.setAttribute("hidden", "");
-                        continue;
-                    }
-                    let allCat = tr.dataset.category.split(",");
-                    if(cat==="" || allCat.indexOf(cat)>-1) {
+                    if(isCategory(tr, cat)) {
                         tr.removeAttribute("hidden");
                     }
                     else {
                         tr.setAttribute("hidden", "");
                     }
                 }
+                const keyword = getKeyword();
+                if(!!getKeyword) filterByText(container, keyword);
+            }
+            function filterByText(container, keyword) {
+                const trs = container.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+                for(const tr of trs) {
+                    if(!isCategory(tr, currentFilter)) continue;
+                    if(tr.dataset.name.indexOf(keyword) < 0) tr.setAttribute("hidden", "");
+                    else tr.removeAttribute("hidden")
+                }
+            }
+            function getCurrentContainer(cat) {
+                switch(currentTable) {
+                    case "name":
+                        return containerByName;
+                        break;
+                    case "img":
+                        return containerByImg;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            function isCategory(tr, cat) {
+                if(!tr.dataset.category) {
+                    return (cat==="")
+                }
+                const allCat = tr.dataset.category.split(",");
+                return (cat==="" || allCat.indexOf(cat)>-1);
+            }
+            function getKeyword() {
+                return searchField.value.trim();
             }
         })();
     </script>
@@ -257,7 +286,7 @@
         table span>img:last-child {
             border-radius: 0 50% 50% 0;
         }
-        .button-collections {
+        fieldset {
             margin: 1.4rem 1.8rem;
         }
         input[type="radio"] {
@@ -299,6 +328,10 @@
         <legend>Show By...</legend>
         <button id="button-byname">By Name</button>
         <button id="button-byimg">By Image</button>
+    </fieldset>
+    <fieldset>
+        <legend>Search by name:</legend>
+        <input type="text" id="search-field">
     </fieldset>
     <div id="container-byname"></div>
     <div id="container-byimg"></div>

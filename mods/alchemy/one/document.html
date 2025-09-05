@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/a11y-light.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/javascript.min.js"></script>
+    <style>
+        html, body {
+            margin:0;
+            padding: 0;
+        }
+        body {
+            margin-left:1.2rem;
+            font-family: sans-serif;
+        }
+        h1, h2 {
+            margin: 0;
+            margin-left: -1.2rem;
+            padding:.6rem .8rem;
+        }
+        h1 {
+            text-align: center;
+            background: #101044;
+            color: lightcyan;
+            padding: .8rem 0;
+        }
+        h2 {
+            background-color:#400084;
+            color:pink;
+            border-left: 10px solid deeppink;
+        }
+        p, pre {
+        }
+    </style>
+    <script>
+        fetch("document.md").then(d => d.text()).then(doc => {
+            document.body.innerHTML = marked.parse(doc);
+            for(const pre of [...document.querySelectorAll("pre")]) {
+                pre.classList.add("js");
+            }
+            hljs.highlightAll();
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

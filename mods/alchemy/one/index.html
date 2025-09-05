@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.addEventListener("load", async function(){
+            const [names, combinations] =
+                await Promise.all([fetch("name.json").then(j => j.json()), fetch("combinations.json").then(j => j.json())]);
+            const contentTable = document.querySelector("#content-table");
+            const byChildren = Object.entries(combinations).reduce((res, combi) => {
+                if(!Object.hasOwn(combi[1], "parents")) return res;
+                for(const parent of combi[1].parents) {
+                    getParent(parent[0], combi[0]);
+                    getParent(parent[1], combi[0]);
+                }
+                return res;
+                function getParent(id, child) {
+                    if(!Object.hasOwn(res, id)) {
+                        res[id] = [];
+                    }
+                    const name = toName(child);
+                    if(res[id].indexOf(name) < 0) res[id].push(name);
+                }
+            }, {});
+            const inputField = document.querySelector("#search-field");
+            const elementTable = [];
+
+            const shadow = document.createDocumentFragment();
+            const shadowSpecial = document.createDocumentFragment();
+            for(const kv of Object.entries(names)) {
+                const tr = document.createElement("tr");
+                addContent(tr, kv[0], kv[1])
+                if(!!combinations[kv[0]].platforms) {
+                    tr.classList.add("element-special");
+                    shadowSpecial.appendChild(tr);
+                }
+                else {
+                    shadow.appendChild(tr);
+                }
+                elementTable.push([kv[1], tr, kv[0]]);
+            }
+            contentTable.appendChild(shadow);
+            contentTable.appendChild(shadowSpecial);
+            inputField.addEventListener("input", function(){
+                const val = inputField.value.trim();
+                if(!val) {
+                    showOnly([]);
+                    return;
+                }
+                const res = elementTable.filter(el => el[0].indexOf(val) < 0).map(el => el[1]);
+                showOnly(res);
+                function showOnly(contains) {
+                    for(const r of elementTable) {
+                        if(contains.indexOf(r[1])<0) {
+                            r[1].removeAttribute("hidden");
+                        }
+                        else {
+                            r[1].setAttribute("hidden", "");
+                        }
+                    }
+                }
+                function showAll() {
+                    for(const r of elementTable) {
+                        r[1].removeAttribute("hidden");
+                    }
+                }
+            });
+            fetch("imgs.json").then(res => res.json()).then(res => {
+                for(const el of elementTable) {
+                    const imgBase = res[el[2]];
+                    if(!imgBase) continue;
+                    const img = new Image();
+                    img.src = "data:image/png;base64,"+imgBase;
+                    img.alt = el[0];
+                    el[1].querySelector(".item-icon").appendChild(img);
+                }
+            })
+
+            function addContent(line, id, name){
+                line.appendChild(addText(id));
+                line.appendChild(addText("")).classList.add("item-icon");
+                line.appendChild(addText(name));
+                line.appendChild(addCombiText(combinations[id].parents));
+                line.appendChild(addCreatesText(byChildren[id]));
+            }
+            function addCombiText(arr) {
+                if(!arr) return addText("-");
+                return addText(arr.map(c => toCombiName(c)).join(", "))
+            }
+            function addCreatesText(arr) {
+                if(!arr) return addText("-");
+                return addText(arr.join(", "));
+            }
+            function addText(txt) {
+                const td= document.createElement("td");
+                td.textContent = txt;
+                return td;
+            }
+            function toCombiName(combi) {
+                return toName(combi[0])+" + "+toName(combi[1]);
+            }
+            function toName(id) {
+                return names[id.toString()];
+            }
+        })
+    </script>
+    <style>
+        html, body {
+            margin:0;
+            padding:0;
+        }
+        body {
+            font-family: sans-serif;
+        }
+        header {
+            text-align: center;
+            background-color: indigo;
+            color:pink;
+        }
+        header a {
+            color:white;
+        }
+        header a:hover {
+            color:cyan;
+            background-color: #0e0e00;
+        }
+        header, main {
+            padding:.2rem 1.6rem;
+        }
+        main {
+            padding-bottom: 1.2rem;
+        }
+        .element-special {
+            background-color: #ffff80;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 1.6rem;
+        }
+        thead {
+            border-bottom: 3px solid palevioletred;
+        }
+        th, td {
+            border:1px solid grey;
+        }
+        td {
+            padding:.2rem .6rem;
+        }
+        td img {
+            width:2.4rem
+        }
+        th {
+            padding:.4rem .6rem;
+            background-color: lightpink;
+        }
+        tbody > tr {
+            position: relative;
+        }
+        tbody > tr:hover::after {
+            content:"";
+            position:absolute;
+            left:0;top:0;bottom:0;right:0;
+            background-color: #80a0c440;
+            mix-blend-mode: multiply;
+        }
+        fieldset {
+            background-color: #e0f0ff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Little Alchemy 1 Cheatsheet</h1>
+        <p>Special treat combinations are on the bottom & marked as yellow.</p>
+        <p>For 2, <a href="..">Click here!</a> For some modding doc, <a href="document.html">Click here!</a></p>
+    </header>
+    <main>
+        <fieldset>
+            <legend>Search</legend>
+            <input type="text" id="search-field">
+        </fieldset>
+        <table>
+           <thead>
+            <tr>
+                <th>Id</th>
+                <th>Icon</th>
+                <th>Name</th>
+                <th>From</th>
+                <th>Makees</th>
+            </tr>
+           </thead> 
+           <tbody id="content-table"></tbody>
+        </table>
+    </main>
+</body>
+</html>
