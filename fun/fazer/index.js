@@ -65,10 +65,10 @@ window.addEventListener("load", function () {
         loadImage("front", canvasFg),
         loadImage("faz_01", canvasChoco),
         new Promise(loaded => {
-            if(!WebFont) {
+            if(typeof WebFont === 'undefined') {
                 document.getElementById("loading-error-message")
                     .textContent =
-                    "Failed to load Webfont. Check if tracking is blocked. Using default fallback font.";
+                    "Failed to load Webfont. Using default fallback font.";
                 document.getElementById("loading-error-font").removeAttribute("hidden");
                 loaded();
             }
