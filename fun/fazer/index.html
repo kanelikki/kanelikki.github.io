@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make your own chocolate!</title>
+    <!--<script src="https://cdn.jsdelivr.net/npm/fabric@7.0/dist/index.min.js"></script>-->
+    <script src="fabric.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script src="index.js"></script>
+    <script src="extend-choco.js"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+        body {
+            font-family: 'Figtree', sans-serif;
+            background:lightgoldenrodyellow url("./candies.png") repeat;
+            text-align: center;
+        }
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #render-button {
+            font-size: 150%;
+            padding: .4rem .8rem;
+            background: #002d68;
+            border: none;
+            border-radius: .8rem / .4rem;
+            color: #cfd9bb;
+            position: relative;
+        }
+        #render-button::after {
+            content:"";
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
+            border:5px outset #b9c3c7;
+            border-radius: .8rem / .4rem;
+            border-radius: .8rem / .4rem;
+            filter: blur(1px);
+            mix-blend-mode: hard-light;
+        }
+        #render-button:hover {
+            background-color: #33260e;
+            color:yellow;
+            cursor:pointer;
+        }
+        #render-button:hover::after {
+            border-style:inset;
+        }
+        .chocolate {
+            width:1024px; height:391px;
+            position: relative;
+            display: inline-block;
+            margin-top: 2.4rem;
+        }
+        .chocolate-base {
+            mask: url("imgs/back.png");
+        }
+        canvas {
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        fieldset {
+            background-color: rgb(201 201 235 / 50%);
+            border: 1px dashed cadetblue;
+            max-width: 1200px;
+            width: 100%;
+        }
+        #chocolate-bg-clr {
+            mix-blend-mode: multiply;
+        }
+        .click-through {
+            pointer-events: none;
+        }
+        #chocolate-premade-over {
+            mix-blend-mode: multiply;
+        }
+        .pickers {
+            display: flex;
+            justify-content: center;
+        }
+        .pickers input {
+            display: none;
+        }
+        .pickers label {
+            padding:.4rem .6rem;
+            border:1px solid #ada69a;
+            background-color: #ebd4c0;
+        }
+        .pickers label:hover {
+            background-color: lightblue;
+            cursor:pointer;
+        }
+        .pickers input:checked+label {
+            background-color: #002d68;
+            color:#e7c796;
+            font-weight: bold;
+        }
+        .pickers+div > div {
+            margin-top: .8rem;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>Sun Oma Fazer Herkkusi On Täällä &gt;:3</h1></header>
+    <main>
+        <h2 id="loading-message">Loading...</h2>
+        <article id="content" hidden>
+                <fieldset>
+                    <legend>Taustakuva</legend>
+                    <div class="pickers">
+                        <input type="radio"  name="choco-bg" value="0" id="picker-bg1" checked>
+                        <label for="picker-bg1">Väri</label>
+                        <input type="radio"  name="choco-bg" value="1" id="picker-bg2">
+                        <label for="picker-bg2">Liukuväri</label>
+                        <input type="radio"  name="choco-bg" value="1" id="picker-bg3">
+                        <label for="picker-bg3">Kuvio</label>
+                    </div>
+                    <div>
+                        <div id="bg-type1">
+                            <label for="picker-bg-clr">Väri</label>
+                            <input type="color" id="picker-bg-clr" value="#808080">
+                        </div>
+                        <div id="bg-type2">
+                            <label for="picker-bg-gr1">Väri 1</label>
+                            <input type="color" id="picker-bg-gr1" value="#ff0000">
+                            <label for="picker-bg-gr1">Väri 2</label>
+                            <input type="color" id="picker-bg-gr2" value="#0000ff">
+                        </div>
+                        <div id="bg-type3">
+                            <label for="picker-bg-file">Kuva</label>
+                            <input type="file" id="picker-bg-file" name="bg-img" accept="image/*">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Suklaa</legend>
+                    <div id="picker-type" class="pickers">
+                        <input type="radio"  name="choco" value="0" id="picker-type1" checked>
+                        <label for="picker-type1">Maitosuklaa</label>
+                        <input type="radio"  name="choco" value="1" id="picker-type2">
+                        <label for="picker-type2">Pienet palat</label>
+                        <input type="radio"  name="choco" value="2" id="picker-type3">
+                        <label for="picker-type3">Isot palat</label>
+                        <input type="radio"  name="choco" value="3" id="picker-type4">
+                        <label for="picker-type4">Mukautettu</label>
+                    </div>
+                    <div>
+                        <div id="picker-choco-clr-wrapper" hidden>
+                            <label for="picker-choco-clr">Palojen värit</label>
+                            <input type="color" id="picker-choco-clr" value="#c0c0ff">
+                        </div>
+                        <div id="picker-choco-file-wrapper" hidden>
+                            <label for="picker-choco-file">Suklaan Kuva</label>
+                            <input type="file" id="picker-choco-file" name="choco-img" accept="image/*">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Tuotekuva</legend>
+                    <label for="picker-img">Kuova tuotteesta</label>
+                    <input type="file" id="picker-img" name="img" accept="image/*">
+                </fieldset>
+            <p>
+                <button id="render-button">DONE</button>
+            </p>
+            <div class="chocolate chocolate-base">
+                <canvas width="1024" height="391" id="chocolate-bg"></canvas>
+                <canvas width="1024" height="391" id="chocolate-fg"></canvas>
+                <canvas width="1024" height="391" id="chocolate-over"></canvas>
+                <canvas width="1024" height="391" id="chocolate-shades" class="click-through"></canvas>
+                <canvas width="1024" height="391" id="chocolate-premade" class="click-through"></canvas>
+                <canvas width="1024" height="391" id="chocolate-premade-over" class="click-through"></canvas>
+            </div>
+            <div class="chocolate">
+                <canvas width="1024" height="391" id="chocolate-render-result"></canvas>
+            </div>
+        </article>
+    </main>
+    <footer>
+        <p>Photo from K-ruoka. This website does NOT affiliated to Fazer or K-ruoka.</p>
+        <p>This is random nonprofit fan(?) website for parody purpose only.</p>
+        <p>Works best in Chromium based browser. Firefox works, but the font is a little bit thinner.</p>
+    </footer>
+</body>
+</html>
