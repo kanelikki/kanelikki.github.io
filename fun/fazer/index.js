@@ -68,76 +68,80 @@ window.addEventListener("load", function () {
             google: {
                 families: ['Figtree']
             },
-            active: function () {
-                const prodName = new fabric.IText('TUOREHIIVA', {
-                    fontFamily: 'Figtree',
-                    fontWeight: 600,
-                    textAlign: 'center',
-                    fontSize: 21,
-                    fill: '#c7a46c',
-                    charSpacing: 100,
-                    height: 500,
-                    top: 276,
-                    left: 528,
-                    lockMovementX: true,
-                    lockMovementY: true
-                })
-                const prodSubnameSv = new fabric.IText('Färsk jäst', {
-                    fontFamily: 'Figtree',
-                    fontWeight: 300,
-                    textAlign: 'center',
-                    fontSize: 15,
-                    fill: '#c7a46c',
-                    charSpacing: 57,
-                    top: 297,
-                    left: 528,
-                    lockMovementX: true,
-                    lockMovementY: true
-                })
-                const prodSubnameEn = new fabric.IText('Fresh yeast', {
-                    fontFamily: 'Figtree',
-                    fontWeight: 300,
-                    textAlign: 'center',
-                    fontSize: 15,
-                    fill: '#c7a46c',
-                    charSpacing: 48,
-                    top: 315,
-                    left: 528,
-                    lockMovementX: true,
-                    lockMovementY: true
-                })
-                canvasOver.add(prodName);
-                canvasOver.add(prodSubnameSv);
-                canvasOver.add(prodSubnameEn);
-                //console.log(prodName)
-                deleteControls(prodName);
-                deleteControls(prodSubnameSv);
-                deleteControls(prodSubnameEn);
-                //setPositionByOrigin does not work with pointer event none. IDK WHY... is this bug?
-                prodName.set("top", prodName.top - prodName.height * .5)
-                prodName.setCoords();
-                prodName.on('changed', e =>
-                    prodName.setPositionByOrigin(new fabric.Point(528, 276), 'center', 'bottom')
-                )
-                loadImageFabric("imgs/hiiva.png", canvasOver, 180, 720);
-                canvasOver.renderAll();
+            inactive: () => {
+                document.getElementById("loading-error-font").removeAttribute("hidden");
                 loaded();
-                function deleteControls(obj) {
-                    obj.setControlsVisibility({
-                        tl: false,
-                        tr: false,
-                        br: false,
-                        bl: false,
-                        ml: false,
-                        mt: false,
-                        mr: false,
-                        mb: false,
-                        mtr: false
-                    })
-                    obj.on('selected', o => o.target.enterEditing())
-                }
+            },
+            active: function () {
+                loaded();
             }
-        })),
+        })).then(() => {
+            const prodName = new fabric.IText('TUOREHIIVA', {
+                fontFamily: 'Figtree, Sans-serif',
+                fontWeight: 600,
+                textAlign: 'center',
+                fontSize: 21,
+                fill: '#c7a46c',
+                charSpacing: 100,
+                height: 500,
+                top: 276,
+                left: 528,
+                lockMovementX: true,
+                lockMovementY: true
+            })
+            const prodSubnameSv = new fabric.IText('Färsk jäst', {
+                fontFamily: 'Figtree, Sans-serif',
+                fontWeight: 300,
+                textAlign: 'center',
+                fontSize: 15,
+                fill: '#c7a46c',
+                charSpacing: 57,
+                top: 297,
+                left: 528,
+                lockMovementX: true,
+                lockMovementY: true
+            })
+            const prodSubnameEn = new fabric.IText('Fresh yeast', {
+                fontFamily: 'Figtree, Sans-serif',
+                fontWeight: 300,
+                textAlign: 'center',
+                fontSize: 15,
+                fill: '#c7a46c',
+                charSpacing: 48,
+                top: 315,
+                left: 528,
+                lockMovementX: true,
+                lockMovementY: true
+            })
+            canvasOver.add(prodName);
+            canvasOver.add(prodSubnameSv);
+            canvasOver.add(prodSubnameEn);
+            deleteControls(prodName);
+            deleteControls(prodSubnameSv);
+            deleteControls(prodSubnameEn);
+            //setPositionByOrigin does not work with pointer event none. IDK WHY... is this bug?
+            prodName.set("top", prodName.top - prodName.height * .5)
+            prodName.setCoords();
+            prodName.on('changed', e =>
+                prodName.setPositionByOrigin(new fabric.Point(528, 276), 'center', 'bottom')
+            )
+            loadImageFabric("imgs/hiiva.png", canvasOver, 180, 720);
+            canvasOver.renderAll();
+            function deleteControls(obj) {
+                obj.setControlsVisibility({
+                    tl: false,
+                    tr: false,
+                    br: false,
+                    bl: false,
+                    ml: false,
+                    mt: false,
+                    mr: false,
+                    mb: false,
+                    mtr: false
+                })
+                obj.on('selected', o => o.target.enterEditing())
+            }
+        }),
         EXT_choco.init(canvasChoco, canvasChocoMask, canvasOver)
     ]).then(() => {
         content.removeAttribute("hidden");

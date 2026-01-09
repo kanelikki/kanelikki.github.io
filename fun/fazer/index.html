@@ -26,6 +26,10 @@
             flex-direction: column;
             align-items: center;
         }
+        /* hotfix: hidden does not work bc of display I guess */
+        #content[hidden]{
+            display:none;
+        }
         #render-button {
             font-size: 150%;
             padding: .4rem .8rem;
@@ -52,6 +56,13 @@
         }
         #render-button:hover::after {
             border-style:inset;
+        }
+        #loading-error-font {
+            background: #ff9ec1;
+            font-size: 125%;
+            padding: .5rem 0;
+            font-weight: bold;
+            color: #57182e;
         }
         .chocolate {
             width:1024px; height:391px;
@@ -112,6 +123,11 @@
     <header><h1>Sun Oma Fazer Herkkusi On Täällä &gt;:3</h1></header>
     <main>
         <h2 id="loading-message">Loading...</h2>
+        <p id="loading-error-font" hidden>
+            The webfont from online is not loaded and default sans-serif is used.
+            You can install <a href="https://fonts.google.com/specimen/Figtree">Figtree</a> for full experience.<br>
+            <small>If you have the font, please ignore this message</small>
+        </p>
         <article id="content" hidden>
                 <fieldset>
                     <legend>Taustakuva</legend>
