@@ -83,6 +83,9 @@
             border: 1px dashed cadetblue;
             max-width: 1200px;
             width: 100%;
+            line-height: 240%;
+            padding: 0.5rem 0;
+            margin: 0;
         }
         #chocolate-bg-clr {
             mix-blend-mode: multiply;
@@ -92,10 +95,6 @@
         }
         #chocolate-premade-over {
             mix-blend-mode: multiply;
-        }
-        .pickers {
-            display: flex;
-            justify-content: center;
         }
         .pickers input {
             display: none;
@@ -116,6 +115,11 @@
         }
         .pickers+div > div {
             margin-top: .8rem;
+        }
+        @media screen and (max-width:1024px) {
+            .chocolate {
+                transform: scale(calc(100vw / 1032px));
+            }
         }
     </style>
 </head>
@@ -183,7 +187,7 @@
                 </fieldset>
                 <fieldset>
                     <legend>Tuotekuva</legend>
-                    <label for="picker-img">Kuova tuotteesta</label>
+                    <label for="picker-img">Kuva tuotteesta</label>
                     <input type="file" id="picker-img" name="img" accept="image/*">
                 </fieldset>
             <p>
@@ -197,6 +201,7 @@
                 <canvas width="1024" height="391" id="chocolate-premade" class="click-through"></canvas>
                 <canvas width="1024" height="391" id="chocolate-premade-over" class="click-through"></canvas>
             </div>
+            <a href="#" id="chocolate-download" hidden>Download</a>
             <div class="chocolate">
                 <canvas width="1024" height="391" id="chocolate-render-result"></canvas>
             </div>
