@@ -282,5 +282,6 @@ window.addEventListener("load", function () {
         }
         canvasOver.viewportTransform[0] = ratio;
         canvasOver.viewportTransform[3] = ratio;
+        canvasOver.renderAll();
     }
 });

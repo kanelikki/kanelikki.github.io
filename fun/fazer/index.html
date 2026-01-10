@@ -23,6 +23,7 @@
             font-family: 'Figtree', sans-serif;
             background:lightgoldenrodyellow url("./candies.png") repeat;
             text-align: center;
+            overflow: hidden;
         }
         #content {
             display: flex;
@@ -74,10 +75,20 @@
             width:1024px;
             height:391px;
             position: relative;
+            margin-bottom: 1.2rem;
         }
-        .chocolate-base-wrapper {
+        .chocolate-base {
             mask: url("imgs/back.png");
             mask-size: 100%;
+        }
+        #chocolate-download {
+            position: absolute;
+            top:0;left:0;right:0;bottom:0;
+            background-color: rgba(0,0,0,0.5);
+            color:#fff;
+            z-index:2;
+            text-decoration: none;
+            font-size: 2.5rem;
         }
         canvas {
             position: absolute;
@@ -124,12 +135,9 @@
             margin-top: .8rem;
         }
         @media screen and (max-width:1024px) {
-            .chocolate, .chocolate-base-wrapper, .chocolate canvas {
+            .chocolate, .chocolate canvas {
                 width:100vw;
                 height:calc(100vw * (391 / 1024))
-            }
-            .chocolate canvas {
-                width:100vw;
             }
         }
     </style>
@@ -205,18 +213,18 @@
                 <button id="render-button">DONE</button>
             </p>
             <div class="chocolate-container">
-                <div class="chocolate-base-wrapper">
-                    <div class="chocolate chocolate-base">
-                        <canvas width="1024" height="391" id="chocolate-bg"></canvas>
-                        <canvas width="1024" height="391" id="chocolate-fg"></canvas>
-                        <canvas width="1024" height="391" id="chocolate-over"></canvas>
-                        <canvas width="1024" height="391" id="chocolate-shades" class="click-through"></canvas>
-                        <canvas width="1024" height="391" id="chocolate-premade" class="click-through"></canvas>
-                        <canvas width="1024" height="391" id="chocolate-premade-over" class="click-through"></canvas>
-                    </div>
+                <div class="chocolate chocolate-base">
+                    <canvas width="1024" height="391" id="chocolate-bg"></canvas>
+                    <canvas width="1024" height="391" id="chocolate-fg"></canvas>
+                    <canvas width="1024" height="391" id="chocolate-over"></canvas>
+                    <canvas width="1024" height="391" id="chocolate-shades" class="click-through"></canvas>
+                    <canvas width="1024" height="391" id="chocolate-premade" class="click-through"></canvas>
+                    <canvas width="1024" height="391" id="chocolate-premade-over" class="click-through"></canvas>
                 </div>
-                <a href="#" id="chocolate-download" hidden>Download</a>
                 <div class="chocolate">
+                    <a href="#" id="chocolate-download">
+                        Click to download
+                    </a> 
                     <canvas width="1024" height="391" id="chocolate-render-result"></canvas>
                 </div>
             </div>
