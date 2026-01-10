@@ -43,6 +43,7 @@ window.addEventListener("load", function () {
     const content = document.getElementById("content");
     let bgImg;
     let rendering = false;
+    resizeChoco();
     Promise.all([
         getImage("back", setBgClr)
             .then(im => {
@@ -160,6 +161,7 @@ window.addEventListener("load", function () {
         document.getElementById("render-button").addEventListener("click", render);
         document.getElementById("picker-img")
             .addEventListener("change", e => loadUploadedImg(e, rs => img.src = rs));
+        window.addEventListener("resize", resizeChoco);
     });
     function loadImage(url, targetCanvas) {
         return getImage(url, im => targetCanvas.drawImage(im, width - im.width, 0));
@@ -268,5 +270,10 @@ window.addEventListener("load", function () {
         canvasResult.drawImage(bgImg, 0, 0);
         canvasResult.globalCompositeOperation = "source-over";
         rendering = false;
+    }
+    function resizeChoco() {
+        const ratio =
+            parseInt(getComputedStyle(document.documentElement, null).getPropertyValue('width'))/1032;
+        document.documentElement.style.setProperty('--choco-width', ratio);
     }
 });

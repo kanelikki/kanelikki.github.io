@@ -10,6 +10,12 @@
     <script src="index.js"></script>
     <script src="extend-choco.js"></script>
     <style>
+        :root {
+            --choco-width:calc(100vw / 1032px);
+        }
+        html {
+            overflow-x: hidden;
+        }
         html, body {
             margin: 0;
             padding: 0;
@@ -64,13 +70,15 @@
             font-weight: bold;
             color: #57182e;
         }
-        .chocolate {
-            width:1024px; height:391px;
-            position: relative;
-            display: inline-block;
-            margin-top: 2.4rem;
+        .chocolate-containter {
+            width:100%;
         }
-        .chocolate-base {
+        .chocolate {
+            width:1024px;
+            height:391px;
+            position: relative;
+        }
+        .chocolate-base-wrapper {
             mask: url("imgs/back.png");
         }
         canvas {
@@ -103,6 +111,7 @@
             padding:.4rem .6rem;
             border:1px solid #ada69a;
             background-color: #ebd4c0;
+            white-space: nowrap;
         }
         .pickers label:hover {
             background-color: lightblue;
@@ -118,7 +127,13 @@
         }
         @media screen and (max-width:1024px) {
             .chocolate {
-                transform: scale(calc(100vw / 1032px));
+                transform: scale(var(--choco-width));
+                transform-origin: top center;
+                overflow: visible;
+            }
+            .chocolate, .chocolate-base-wrapper {
+                width: 100%;
+                height: calc(100vw * 0.3818359375);
             }
         }
     </style>
@@ -193,17 +208,21 @@
             <p>
                 <button id="render-button">DONE</button>
             </p>
-            <div class="chocolate chocolate-base">
-                <canvas width="1024" height="391" id="chocolate-bg"></canvas>
-                <canvas width="1024" height="391" id="chocolate-fg"></canvas>
-                <canvas width="1024" height="391" id="chocolate-over"></canvas>
-                <canvas width="1024" height="391" id="chocolate-shades" class="click-through"></canvas>
-                <canvas width="1024" height="391" id="chocolate-premade" class="click-through"></canvas>
-                <canvas width="1024" height="391" id="chocolate-premade-over" class="click-through"></canvas>
-            </div>
-            <a href="#" id="chocolate-download" hidden>Download</a>
-            <div class="chocolate">
-                <canvas width="1024" height="391" id="chocolate-render-result"></canvas>
+            <div class="chocolate-container">
+                <div class="chocolate-base-wrapper">
+                    <div class="chocolate chocolate-base">
+                        <canvas width="1024" height="391" id="chocolate-bg"></canvas>
+                        <canvas width="1024" height="391" id="chocolate-fg"></canvas>
+                        <canvas width="1024" height="391" id="chocolate-over"></canvas>
+                        <canvas width="1024" height="391" id="chocolate-shades" class="click-through"></canvas>
+                        <canvas width="1024" height="391" id="chocolate-premade" class="click-through"></canvas>
+                        <canvas width="1024" height="391" id="chocolate-premade-over" class="click-through"></canvas>
+                    </div>
+                </div>
+                <a href="#" id="chocolate-download" hidden>Download</a>
+                <div class="chocolate">
+                    <canvas width="1024" height="391" id="chocolate-render-result"></canvas>
+                </div>
             </div>
         </article>
     </main>
