@@ -2,7 +2,7 @@ window.addEventListener("load", function () {
     fabric.disableStyleCopyPaste = true;
     const canvasBg = getCtx("chocolate-bg");
     const canvasFg = new getCtx("chocolate-fg");
-    const canvasOver = new fabric.Canvas("chocolate-over", { selection: false });
+    const canvasOver = new fabric.Canvas("chocolate-over", { selection: false, allowTouchScrolling:false });
     const canvasShades = getCtx("chocolate-shades");
     const canvasChoco = getCtx("chocolate-premade");
     const canvasChocoMask = getCtx("chocolate-premade-over");
@@ -13,6 +13,7 @@ window.addEventListener("load", function () {
     const reader = new FileReader();
     let wasGradient = false;
     let currentBgImg = null;
+    let ratio = 1;
 
     const bgPickers = {
         clr: {
@@ -261,7 +262,7 @@ window.addEventListener("load", function () {
         canvasResult.clearRect(0, 0, width, height);
         canvasResult.drawImage(canvasBg.canvas, 0, 0);
         canvasResult.drawImage(canvasFg.canvas, 0, 0);
-        canvasResult.drawImage(canvasOver.toCanvasElement(), 0, 0);
+        canvasResult.drawImage(canvasOver.toCanvasElement(1/ratio), 0, 0);
         canvasResult.drawImage(canvasShades.canvas, 0, 0);
         canvasResult.drawImage(canvasChoco.canvas, 0, 0);
         canvasResult.globalCompositeOperation = "multiply"
@@ -272,8 +273,14 @@ window.addEventListener("load", function () {
         rendering = false;
     }
     function resizeChoco() {
-        const ratio =
-            parseInt(getComputedStyle(document.documentElement, null).getPropertyValue('width'))/1032;
-        document.documentElement.style.setProperty('--choco-width', ratio);
+        const wd = parseInt(getComputedStyle(document.documentElement, null).getPropertyValue('width'));
+        if(wd >= 1024) {
+            ratio = 1;
+        }
+        else {
+            ratio = wd / 1024;
+        }
+        canvasOver.viewportTransform[0] = ratio;
+        canvasOver.viewportTransform[3] = ratio;
     }
 });
