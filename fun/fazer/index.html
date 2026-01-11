@@ -89,6 +89,12 @@
             z-index:2;
             text-decoration: none;
             font-size: 2.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #chocolate-download[hidden] {
+            display: none;
         }
         canvas {
             position: absolute;
@@ -224,7 +230,7 @@
                     <canvas width="1024" height="391" id="chocolate-premade-over" class="click-through"></canvas>
                 </div>
                 <div class="chocolate">
-                    <a href="#" id="chocolate-download">
+                    <a href="#" id="chocolate-download" download="paras_suklaa.png" hidden>
                         Click to download
                     </a> 
                     <canvas width="1024" height="391" id="chocolate-render-result"></canvas>

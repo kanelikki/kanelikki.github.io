@@ -7,6 +7,7 @@ window.addEventListener("load", function () {
     const canvasChoco = getCtx("chocolate-premade");
     const canvasChocoMask = getCtx("chocolate-premade-over");
     const canvasResult = getCtx("chocolate-render-result");
+    const downloadLink = document.getElementById("chocolate-download");
     const width = canvasOver.width;
     const height = canvasOver.height;
     const img = new Image;
@@ -303,6 +304,8 @@ window.addEventListener("load", function () {
         canvasResult.globalCompositeOperation = "destination-in";
         canvasResult.drawImage(bgImg, 0, 0);
         canvasResult.globalCompositeOperation = "source-over";
+        downloadLink.removeAttribute("hidden");
+        downloadLink.href = canvasResult.canvas.toDataURL();
         rendering = false;
     }
     function resizeChoco() {
