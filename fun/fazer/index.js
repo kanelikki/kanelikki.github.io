@@ -14,6 +14,9 @@ window.addEventListener("load", function () {
     let wasGradient = false;
     let currentBgImg = null;
     let ratio = 1;
+    let prodImg;
+    const prodTop = 180;
+    const prodLeft = 720;
 
     const bgPickers = {
         clr: {
@@ -138,7 +141,7 @@ window.addEventListener("load", function () {
             prodName.on('changed', e =>
                 prodName.setPositionByOrigin(new fabric.Point(528, 276), 'center', 'bottom')
             )
-            loadImageFabric("imgs/hiiva.png", canvasOver, 180, 720);
+            loadImageFabric("imgs/hiiva.png", canvasOver);
             canvasOver.renderAll();
             function deleteControls(obj) {
                 obj.setControlsVisibility({
@@ -163,6 +166,18 @@ window.addEventListener("load", function () {
         document.getElementById("picker-img")
             .addEventListener("change", e => loadUploadedImg(e, rs => img.src = rs));
         window.addEventListener("resize", resizeChoco);
+        canvasOver.on('object:moving', e => {
+            const obj = e.target;
+            if (obj) {
+                obj.left = Math.max(0, Math.min(obj.left, width));
+                obj.top = Math.max(0, Math.min(obj.top, height));
+            }
+        });
+        document.getElementById("reset-prod").addEventListener("click", ()=>{
+            if(!prodImg) return;
+            resetScalePos();
+            canvasOver.renderAll();
+        });
     });
     function loadImage(url, targetCanvas) {
         return getImage(url, im => targetCanvas.drawImage(im, width - im.width, 0));
@@ -177,18 +192,27 @@ window.addEventListener("load", function () {
             }
         })
     }
-    function loadImageFabric(fullUrl, targetCanvas, top, left) {
+    function loadImageFabric(fullUrl, targetCanvas) {
         img.src = fullUrl;
-        const f = new fabric.Image("", { top: top, left: left });
+        const f = new fabric.Image("", { top: prodTop, left: prodLeft });
+        prodImg = f;
         return new Promise(rsv => {
             img.onload = () => {
                 f.setElement(img);
-                f.scale(0.5 * height / img.height);
+                resetScalePos();
                 targetCanvas.add(f);
-                rsv(img);
+                rsv(f);
                 canvasOver.renderAll();
             }
         })
+    }
+    function resetScalePos() {
+        //scaleToHeight is broken...
+        prodImg.scale(0.5 * height / img.height);
+        prodImg.top = prodTop;
+        prodImg.left = prodLeft;
+        prodImg.rotate(0);
+        prodImg.setCoords();
     }
     function loadUploadedImg(ev, callback) {
         const file = ev.target.files[0];

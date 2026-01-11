@@ -12,6 +12,7 @@ const EXT_choco = (function () {
     let applyingClr = false;
     let applyingImg = false;
     let img = new Image;
+    let chocoImg;
     const reader = new FileReader();
     const hideElement = el => el.setAttribute("hidden", "");
     const showElement = el => el.removeAttribute("hidden");
@@ -48,7 +49,7 @@ const EXT_choco = (function () {
             canvasChoco = chocolateLayer;
             canvasChocoMask = chocolateOverLayer;
             customChocoLayer = fabricLayer;
-            const fabricElement = new fabric.Image("");
+            chocoImg = new fabric.Image("");
             width = cv.width;
             height = cv.height;
             pickerTypes = document.getElementById("picker-type");
@@ -65,20 +66,20 @@ const EXT_choco = (function () {
                     const index = e.target.value;
                     switch (index) {
                         case "0":
-                            fabricElement.visible = false;
+                            chocoImg.visible = false;
                             hideElement(pickerClrWrapper);
                             hideElement(fileUploadWrapper);
                             fabricLayer.renderAll();
                             break;
                         case "1":
                         case "2":
-                            fabricElement.visible = false;
+                            chocoImg.visible = false;
                             showElement(pickerClrWrapper);
                             hideElement(fileUploadWrapper);
                             fabricLayer.renderAll();
                             break;
                         default:
-                            fabricElement.visible = true;
+                            chocoImg.visible = true;
                             hideElement(pickerClrWrapper);
                             showElement(fileUploadWrapper);
                             fabricLayer.renderAll();
@@ -90,7 +91,7 @@ const EXT_choco = (function () {
                     applyingImg = false;
                 })
             }
-            fileUploadWrapper.addEventListener("change", e => {
+            fileUploader.addEventListener("change", e => {
                 const file = e.target.files[0];
                 if (!file || !file.type || !file.type.startsWith('image/')) {
                     return;
@@ -108,22 +109,31 @@ const EXT_choco = (function () {
                 loadImage("faz_02_msk", imageListMask, 1),
                 loadImage("faz_03_msk", imageListMask, 2)
             ]);
+            console.log(chocoImg)
+            document.getElementById("reset-choco").addEventListener("click", ()=>{
+                if(!chocoImg) return;
+                resetScalePos();
+                customChocoLayer.renderAll();
+            });
             function loadImageFabric() {
                 return new Promise(rsv => {
                     img.onload = () => {
-                        fabricElement.setElement(img);
-                        //scaleToHeight is broken...
-                        fabricElement.scale(height/img.height);
-                        fabricElement.top = height/2;
-                        fabricElement.left = width - fabricElement.getScaledWidth()/2;
-                        fabricElement.setCoords();
-                        customChocoLayer.add(fabricElement);
+                        chocoImg.setElement(img);
+                        resetScalePos();
+                        customChocoLayer.add(chocoImg);
                         rsv(img);
                         customChocoLayer.renderAll();
                     }
                 })
             }
-
+            function resetScalePos() {
+                //scaleToHeight is broken...
+                chocoImg.scale(height / img.height);
+                chocoImg.top = height / 2;
+                chocoImg.left = width - chocoImg.getScaledWidth() / 2;
+                chocoImg.rotate(0);
+                chocoImg.setCoords();
+            }
         }
     }
 })();
