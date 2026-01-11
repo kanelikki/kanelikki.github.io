@@ -194,7 +194,16 @@ window.addEventListener("load", function () {
     }
     function loadImageFabric(fullUrl, targetCanvas) {
         img.src = fullUrl;
-        const f = new fabric.Image("", { top: prodTop, left: prodLeft });
+        const f = new fabric.Image("", {
+            top: prodTop,
+            left: prodLeft,
+            shadow: {
+                color: '#00000080',
+                offsetX: 20,
+                offsetY: 20,
+                blur: 100
+            }
+        });
         prodImg = f;
         return new Promise(rsv => {
             img.onload = () => {

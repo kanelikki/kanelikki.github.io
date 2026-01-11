@@ -49,7 +49,14 @@ const EXT_choco = (function () {
             canvasChoco = chocolateLayer;
             canvasChocoMask = chocolateOverLayer;
             customChocoLayer = fabricLayer;
-            chocoImg = new fabric.Image("");
+            chocoImg = new fabric.Image("", {
+                shadow: {
+                    color: '#00000080',
+                    offsetX: 20,
+                    offsetY: 20,
+                    blur: 100
+                }
+            });
             width = cv.width;
             height = cv.height;
             pickerTypes = document.getElementById("picker-type");
@@ -109,7 +116,6 @@ const EXT_choco = (function () {
                 loadImage("faz_02_msk", imageListMask, 1),
                 loadImage("faz_03_msk", imageListMask, 2)
             ]);
-            console.log(chocoImg)
             document.getElementById("reset-choco").addEventListener("click", ()=>{
                 if(!chocoImg) return;
                 resetScalePos();
