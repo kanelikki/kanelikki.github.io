@@ -3,7 +3,6 @@
     --padding-vertical: .8rem;
 }
 html, body {
-    min-width:fit-content;
     width: 100%;
     text-align: center;
     position: relative;
@@ -44,6 +43,14 @@ body {
 /* img preview */
 button > img {
     max-height:200px;
+}
+.thumbs {
+    text-align: center;
+}
+.thumbs-wide img {
+    min-width: 200px;
+    max-width: 100%;
+    width: fit-content;
 }
 .thumbs > button {
     border:3px solid #ccc;
@@ -128,6 +135,7 @@ h1 > .username {
 }
 /* content */
 main {
+    min-width: 480px;
     border:3px outset #c0c0c0;
     width:calc(100vw - 2*var(--padding-horizontal));
     padding:.6rem .8rem;
